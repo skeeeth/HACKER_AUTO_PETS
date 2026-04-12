@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://brlrr5c85a1dd"]
+
+[ext_resource type="Script" uid="uid://bdhujuxoghmda" path="res://Combat Sim/Combat Unit/Combat_Class.gd" id="1_u5va0"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_k1ms5"]
+
+[node name="Node2D" type="Node2D" unique_id=253418010 node_paths=PackedStringArray("damage_label", "health_label")]
+script = ExtResource("1_u5va0")
+damage_label = NodePath("VBoxContainer/HBoxContainer/Damage")
+health_label = NodePath("VBoxContainer/HBoxContainer/Health")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=396016746]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1708096629]
+layout_mode = 2
+texture = ExtResource("2_k1ms5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1496670750]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1251785317]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=554622054]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
