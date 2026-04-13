@@ -2,38 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Combat Sim/combat_sim.gd" id="1_pc1ni"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ollyq"]
-[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="3_6ysio"]
-[ext_resource type="Resource" uid="uid://bx23qogixbm20" path="res://Resources/Effects/Summon1Unit.tres" id="4_48t8w"]
-[ext_resource type="Resource" uid="uid://hqdb812ddwbw" path="res://Resources/Effects/DealDamageToEnemy.tres" id="5_1jao0"]
-[ext_resource type="Resource" uid="uid://dtftyovtanfad" path="res://Resources/Effects/Give1HealthToPlayer.tres" id="6_dpo5j"]
-[ext_resource type="Resource" uid="uid://ctm2pebphaq81" path="res://Resources/Effects/Gain1AttackToPlayerOnFaint.tres" id="7_hobrl"]
-
-[sub_resource type="Resource" id="Resource_rxb7n"]
-script = ExtResource("2_ollyq")
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[sub_resource type="Resource" id="Resource_uoxyv"]
-script = ExtResource("2_ollyq")
-health = 3
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[sub_resource type="Resource" id="Resource_ktgk4"]
-script = ExtResource("2_ollyq")
-attack = 1
-health = 6
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[sub_resource type="Resource" id="Resource_ollyq"]
-script = ExtResource("2_ollyq")
-attack = 5
-health = 4
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
+[ext_resource type="Resource" uid="uid://ca2uh8w5h7vln" path="res://Resources/Units/Unit1.tres" id="3_hobrl"]
+[ext_resource type="Resource" uid="uid://drdvw7jr2lha0" path="res://Resources/Units/Unit2.tres" id="4_sx1f8"]
+[ext_resource type="Resource" uid="uid://3thnakt2v0ij" path="res://Resources/Units/Unit3.tres" id="5_hb81n"]
+[ext_resource type="Resource" uid="uid://dxd8fem6tyriv" path="res://Resources/Units/Unit4.tres" id="6_sslh6"]
 
 [node name="CombatSim" type="Node2D" unique_id=807734234]
 script = ExtResource("1_pc1ni")
-ally_unit_data = Array[ExtResource("2_ollyq")]([SubResource("Resource_rxb7n"), SubResource("Resource_uoxyv"), SubResource("Resource_ktgk4")])
-enemy_unit_data = Array[ExtResource("2_ollyq")]([SubResource("Resource_ollyq")])
-effectArray = Array[ExtResource("3_6ysio")]([ExtResource("4_48t8w"), ExtResource("5_1jao0"), ExtResource("6_dpo5j"), ExtResource("7_hobrl")])
+ally_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("3_hobrl"), ExtResource("4_sx1f8"), ExtResource("5_hb81n")])
+enemy_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("6_sslh6")])
 step_size = 150
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
