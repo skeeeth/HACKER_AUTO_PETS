@@ -6,22 +6,25 @@ signal died(who:SimUnit)
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health
 
-var attack:int:
+var attack : int:
 	set(v):
 		attack = v
 		damage_label.text = str(attack)
 
-var health:int:
+var health : int:
 	set(v):
 		health = v
 		health_label.text = str(health)
 		if health <= 0:
 			die()
 
+var effect : EffectData
 
+## This sets up the unit data for the unit
 func dress(data:UnitData):
 	attack = data.attack
 	health = data.health
+	effect = data.effect
 
 func die():
 	died.emit(self)

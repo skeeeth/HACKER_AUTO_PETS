@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://bx23qogixbm20"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_0ylto"]
+
+[resource]
+script = ExtResource("1_0ylto")
+name = "Summon 1 Unit"
+triggerState = 1
+effectType = 2
+magnitude = 1
+triggerAmount = 1
+metadata/_custom_type_script = "uid://d6hrknb1lvds"

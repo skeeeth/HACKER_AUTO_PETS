@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://hqdb812ddwbw"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_fxteu"]
+
+[resource]
+script = ExtResource("1_fxteu")
+name = "Deal 1 Damage to Enemy"
+magnitude = 4
+target = 1
+triggerAmount = 1
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
