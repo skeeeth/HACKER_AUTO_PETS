@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfe4ocgls7ccg"]
 
-[ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Combat Sim/combat_sim.gd" id="1_pc1ni"]
+[ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Scripts/combat_sim.gd" id="1_pc1ni"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ollyq"]
 [ext_resource type="Resource" uid="uid://ca2uh8w5h7vln" path="res://Resources/Units/Unit1.tres" id="3_hobrl"]
 [ext_resource type="Resource" uid="uid://drdvw7jr2lha0" path="res://Resources/Units/Unit2.tres" id="4_sx1f8"]
