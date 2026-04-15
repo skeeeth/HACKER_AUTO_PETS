@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cl8e6tpoh42op"]
+
+[ext_resource type="Script" uid="uid://dyepmcdhs6qw" path="res://Scripts/shop_scene.gd" id="1_x7s06"]
+[ext_resource type="Script" uid="uid://gyjfl7ywoyno" path="res://Scripts/TestButtonScript.gd" id="2_x7s06"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="ShopScene" type="Node2D" unique_id=1666678237]
+script = ExtResource("1_x7s06")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1453722839]
+offset_left = -466.0
+offset_top = -73.0
+offset_right = -316.0
+offset_bottom = 49.0
+
+[node name="NextSceneButton" type="Button" parent="." unique_id=202824416]
+offset_left = 388.0
+offset_top = 198.0
+offset_right = 535.0
+offset_bottom = 292.0
+text = "Go to Combat"
+script = ExtResource("2_x7s06")
+transition_scene_file_path = "res://Scenes/TestTransitionScene.tscn"
+
+[node name="Buttons" type="Node" parent="." unique_id=1076780851]
+
+[node name="PurchaseUnitButton1" type="Button" parent="Buttons" unique_id=2054618790]
+offset_left = -470.0
+offset_top = 207.0
+offset_right = -368.0
+offset_bottom = 250.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons/PurchaseUnitButton1" unique_id=373841868]
+layout_mode = 0
+offset_right = 101.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="Buttons/PurchaseUnitButton1" unique_id=458868825]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 102.0
+offset_bottom = 42.0
+text = "Get Unit 1"
+label_settings = SubResource("LabelSettings_x7s06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseUnitButton2" type="Button" parent="Buttons" unique_id=602924199]
+offset_left = -321.0
+offset_top = 207.0
+offset_right = -219.0
+offset_bottom = 250.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons/PurchaseUnitButton2" unique_id=445814897]
+layout_mode = 0
+offset_right = 101.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="Buttons/PurchaseUnitButton2" unique_id=1004256852]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 102.0
+offset_bottom = 42.0
+text = "Get Unit 2"
+label_settings = SubResource("LabelSettings_x7s06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PurchaseUnitButton3" type="Button" parent="Buttons" unique_id=2113805579]
+offset_left = -162.0
+offset_top = 207.0
+offset_right = -60.0
+offset_bottom = 250.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons/PurchaseUnitButton3" unique_id=1714140707]
+layout_mode = 0
+offset_right = 101.0
+offset_bottom = 43.0
+
+[node name="Label" type="Label" parent="Buttons/PurchaseUnitButton3" unique_id=1962143282]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 102.0
+offset_bottom = 41.0
+text = "Get Unit 3"
+label_settings = SubResource("LabelSettings_x7s06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NextSceneButton" to="NextSceneButton" method="_on_pressed"]
