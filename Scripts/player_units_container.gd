@@ -1,6 +1,7 @@
 extends Node
 
-var ally_unit_data : Array[UnitData]
+var ally_unit_list : Array[UnitData]
+const ARRAY_MAX_SIZE : int = 5
 
-func _enter_tree() -> void:
-	pass
+func add_unit_to_list(unit : UnitData) -> void:
+	ally_unit_list.append(unit)

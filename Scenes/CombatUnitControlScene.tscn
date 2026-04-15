@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cuol4iet7e1w2"]
+
+[ext_resource type="Script" uid="uid://bdw1rjisijbug" path="res://Scripts/combat_unit_control.gd" id="1_e2tyl"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_p5t4v"]
+
+[node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 160.0
+script = ExtResource("1_e2tyl")
+damage_label = NodePath("VBoxContainer/HBoxContainer/Damage")
+health_label = NodePath("VBoxContainer/HBoxContainer/Health")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=803165111]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 155.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=666714825]
+layout_mode = 2
+texture = ExtResource("2_p5t4v")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1935330045]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1050601902]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1407096196]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X"
+horizontal_alignment = 1
