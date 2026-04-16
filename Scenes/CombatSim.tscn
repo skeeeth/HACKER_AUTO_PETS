@@ -2,11 +2,21 @@
 
 [ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Scripts/combat_sim.gd" id="1_pc1ni"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ollyq"]
+[ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="4_rtfpj"]
 [ext_resource type="Resource" uid="uid://dxd8fem6tyriv" path="res://Resources/Units/Unit4.tres" id="6_sslh6"]
 
-[node name="CombatSim" type="Node2D" unique_id=807734234]
+[node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node")]
 script = ExtResource("1_pc1ni")
 enemy_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("6_sslh6")])
 step_size = 150
+next_scene_button_node = NodePath("NextSceneButton")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
+
+[node name="NextSceneButton" parent="." unique_id=1641231628 instance=ExtResource("4_rtfpj")]
+offset_left = 389.0
+offset_top = 188.0
+offset_right = 536.0
+offset_bottom = 282.0
+text = "Go to Shop"
+transition_scene_file_path = "res://Scenes/ShopScene.tscn"

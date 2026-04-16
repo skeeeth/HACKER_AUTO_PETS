@@ -2,24 +2,31 @@
 
 [ext_resource type="Script" uid="uid://dyepmcdhs6qw" path="res://Scripts/shop_scene.gd" id="1_x7s06"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_medpt"]
-[ext_resource type="Script" uid="uid://gyjfl7ywoyno" path="res://Scripts/TestButtonScript.gd" id="2_x7s06"]
 [ext_resource type="Resource" uid="uid://ca2uh8w5h7vln" path="res://Resources/Units/Unit1.tres" id="3_3qq02"]
 [ext_resource type="Resource" uid="uid://drdvw7jr2lha0" path="res://Resources/Units/Unit2.tres" id="4_1qm6p"]
 [ext_resource type="Resource" uid="uid://3thnakt2v0ij" path="res://Resources/Units/Unit3.tres" id="5_1itlx"]
+[ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="6_medpt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
 
-[node name="ShopScene" type="Node2D" unique_id=1666678237]
+[sub_resource type="LabelSettings" id="LabelSettings_medpt"]
+font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_3qq02"]
+font_size = 26
+
+[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("coin_text_node")]
 script = ExtResource("1_x7s06")
 purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_3qq02"), ExtResource("4_1qm6p"), ExtResource("5_1itlx")])
+coin_text_node = NodePath("CoinText")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=835860638]
+[node name="UnitHolder" type="HBoxContainer" parent="." unique_id=835860638]
 offset_left = -463.0
-offset_top = -61.0
+offset_top = -126.0
 offset_right = 442.0
-offset_bottom = 130.0
+offset_bottom = 65.0
 theme_override_constants/separation = 150
 
 [node name="Buttons" type="Node" parent="." unique_id=1076780851]
@@ -74,16 +81,33 @@ label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextSceneButton" type="Button" parent="Buttons" unique_id=202824416]
-offset_left = 388.0
-offset_top = 198.0
-offset_right = 535.0
-offset_bottom = 292.0
+[node name="NextSceneButton" parent="Buttons" unique_id=1641231628 instance=ExtResource("6_medpt")]
+offset_left = 376.0
+offset_top = 179.0
+offset_right = 523.0
+offset_bottom = 273.0
 text = "Go to Combat"
-script = ExtResource("2_x7s06")
 transition_scene_file_path = "res://Scenes/CombatSim.tscn"
+
+[node name="CoinText" type="Label" parent="." unique_id=899137773]
+offset_left = -535.0
+offset_top = -308.0
+offset_right = -300.0
+offset_bottom = -246.0
+text = "Coins: "
+label_settings = SubResource("LabelSettings_medpt")
+vertical_alignment = 1
+
+[node name="InfoText" type="Label" parent="." unique_id=737011921]
+offset_left = 155.0
+offset_top = -302.0
+offset_right = 553.0
+offset_bottom = -174.0
+text = "Each unit costs 3 coins. You need a least 1 unit to go into combat."
+label_settings = SubResource("LabelSettings_3qq02")
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="pressed" from="Buttons/PurchaseUnitButton1" to="." method="_purchase_unit_button_pressed" binds= [1]]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton2" to="." method="_purchase_unit_button_pressed" binds= [2]]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton3" to="." method="_purchase_unit_button_pressed" binds= [3]]
-[connection signal="pressed" from="Buttons/NextSceneButton" to="Buttons/NextSceneButton" method="_on_pressed"]

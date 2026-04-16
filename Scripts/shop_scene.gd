@@ -5,36 +5,49 @@ class_name ShopManager
 const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 
 @export var purchasable_units : Array[UnitData]
+@export var coins : int = 10
+@export var coin_text_node : Label
+
+var base_coin_text : String
 
 var player_stack : Array[CombatUnitControl]
 
 func _ready() -> void:
+	base_coin_text = coin_text_node.text
+	_set_coin_text()
+	
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
-		add_all_to_hbox()
+		_add_all_to_hbox()
 
 
-func add_to_hbox(data : UnitData) -> void:
+func _add_to_hbox(data : UnitData) -> void:
 	var unit : CombatUnitControl = _create_unit(data)
 	player_stack.append(unit)
 	
 
-func add_all_to_hbox() -> void:
+func _add_all_to_hbox() -> void:
 	for data in PlayerUnitsContainer.ally_unit_list:
-		add_to_hbox(data)
+		_add_to_hbox(data)
 
 
 func _create_unit(data:UnitData) -> CombatUnitControl:
 	var new_unit : CombatUnitControl
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
 	new_unit.dress(data)
-	get_tree().get_root().get_node("ShopScene/HBoxContainer").add_child(new_unit)
+	get_tree().get_root().get_node("ShopScene/UnitHolder").add_child(new_unit)
 	return new_unit
 
+
+func _set_coin_text() -> void:
+	coin_text_node.text = base_coin_text + str(coins)
 
 func _purchase_unit_button_pressed(unitNum : int) -> void:
 	
 	if PlayerUnitsContainer.ally_unit_list.size() != PlayerUnitsContainer.ARRAY_MAX_SIZE:
-		PlayerUnitsContainer.add_unit_to_list(purchasable_units[unitNum - 1])
-		add_to_hbox(purchasable_units[unitNum - 1])
+		if coins >= 3:
+			PlayerUnitsContainer.add_unit_to_list(purchasable_units[unitNum - 1])
+			_add_to_hbox(purchasable_units[unitNum - 1])
+			coins -= 3
+			_set_coin_text()
 	else:
 		print("Size full")

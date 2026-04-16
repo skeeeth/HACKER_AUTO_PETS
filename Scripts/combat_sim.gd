@@ -4,17 +4,18 @@ class_name CombatSimManager
 enum BattlePhases 
 {BATTLE_START, TURN_START, ATTACK, TURN_END, FAINT, BATTLE_END}
 
-var current_battle_phase : BattlePhases
-var current_phase_number : int = -1
+const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
 
 ## 5 is the number in SAP could change
 @export var board_size : int = 5
 #@export var ally_unit_data : Array[UnitData]
 @export var enemy_unit_data : Array[UnitData]
+@export var step_size : int
+@export var next_scene_button_node : Button
 
 
-const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
-@export var step_size: int
+var current_battle_phase : BattlePhases
+var current_phase_number : int = -1
 
 var player_won : bool = false
 var enemy_won : bool = false
@@ -27,6 +28,9 @@ var enemy_stack : Array[SimUnit]
 
 
 func _ready() -> void:
+	
+	next_scene_button_node.visible = false
+	
 	# should load from shop phase/encounter list but export works
 	for d in PlayerUnitsContainer.ally_unit_list:
 		player_stack.append(_create_unit(d))
@@ -126,4 +130,5 @@ func on_unit_death(dying_unit:SimUnit):
 
 func end_combat():
 	combat_over = true
+	next_scene_button_node.visible = true
 	print("Combat Over")
