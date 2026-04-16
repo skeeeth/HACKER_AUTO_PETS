@@ -9,7 +9,7 @@ var current_phase_number : int = -1
 
 ## 5 is the number in SAP could change
 @export var board_size : int = 5
-@export var ally_unit_data : Array[UnitData]
+#@export var ally_unit_data : Array[UnitData]
 @export var enemy_unit_data : Array[UnitData]
 
 
@@ -28,7 +28,7 @@ var enemy_stack : Array[SimUnit]
 
 func _ready() -> void:
 	# should load from shop phase/encounter list but export works
-	for d in ally_unit_data:
+	for d in PlayerUnitsContainer.ally_unit_list:
 		player_stack.append(_create_unit(d))
 	for d in enemy_unit_data:
 		enemy_stack.append(_create_unit(d))

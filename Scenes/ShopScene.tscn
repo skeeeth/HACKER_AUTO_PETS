@@ -18,8 +18,9 @@ purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_3qq02"), ExtRe
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=835860638]
 offset_left = -463.0
 offset_top = -61.0
-offset_right = -303.0
+offset_right = 442.0
 offset_bottom = 130.0
+theme_override_constants/separation = 150
 
 [node name="Buttons" type="Node" parent="." unique_id=1076780851]
 
