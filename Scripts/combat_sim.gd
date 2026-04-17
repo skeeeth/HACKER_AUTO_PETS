@@ -8,15 +8,22 @@ signal combat_start
 
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
+const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
 
 ## 5 is the number in SAP could change
 @export var board_size : int = 5
-@export var ally_unit_data : Array[UnitData]
+
+#@export var ally_unit_data : Array[UnitData]
+
 @export var enemy_unit_data : Array[UnitData]
 
+## This variable is for spacing the units
+@export var step_size : int
+@export var next_scene_button_node : Button
 
-const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
-@export var step_size: int
+
+var current_battle_phase : BattlePhases
+var current_phase_number : int = -1
 
 var player_won : bool = false
 var enemy_won : bool = false
@@ -29,11 +36,14 @@ var enemy_queue : Array[SimUnit]
 ##renamed from stack because stacks are literally FILO, mb -eth
 ##queue is the proper term for a FIFO data structure
 
+#var effect_stack:Array[CombatEffect]
 
 var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
 func _ready() -> void:
+	next_scene_button_node.visible = false
+	
 	# should load from shop phase/encounter list but export works
 	for d in ally_unit_data:
 		player_queue.append(_create_unit(d))
@@ -48,8 +58,12 @@ func _ready() -> void:
 	combat_start.emit()
 	_arrange_units()
 
+## This function creates a new CombatUnit scene 
+## and spawns it into the level. Then, it sets the data perameter
+## into the new CombatUnit scene and connects the on_unit_death function
+## to the died signal. This function returns the new CombatUnit scene.
 func _create_unit(data:UnitData) -> SimUnit:
-	var new_unit:SimUnit
+	var new_unit : SimUnit
 	new_unit = UNIT_SCENE.instantiate()
 	new_unit.dress(data)
 	new_unit.died.connect(on_unit_death)
@@ -58,7 +72,7 @@ func _create_unit(data:UnitData) -> SimUnit:
 	add_child(new_unit)
 	return new_unit
 
-
+## This function sets the positions of the units
 func _arrange_units():
 	#should like tween to destination placements rather than just snap
 	# and hold timeline until animation is finished
@@ -68,7 +82,8 @@ func _arrange_units():
 	for i in enemy_queue.size():
 		enemy_queue[i].position.x =  (i+1) * step_size 
 
-
+## This function is called when the player presses the spacebar button.
+## This goes through the battle phases.
 func _input(event: InputEvent) -> void:
 	#activates when you press the spacebar button
 	#and when there is still players and enemies alive
@@ -81,6 +96,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			print("Combat has stopped already")
 
+## This function sets the current battle phase based on the phase number
 func connect_number_to_phase():
 	if current_phase_number == 0:
 		current_battle_phase = BattlePhases.BATTLE_START
@@ -94,6 +110,7 @@ func connect_number_to_phase():
 		current_phase_number = 1
 		current_battle_phase = BattlePhases.TURN_START
 
+## This function executes the action for each battle phase
 func phase_action():
 	if current_battle_phase == BattlePhases.BATTLE_START:
 		print("Battle has begun")
@@ -104,8 +121,8 @@ func phase_action():
 		hit()
 	elif current_battle_phase == BattlePhases.TURN_END:
 		print("Turn has ended")
-	
 
+## This function calls the hit function
 func advance_step():
 	#will step though stack of triggers and hit 
 	#when nothing else is active
@@ -117,6 +134,8 @@ func advance_step():
 		cleanup()
 		phase_action()
 
+## This function executes the attack phase 
+## and reduces the units' health accordingly 
 func hit():
 	player_queue.front().take_damage(enemy_queue.front().attack)
 	enemy_queue.front().take_damage(player_queue.front().attack)
@@ -148,6 +167,8 @@ func cleanup():
 func trigger_effect(effect:Effect):
 	effect_stack.append(effect)
 
+## This function shows the button to move to the shop scene.
 func end_combat():
 	combat_over = true
+	next_scene_button_node.visible = true
 	print("Combat Over")

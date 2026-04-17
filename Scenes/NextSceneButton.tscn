@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://clvf8r4jwgtex"]
+
+[ext_resource type="Script" uid="uid://gyjfl7ywoyno" path="res://Scripts/TestButtonScript.gd" id="1_w5wlv"]
+
+[node name="NextSceneButton" type="Button" unique_id=1641231628]
+offset_right = 147.0
+offset_bottom = 94.0
+text = "Text"
+script = ExtResource("1_w5wlv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
