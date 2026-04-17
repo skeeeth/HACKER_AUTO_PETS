@@ -86,8 +86,6 @@ func _input(event: InputEvent) -> void:
 	#and when there is still players and enemies alive
 	if event.is_action_pressed("ui_accept"):
 		if combat_over == false:
-			current_phase_number += 1 
-			connect_number_to_phase()
 			#phase_action()
 			advance_step() #DEBUG hotkey
 		else:
@@ -116,7 +114,8 @@ func phase_action():
 		print("Turn has begun")
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
-		hit()
+		player_queue.front().attack_queued.emit()
+		enemy_queue.front().attack_queued.emit()
 	elif current_battle_phase == BattlePhases.TURN_END:
 		print("Turn has ended")
 
@@ -131,11 +130,17 @@ func advance_step():
 	elif dying_units.size() > 0:
 		cleanup()
 	else:
+		if current_battle_phase == BattlePhases.ATTACK: 	##hit on appropriate phase
+			hit()										## otherise just move on
+
+		current_phase_number += 1 
+		connect_number_to_phase()
 		phase_action()
 
 ## This function executes the attack phase 
 ## and reduces the units' health accordingly 
 func hit():
+	print("Attacking")
 	player_queue.front().take_damage(enemy_queue.front().attack)
 	enemy_queue.front().take_damage(player_queue.front().attack)
 

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://bbj7y5pt3gybn"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_j0a32"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_uq7y6"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_ntoy4"]
+
+[sub_resource type="Resource" id="Resource_l3i72"]
+script = ExtResource("2_ntoy4")
+value = -1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_nsmcw"]
+script = ExtResource("1_j0a32")
+name = "Elephant"
+trigger_state = 4
+magnitude = 1
+targets = Array[ExtResource("2_ntoy4")]([SubResource("Resource_l3i72")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[resource]
+script = ExtResource("1_uq7y6")
+health = 5
+effect = SubResource("Resource_nsmcw")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"

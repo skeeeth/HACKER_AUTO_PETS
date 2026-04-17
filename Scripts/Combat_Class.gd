@@ -3,6 +3,7 @@ class_name SimUnit
 
 signal died(who:SimUnit)
 signal hurt
+signal attack_queued
 
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health

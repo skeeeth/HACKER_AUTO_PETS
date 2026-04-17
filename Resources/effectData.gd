@@ -1,7 +1,9 @@
 extends Resource
 class_name EffectData
 
-enum TriggerStates {BATTLE_START, FAINT, TURN_START, HURT}
+enum TriggerStates {BATTLE_START, FAINT, TURN_START,
+		HURT, B_ATTACK, A_ATTACK}
+
 enum EffectTypes {DAMAGE, GIVE, SUMMON}
 enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 #enum TargetCodes {S,O,A}
