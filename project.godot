@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HACKER_AUTO_PETS"
-run/main_scene="uid://cfe4ocgls7ccg"
+run/main_scene="uid://cl8e6tpoh42op"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

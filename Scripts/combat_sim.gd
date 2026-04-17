@@ -21,10 +21,6 @@ const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
 @export var step_size : int
 @export var next_scene_button_node : Button
 
-
-var current_battle_phase : BattlePhases
-var current_phase_number : int = -1
-
 var player_won : bool = false
 var enemy_won : bool = false
 var combat_over : bool = false
@@ -45,7 +41,7 @@ func _ready() -> void:
 	next_scene_button_node.visible = false
 	
 	# should load from shop phase/encounter list but export works
-	for d in ally_unit_data:
+	for d in PlayerUnitsContainer.ally_unit_list:
 		player_queue.append(_create_unit(d))
 	for d in enemy_unit_data:
 		enemy_queue.append(_create_unit(d))

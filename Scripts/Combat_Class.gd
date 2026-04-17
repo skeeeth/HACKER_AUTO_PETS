@@ -9,7 +9,7 @@ signal hurt
 @export var name_label:Label
 @export var effect:Effect
 
-var effect : EffectData
+#var effect : EffectData
 
 ## This variable has a set function that changes the attack text
 var attack : int:

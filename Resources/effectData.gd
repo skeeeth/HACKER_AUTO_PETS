@@ -10,7 +10,7 @@ enum EffectTypes {DAMAGE, GIVE, SUMMON}
 @export var effect_type : EffectTypes
 @export var magnitude : int
 @export var give_difference: int = 0 #ignore for non-give(maybe useful for some HACK later)
-	#ex to give 1/2, set magnitude to 2 and give_difference to -1
+	#ex to give 1/2, set magnitude to 1 and give_difference to -1
 	#
 @export var targets : Array[Target]
 @export var trigger_amount : int = 1
