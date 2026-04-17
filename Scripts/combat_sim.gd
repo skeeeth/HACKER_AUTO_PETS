@@ -4,6 +4,8 @@ class_name CombatSimManager
 enum BattlePhases 
 {BATTLE_START, TURN_START, ATTACK, TURN_END, FAINT, BATTLE_END}
 
+signal combat_start
+
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
 
@@ -20,19 +22,30 @@ var player_won : bool = false
 var enemy_won : bool = false
 var combat_over : bool = false
 
-## Stacks are FIFO, so index 0 is always the "combat front" unit,
+## queues are FIFO, so index 0 is always the "combat front" unit,
 ## but are displayed visually as 4 and 5 from the left
-var player_stack : Array[SimUnit]
-var enemy_stack : Array[SimUnit]
+var player_queue : Array[SimUnit]
+var enemy_queue : Array[SimUnit]
+##renamed from stack because stacks are literally FILO, mb -eth
+##queue is the proper term for a FIFO data structure
 
+
+var effect_stack:Array[Effect]
+var dying_units:Array[SimUnit]
 
 func _ready() -> void:
 	# should load from shop phase/encounter list but export works
 	for d in ally_unit_data:
-		player_stack.append(_create_unit(d))
+		player_queue.append(_create_unit(d))
 	for d in enemy_unit_data:
-		enemy_stack.append(_create_unit(d))
+		enemy_queue.append(_create_unit(d))
 	
+	var all_units:Array[SimUnit] = player_queue.duplicate()
+	all_units.append_array(enemy_queue)
+	for u in all_units:
+		u.effect.subscribe(all_units)
+	
+	combat_start.emit()
 	_arrange_units()
 
 func _create_unit(data:UnitData) -> SimUnit:
@@ -40,6 +53,8 @@ func _create_unit(data:UnitData) -> SimUnit:
 	new_unit = UNIT_SCENE.instantiate()
 	new_unit.dress(data)
 	new_unit.died.connect(on_unit_death)
+	new_unit.effect.manager = self
+	#new_unit.effect.triggered.connect(on_effect_trigger)
 	add_child(new_unit)
 	return new_unit
 
@@ -47,11 +62,11 @@ func _create_unit(data:UnitData) -> SimUnit:
 func _arrange_units():
 	#should like tween to destination placements rather than just snap
 	# and hold timeline until animation is finished
-	for i in player_stack.size():
-		player_stack[i].position.x =  (i+1) * -step_size 
+	for i in player_queue.size():
+		player_queue[i].position.x =  (i+1) * -step_size 
 
-	for i in enemy_stack.size():
-		enemy_stack[i].position.x =  (i+1) * step_size 
+	for i in enemy_queue.size():
+		enemy_queue[i].position.x =  (i+1) * step_size 
 
 
 func _input(event: InputEvent) -> void:
@@ -61,8 +76,8 @@ func _input(event: InputEvent) -> void:
 		if combat_over == false:
 			current_phase_number += 1 
 			connect_number_to_phase()
-			phase_action()
-			#advance_step() #DEBUG hotkey
+			#phase_action()
+			advance_step() #DEBUG hotkey
 		else:
 			print("Combat has stopped already")
 
@@ -86,43 +101,52 @@ func phase_action():
 		print("Turn has begun")
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
-		advance_step()
+		hit()
 	elif current_battle_phase == BattlePhases.TURN_END:
 		print("Turn has ended")
 	
 
-#var effect_stack:Array[CombatEffect]
 func advance_step():
 	#will step though stack of triggers and hit 
 	#when nothing else is active
-	hit()
+	if effect_stack.size() > 0:
+		var last_effect = effect_stack.pop_back()
+		last_effect.resolve()
+		#last_effect.resolved.connect(advance_step,4)
+	else:
+		cleanup()
+		phase_action()
 
 func hit():
-	player_stack.front().health -= enemy_stack.front().attack
-	enemy_stack.front().health -= player_stack.front().attack
-
+	player_queue.front().take_damage(enemy_queue.front().attack)
+	enemy_queue.front().take_damage(player_queue.front().attack)
 
 func on_unit_death(dying_unit:SimUnit):
-	#should probably put some kinda "faint" trigger onto the stack
-	#and then do the following as a sort of cleanup step (or other order)?
-	
-	player_stack.erase(dying_unit)
-	enemy_stack.erase(dying_unit)
-	
-	#maybe change this logic a bit to diff Win/Loss/Draw
-	if player_stack.size() == 0 and enemy_stack.size() != 0:
-		enemy_won = true
-		end_combat()
-	elif player_stack.size() != 0 and enemy_stack.size() == 0:
-		player_won = true
-		end_combat()
-	elif player_stack.size() == 0 and enemy_stack.size() == 0:
-		end_combat()
+	dying_units.append(dying_unit)
 
-	_arrange_units()
-	dying_unit.queue_free()
-	pass
+##checks for dead bodies and removes them, only called when stack is empty
+func cleanup():
+	for dying_unit in dying_units:
+		player_queue.erase(dying_unit)
+		enemy_queue.erase(dying_unit)
+		
+		#maybe change this logic a bit to diff Win/Loss/Draw
+		if player_queue.size() == 0 and enemy_queue.size() != 0:
+			enemy_won = true
+			end_combat()
+		elif player_queue.size() != 0 and enemy_queue.size() == 0:
+			player_won = true
+			end_combat()
+		elif player_queue.size() == 0 and enemy_queue.size() == 0:
+			end_combat()
 
+		_arrange_units()
+		dying_unit.queue_free()
+	
+	dying_units.clear()
+	
+func trigger_effect(effect:Effect):
+	effect_stack.append(effect)
 
 func end_combat():
 	combat_over = true

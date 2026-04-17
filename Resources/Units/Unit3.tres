@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://3thnakt2v0ij"]
 
-[ext_resource type="Resource" uid="uid://dtftyovtanfad" path="res://Resources/Effects/Give1HealthToPlayer.tres" id="1_ar660"]
+[ext_resource type="Resource" uid="uid://dtftyovtanfad" path="res://Resources/Effects/Start22.tres" id="1_ar660"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_8tvhj"]
 
 [resource]

@@ -1,12 +1,17 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://ctm2pebphaq81"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_utoxm"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_b86c4"]
+
+[sub_resource type="Resource" id="Resource_g7550"]
+script = ExtResource("2_b86c4")
+value = -1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
 
 [resource]
 script = ExtResource("1_utoxm")
 name = "Gain 1 Attack to Player on Faint"
-triggerState = 1
-effectType = 3
+trigger_state = 1
 magnitude = 1
-triggerAmount = 1
+targets = Array[ExtResource("2_b86c4")]([SubResource("Resource_g7550")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"
