@@ -2,18 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Scripts/combat_sim.gd" id="1_pc1ni"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ollyq"]
+[ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="4_c2hfo"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="5_c2hfo"]
 [ext_resource type="Resource" uid="uid://dxd8fem6tyriv" path="res://Resources/Units/Unit4.tres" id="6_sslh6"]
-[ext_resource type="Resource" uid="uid://ctm2pebphaq81" path="res://Resources/Effects/Gain1AttackToPlayerOnFaint.tres" id="7_x8mgc"]
-
-[sub_resource type="Resource" id="Resource_0m7ue"]
-script = ExtResource("2_ollyq")
-effect = ExtResource("7_x8mgc")
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
 
 [node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node")]
 script = ExtResource("1_pc1ni")
-enemy_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("6_sslh6"), SubResource("Resource_0m7ue")])
+enemy_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("6_sslh6"), ExtResource("4_c2hfo")])
 step_size = 150
 next_scene_button_node = NodePath("NextSceneButton")
 

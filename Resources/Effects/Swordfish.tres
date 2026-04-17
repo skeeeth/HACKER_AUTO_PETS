@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://bn5po52w5cbil"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_8xwy5"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_mb4wh"]
+
+[sub_resource type="Resource" id="Resource_qk3dh"]
+script = ExtResource("2_mb4wh")
+value = -1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_fqhie"]
+script = ExtResource("2_mb4wh")
+type = 1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[resource]
+script = ExtResource("1_8xwy5")
+name = "Swordfish"
+magnitude_type = 1
+targets = Array[ExtResource("2_mb4wh")]([SubResource("Resource_qk3dh"), SubResource("Resource_fqhie")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"

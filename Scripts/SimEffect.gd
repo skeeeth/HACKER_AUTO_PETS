@@ -29,10 +29,13 @@ func trigger():
 func resolve():
 	for t in data.targets:
 		var target = _get_target_unit(t)
-		if !target: return #fails if target not found
+		if !target: continue #fails if target not found
 		match data.effect_type:
 			EffectData.EffectTypes.GIVE:
 				resolve_give(target)
+				
+			EffectData.EffectTypes.DAMAGE:
+				target.take_damage(get_magnitude())
 	
 	resolved.emit()
 	holder.position.y += 40 #reset
@@ -49,31 +52,68 @@ func _get_target_unit(t:Target) -> SimUnit:
 		opp_queue = manager.player_queue
 		
 	var my_index = ally_queue.find(holder)
-	var target_index:int
-	var target_queue = ally_queue
+	var target_index:int = my_index #- t.value - shift
+	var target_queue:Array
 	match t.type:
 		Target.TargetCodes.S:
-			
-			target_index = my_index - t.value - shift
-			
-			if target_index < 0: #if reaching other side
-				#flip to opp context
-				target_index *= -1 
-				target_queue = opp_queue
-				
-				target_index -= 1 #1st opp is its index 0
-			
-			if target_index >= target_queue.size():
-				#fails if target is too far
-				return null 
-				
+			if is_player_side:
+				target_index = 5 - my_index
+				target_index += t.value + shift
+			else:
+				target_index = 6 + my_index
+				target_index -= t.value + shift
 		Target.TargetCodes.O:
-			pass
+			if is_player_side:
+				target_index = 6 + my_index
+				target_index += t.value + shift
+			else:
+				target_index = 5 - my_index
+				target_index -= t.value + shift
 		Target.TargetCodes.A:
-			pass
-			
+			target_index = t.value + shift
+	
+	if target_index <= 5:
+		target_index = 5 - target_index
+		target_queue = manager.player_queue
+	else:
+		target_index = target_index - 6
+		target_queue = manager.enemy_queue
+
+	if target_index >= target_queue.size():
+		#fails if target is too far
+		#print(data.name + str(target_index))
+		return null
+		
 	return target_queue[target_index]
 
+	#if target_index < 0: #if reaching other side
+		##flip to opp context
+		#target_index *= -1 
+		#target_index -= 1 #1st opp is its index 0
+		#
+		#if target_queue == opp_queue:
+			#target_queue = ally_queue
+		#else:
+			#target_queue = ally_queue
+
 func resolve_give(target:SimUnit):
-	target.attack += data.magnitude
-	target.health += data.magnitude - data.give_difference
+	target.attack += get_magnitude()
+	target.health += get_magnitude() + data.mag_mod
+
+
+func get_magnitude() -> int:
+	match data.magnitude_type:
+		EffectData.MagnitudeTypes.RAW:
+			return data.magnitude + modifier
+		EffectData.MagnitudeTypes.ATTACK:
+			return holder.attack
+		EffectData.MagnitudeTypes.HEALTH:
+			return holder.health
+		EffectData.MagnitudeTypes.CUSTOM:
+			##hmmmmmm idk about this
+			## if it comes up will have to be its own switch
+			return 0 #0 for now
+		_: ##default
+			##this shouldn't come up, but it is necessary
+			## to appease compiler
+			return 67

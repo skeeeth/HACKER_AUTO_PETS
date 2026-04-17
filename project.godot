@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 PlayerUnitsContainer="*uid://cg035k5ginn54"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

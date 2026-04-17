@@ -15,7 +15,7 @@ name = "Camel"
 trigger_state = 3
 effect_type = 1
 magnitude = 1
-give_difference = -1
+mag_mod = 1
 targets = Array[ExtResource("2_oelw8")]([SubResource("Resource_fwnnq")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"
 

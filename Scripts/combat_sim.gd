@@ -5,6 +5,7 @@ enum BattlePhases
 {BATTLE_START, TURN_START, ATTACK, TURN_END, FAINT, BATTLE_END}
 
 signal combat_start
+signal turn_start
 
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
@@ -51,7 +52,7 @@ func _ready() -> void:
 	for u in all_units:
 		u.effect.subscribe(all_units)
 	
-	combat_start.emit()
+	#combat_start.emit()
 	_arrange_units()
 
 ## This function creates a new CombatUnit scene 
@@ -109,8 +110,9 @@ func connect_number_to_phase():
 ## This function executes the action for each battle phase
 func phase_action():
 	if current_battle_phase == BattlePhases.BATTLE_START:
-		print("Battle has begun")
+		combat_start.emit()
 	elif current_battle_phase == BattlePhases.TURN_START:
+		turn_start.emit()
 		print("Turn has begun")
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
@@ -126,8 +128,9 @@ func advance_step():
 		var last_effect = effect_stack.pop_back()
 		last_effect.resolve()
 		#last_effect.resolved.connect(advance_step,4)
-	else:
+	elif dying_units.size() > 0:
 		cleanup()
+	else:
 		phase_action()
 
 ## This function executes the attack phase 

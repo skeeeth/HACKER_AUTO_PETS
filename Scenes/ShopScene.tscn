@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_medpt"]
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="3_je6ka"]
 [ext_resource type="Resource" uid="uid://3thnakt2v0ij" path="res://Resources/Units/Unit3.tres" id="5_1itlx"]
+[ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="5_medpt"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="6_medpt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
@@ -16,7 +17,7 @@ font_size = 26
 
 [node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("coin_text_node")]
 script = ExtResource("1_x7s06")
-purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("3_je6ka"), ExtResource("5_1itlx")])
+purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("5_1itlx"), ExtResource("5_medpt")])
 coin_text_node = NodePath("CoinText")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
