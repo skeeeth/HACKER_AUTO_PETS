@@ -19,6 +19,9 @@ func subscribe(units:Array[SimUnit]):
 		
 		EffectData.TriggerStates.HURT:
 			holder.hurt.connect(trigger)
+		
+		EffectData.TriggerStates.B_ATTACK:
+			holder.attack_queued.connect(trigger)
 
 func trigger():
 	manager.trigger_effect(self)
@@ -37,6 +40,7 @@ func resolve():
 			EffectData.EffectTypes.DAMAGE:
 				target.take_damage(get_magnitude())
 	
+	print("Resolved " + data.name)
 	resolved.emit()
 	holder.position.y += 40 #reset
 

@@ -29,13 +29,13 @@ layout_mode = 2
 [node name="Damage" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1251785317]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "X"
+text = "0"
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=554622054]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "X"
+text = "0"
 horizontal_alignment = 1
 
 [node name="Effect" type="Node" parent="." unique_id=925535970]
