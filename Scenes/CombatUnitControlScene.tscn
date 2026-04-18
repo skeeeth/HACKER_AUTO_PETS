@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bdw1rjisijbug" path="res://Scripts/combat_unit_control.gd" id="1_e2tyl"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_p5t4v"]
 
-[node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label")]
+[node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label", "name_label")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
@@ -11,11 +11,17 @@ offset_bottom = 160.0
 script = ExtResource("1_e2tyl")
 damage_label = NodePath("VBoxContainer/HBoxContainer/Damage")
 health_label = NodePath("VBoxContainer/HBoxContainer/Health")
+name_label = NodePath("VBoxContainer/Name")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=803165111]
 layout_mode = 0
+offset_top = -1.0
 offset_right = 128.0
-offset_bottom = 155.0
+offset_bottom = 181.0
+
+[node name="Name" type="Label" parent="VBoxContainer" unique_id=14710546]
+layout_mode = 2
+text = "Name"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=666714825]
 layout_mode = 2

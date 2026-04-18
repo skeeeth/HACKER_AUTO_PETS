@@ -4,7 +4,7 @@ class_name CombatUnitControl
 
 @export var damage_label: Label
 @export var health_label: Label
-
+@export var name_label:Label
 var effect : EffectData
 
 ## This variable has a set function that changes the attack text
@@ -25,4 +25,5 @@ var health : int:
 func dress(data:UnitData):
 	attack = data.attack
 	health = data.health
+	name_label.text = data.effect.name
 	effect = data.effect
