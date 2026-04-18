@@ -47,6 +47,7 @@ func resolve():
 func _get_target_unit(t:Target) -> SimUnit:
 	var is_player_side : bool = manager.player_queue.has(holder)
 	var ally_queue:Array
+	@warning_ignore("unused_variable")
 	var opp_queue:Array
 	if is_player_side:
 		ally_queue = manager.player_queue

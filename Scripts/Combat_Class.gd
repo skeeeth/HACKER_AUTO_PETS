@@ -46,6 +46,10 @@ func take_damage(amount:int):
 
 ## This function emits the died signal
 func die():
+	var squeeze = self.create_tween()
+	squeeze.set_parallel()
+	squeeze.tween_property(self, "scale:x", 0.0,0.1)
+	squeeze.tween_property(self,"position:y", -50, 0.1)
 	died.emit(self)
 	
 func _roll_text(label:Label,previous:int,next:int):
