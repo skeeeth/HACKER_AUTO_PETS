@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bdw1rjisijbug" path="res://Scripts/combat_unit_control.gd" id="1_e2tyl"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_p5t4v"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2tyl"]
+
 [node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label", "name_label")]
 layout_mode = 3
 anchors_preset = 0
@@ -41,3 +43,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "X"
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=329719126]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 182.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e2tyl")

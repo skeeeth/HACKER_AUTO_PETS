@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_8ijy0")
+unit_name = "Camel"
 attack = 3
 health = 3
 effect = ExtResource("1_diqpq")

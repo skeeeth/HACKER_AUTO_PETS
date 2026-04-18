@@ -7,8 +7,8 @@ signal attack_queued
 
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health
-@export var name_label:Label
-@export var effect:Effect
+@export var name_label : Label
+@export var effect : Effect
 
 #var effect : EffectData
 

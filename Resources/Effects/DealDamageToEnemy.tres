@@ -5,13 +5,13 @@
 
 [sub_resource type="Resource" id="Resource_2lbox"]
 script = ExtResource("2_6tmml")
+type = 1
 metadata/_custom_type_script = "uid://by520cy10c7wa"
 
 [resource]
 script = ExtResource("1_fxteu")
 name = "Deal 1 Damage to Enemy"
-trigger_state = 1
-effect_type = 1
+trigger_state = 3
 magnitude = 2
 targets = Array[ExtResource("2_6tmml")]([SubResource("Resource_2lbox")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"

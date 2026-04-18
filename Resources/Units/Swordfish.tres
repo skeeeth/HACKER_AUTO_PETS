@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_ebybt")
+unit_name = "Swordfish"
 attack = 5
 health = 6
 effect = ExtResource("1_ges2t")

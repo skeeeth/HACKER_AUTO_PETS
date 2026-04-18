@@ -25,5 +25,5 @@ var health : int:
 func dress(data:UnitData):
 	attack = data.attack
 	health = data.health
-	name_label.text = data.effect.name
+	name_label.text = data.unit_name
 	effect = data.effect

@@ -10,7 +10,7 @@ var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
 
-##Connect to the appropriate triggers
+## Connect to the appropriate triggers
 @warning_ignore("unused_parameter")
 func subscribe(units:Array[SimUnit]):
 	match data.trigger_state:
