@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://bdng0x32h0e84"]
 
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_ebybt"]
-[ext_resource type="Resource" uid="uid://bn5po52w5cbil" path="res://Resources/Effects/Swordfish.tres" id="1_ges2t"]
+[ext_resource type="Resource" uid="uid://bn5po52w5cbil" path="res://Resources/Effects/SwordfishEffect.tres" id="1_ges2t"]
 
 [resource]
 script = ExtResource("1_ebybt")
