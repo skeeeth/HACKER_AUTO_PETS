@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Effect
 
 #signal triggered
@@ -9,6 +9,17 @@ var shift : int = 0
 var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
+
+#var elbow_one:Vector2 = Vector2.ZERO
+#var elbow_two:Vector2 = Vector2.ZERO
+#const DRAW_DROP:float = 50
+#const LINE_WIDTH:float = 5
+#
+#func _draw() -> void:
+	#var drop_vector = Vector2(0,DRAW_DROP)
+	#draw_line(elbow_one,elbow_two,Color.BLACK,LINE_WIDTH)
+	#draw_line(elbow_one,elbow_one+drop_vector,Color.BLACK,LINE_WIDTH)
+	#draw_line(elbow_two,elbow_two+drop_vector,Color.BLACK,LINE_WIDTH)
 
 ##Connect to the appropriate triggers
 @warning_ignore("unused_parameter")
@@ -24,15 +35,25 @@ func subscribe(units:Array[SimUnit]):
 			holder.attack_queued.connect(trigger)
 
 func trigger():
+	visible = true
 	manager.trigger_effect(self)
 	
 	#TEMP, replace with more sophisticated art later
 	holder.position.y -= 40 #bump unit up to show its active
 
 func resolve():
+	var animation = self.create_tween()
+	animation.set_parallel()
+	
 	for t in data.targets:
 		var target = _get_target_unit(t)
 		if !target: continue #fails if target not found
+		
+		
+		var indicator_:Indicator = Indicator.create(self,target)
+		target.add_child(indicator_)
+		animation.tween_property(indicator_,"position:y",0,0.1).set_ease(Tween.EASE_IN_OUT)
+		
 		match data.effect_type:
 			EffectData.EffectTypes.GIVE:
 				resolve_give(target)
@@ -40,9 +61,13 @@ func resolve():
 			EffectData.EffectTypes.DAMAGE:
 				target.take_damage(get_magnitude())
 	
+	await animation.finished
+	#animation.tween_callback(resolved.emit)
 	print("Resolved " + data.name)
 	resolved.emit()
 	holder.position.y += 40 #reset
+	#visible = false
+
 
 func _get_target_unit(t:Target) -> SimUnit:
 	var is_player_side : bool = manager.player_queue.has(holder)
@@ -89,7 +114,11 @@ func _get_target_unit(t:Target) -> SimUnit:
 		#print(data.name + str(target_index))
 		return null
 		
-	return target_queue[target_index]
+	var target_unit:SimUnit = target_queue[target_index]
+	#elbow_one = holder.position + Vector2(0,-100)
+	#elbow_two = target_unit.position + Vector2(0,-100)
+	#queue_redraw()
+	return target_unit
 
 	#if target_index < 0: #if reaching other side
 		##flip to opp context
@@ -111,7 +140,7 @@ func get_magnitude() -> int:
 		EffectData.MagnitudeTypes.RAW:
 			return data.magnitude + modifier
 		EffectData.MagnitudeTypes.ATTACK:
-			return holder.attack
+			return holder.attack #could use mag_mod as a coeffecient here 
 		EffectData.MagnitudeTypes.HEALTH:
 			return holder.health
 		EffectData.MagnitudeTypes.CUSTOM:

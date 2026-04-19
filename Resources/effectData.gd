@@ -8,7 +8,9 @@ enum EffectTypes {DAMAGE, GIVE, SUMMON}
 enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 #enum TargetCodes {S,O,A}
 
+@export_group("Identity")
 @export var name : String
+@export var sprite : Texture2D = preload("res://icon.svg")
 @export var trigger_state : TriggerStates
 @export var effect_type : EffectTypes
 

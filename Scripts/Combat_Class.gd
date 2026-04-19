@@ -9,6 +9,7 @@ signal attack_queued
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health
 @export var name_label:Label
 @export var effect:Effect
+@export var sprite:TextureRect
 
 #var effect : EffectData
 

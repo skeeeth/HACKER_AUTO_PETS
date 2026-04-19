@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dr8wkcgon6xan"]
+
+[ext_resource type="Script" uid="uid://dy1hq3kj5cw82" path="res://Scripts/targeting_indicator.gd" id="1_dpvq5"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8vbvw"]
+load_path = "res://.godot/imported/Dithererd Triangle.png-144500e56b7e8202c01a34e4701dacec.ctex"
+
+[node name="Node2D" type="VBoxContainer" unique_id=184819710]
+offset_right = 38.0
+offset_bottom = 61.0
+script = ExtResource("1_dpvq5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1823555399]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=2046911152]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer" unique_id=1882536349]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="TextureRect" parent="." unique_id=668422581]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_8vbvw")
+expand_mode = 5
+flip_h = true
+flip_v = true
