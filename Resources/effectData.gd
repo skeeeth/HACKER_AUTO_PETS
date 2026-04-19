@@ -10,6 +10,7 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 
 @export_group("Identity")
 @export var name : String
+@export var effect_description : String
 @export var sprite : Texture2D = preload("res://icon.svg")
 @export var trigger_state : TriggerStates
 @export var effect_type : EffectTypes
@@ -17,10 +18,11 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 @export_group("Magnitude")
 @export var magnitude_type: MagnitudeTypes = MagnitudeTypes.RAW
 @export var magnitude : int
-##mag mod is used to pass in extra data
+
+## mag mod is used to pass in extra data
 ## for cases where a single number isnt enough
 ## for "give" effects it is added to hp
-## ie give 1/2 is magnitude 1 with mod + 1
+## I.E: give 1/2 is magnitude 1 with mod + 1
 @export var mag_mod: int = 0
 
 

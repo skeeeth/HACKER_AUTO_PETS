@@ -4,6 +4,7 @@ class_name ShopManager
 const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 
 @export var purchasable_units : Array[UnitData]
+@export var purchase_buttons : Array[PurchaseButton]
 @export var coins : int = 10
 @export var unit_cost : int = 3
 @export var coin_text_node : Label
@@ -18,6 +19,11 @@ func _ready() -> void:
 	
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
 		_add_all_to_stack()
+	
+	for button in purchase_buttons:
+		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
+		button.add_unit_to_button(purchasable_units[random_unit_num])
+	
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:
@@ -47,12 +53,12 @@ func _set_coin_text() -> void:
 ## This function adds a unit to the Player Unit Container class 
 ## based on the button pressed. 
 ## If there are not enough coins or space, the unit is not purchased.
-func _purchase_unit_button_pressed(unitNum : int) -> void:
+func purchase_unit(unit:UnitData) -> void:
 	
 	if PlayerUnitsContainer.ally_unit_list.size() != PlayerUnitsContainer.ARRAY_MAX_SIZE:
 		if coins >= unit_cost:
-			PlayerUnitsContainer.add_unit_to_list(purchasable_units[unitNum - 1])
-			_add_to_stack(purchasable_units[unitNum - 1])
+			PlayerUnitsContainer.add_unit_to_list(unit)
+			_add_to_stack(unit)
 			coins -= unit_cost
 			_set_coin_text()
 	else:

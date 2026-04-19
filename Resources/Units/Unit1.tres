@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("1_u6xji")
+unit_name = "Unit1"
 effect = ExtResource("1_8e22l")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"
