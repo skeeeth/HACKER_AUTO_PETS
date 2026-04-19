@@ -24,6 +24,11 @@ var holder : SimUnit
 ##Connect to the appropriate triggers
 @warning_ignore("unused_parameter")
 func subscribe(units:Array[SimUnit]):
+	if data.subresource:
+		if data.sub_type == EffectData.SUBEFFECT_TYPES.EXTRA_EFFECT:
+			##instance and sync
+			pass
+	 
 	match data.trigger_state:
 		EffectData.TriggerStates.BATTLE_START:
 			manager.combat_start.connect(trigger)
@@ -33,11 +38,15 @@ func subscribe(units:Array[SimUnit]):
 		
 		EffectData.TriggerStates.B_ATTACK:
 			holder.attack_queued.connect(trigger)
+		
+		EffectData.TriggerStates.TURN_START:
+			manager.turn_start.connect(trigger)
+		
 
 func trigger():
 	visible = true
 	manager.trigger_effect(self)
-	
+	print(data.name + " Triggered")
 	#TEMP, replace with more sophisticated art later
 	holder.position.y -= 40 #bump unit up to show its active
 
@@ -45,10 +54,14 @@ func resolve():
 	var animation = self.create_tween()
 	animation.set_parallel()
 	
+	var fizzled = true ##true until proven otherwise
+	
 	for t in data.targets:
 		var target = _get_target_unit(t)
 		if !target: continue #fails if target not found
 		
+		#if target found even once, not fizzled
+		fizzled = false
 		
 		var indicator_:Indicator = Indicator.create(self,target)
 		target.add_child(indicator_)
@@ -60,6 +73,25 @@ func resolve():
 				
 			EffectData.EffectTypes.DAMAGE:
 				target.take_damage(get_magnitude())
+				
+			EffectData.EffectTypes.APPLY:
+				assert(data.subresource) #ASSIGN A SUBRESOURCE
+				add_effect(target,data.subresource)
+	
+	if fizzled:
+		animation.set_parallel(false)
+		var start = holder.position.x
+		var wiggle_size:float = 20
+		var wiggle_direction:int = -1
+		var wiggle_scale:float = 1.0
+		for i in range(0,5):
+			var wiggle = wiggle_size*wiggle_direction*wiggle_scale
+			wiggle_direction *= -1
+			animation.tween_property(holder,"position:x",
+			start + wiggle,0.06*wiggle_scale)
+			wiggle_scale *= 0.75
+		
+		animation.tween_property(holder,"position:x",start,0.06)
 	
 	await animation.finished
 	#animation.tween_callback(resolved.emit)
@@ -151,3 +183,16 @@ func get_magnitude() -> int:
 			##this shouldn't come up, but it is necessary
 			## to appease compiler
 			return 67
+			
+func add_effect(target:SimUnit,effect_data_:EffectData):
+	var new_effect = Effect.new()
+	new_effect.holder = target
+	new_effect.data = effect_data_
+	new_effect.manager = manager
+	target.add_child(new_effect)
+	
+	#smelly copy-pasted code hmmm :/ idk should work and be fine
+	var all_units:Array[SimUnit] = manager.player_queue.duplicate()
+	all_units.append_array(manager.enemy_queue)
+	
+	new_effect.subscribe(all_units)

@@ -2,9 +2,9 @@ extends Resource
 class_name EffectData
 
 enum TriggerStates {BATTLE_START, FAINT, TURN_START,
-		HURT, B_ATTACK, A_ATTACK}
+		HURT, B_ATTACK, A_ATTACK, TURN_END}
 
-enum EffectTypes {DAMAGE, GIVE, SUMMON}
+enum EffectTypes {DAMAGE, GIVE, SUMMON, APPLY}
 enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 #enum TargetCodes {S,O,A}
 
@@ -25,6 +25,10 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 ## I.E: give 1/2 is magnitude 1 with mod + 1
 @export var mag_mod: int = 0
 
+@export_subgroup("Subeffect")
+enum SUBEFFECT_TYPES {SUMMON, STATUS, EXTRA_EFFECT}
+@export var subresource:EffectData
+@export var sub_type:SUBEFFECT_TYPES
 
 @export_group("")
 @export var targets : Array[Target]

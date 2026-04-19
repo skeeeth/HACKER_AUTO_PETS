@@ -16,7 +16,8 @@ const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
 
 #@export var ally_unit_data : Array[UnitData]
 
-@export var enemy_unit_data : Array[UnitData]
+@export var encounter : Encounter
+var enemy_unit_data : Array[UnitData]
 
 ## This variable is for spacing the units
 @export var step_size : int
@@ -40,7 +41,7 @@ var dying_units:Array[SimUnit]
 
 func _ready() -> void:
 	next_scene_button_node.visible = false
-	
+	enemy_unit_data = encounter.unit_data
 	# should load from shop phase/encounter list but export works
 	for d in PlayerUnitsContainer.ally_unit_list:
 		player_queue.append(_create_unit(d))

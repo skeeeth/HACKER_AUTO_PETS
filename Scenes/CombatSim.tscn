@@ -1,15 +1,12 @@
 [gd_scene format=3 uid="uid://cfe4ocgls7ccg"]
 
 [ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Scripts/combat_sim.gd" id="1_pc1ni"]
-[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ollyq"]
-[ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="3_s10s3"]
-[ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="4_c2hfo"]
-[ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="4_x8mgc"]
+[ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="2_yfu46"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="5_c2hfo"]
 
 [node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node")]
 script = ExtResource("1_pc1ni")
-enemy_unit_data = Array[ExtResource("2_ollyq")]([ExtResource("3_s10s3"), ExtResource("4_x8mgc"), ExtResource("4_c2hfo")])
+encounter = ExtResource("2_yfu46")
 step_size = 150
 next_scene_button_node = NodePath("NextSceneButton")
 
