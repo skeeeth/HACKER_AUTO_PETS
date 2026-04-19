@@ -71,12 +71,15 @@ func _create_unit(data:UnitData) -> SimUnit:
 
 ## This function sets the positions of the units
 func _arrange_units():
+	var slide = self.create_tween()
 	#should like tween to destination placements rather than just snap
 	# and hold timeline until animation is finished
 	for i in player_queue.size():
-		player_queue[i].position.x =  (i+1) * -step_size 
+		slide.tween_property(player_queue[i],"position:x",(i+1) * -step_size,0.1)
+		#player_queue[i].position.x =  (i+1) * -step_size 
 
 	for i in enemy_queue.size():
+		slide.tween_property(enemy_queue[i],"position:x",(i+1) * step_size,0.1)
 		enemy_queue[i].position.x =  (i+1) * step_size 
 
 ## This function is called when the player presses the spacebar button.
