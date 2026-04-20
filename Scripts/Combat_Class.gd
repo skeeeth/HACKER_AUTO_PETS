@@ -36,7 +36,8 @@ var health : int:
 func dress(data:UnitData):
 	attack = data.attack
 	health = data.health
-	name_label.text = data.effect.name
+	name_label.text = data.unit_name
+	sprite.texture = data.effect.sprite
 	effect.data = data.effect
 	effect.holder = self
 
@@ -51,6 +52,8 @@ func die():
 	squeeze.set_parallel()
 	squeeze.tween_property(self, "scale:x", 0.0,0.1)
 	squeeze.tween_property(self,"position:y", -50, 0.1)
+	squeeze.tween_property(self,"position:x",
+			position.x + (sprite.size.x/2.0), 0.1)
 	died.emit(self)
 	
 func _roll_text(label:Label,previous:int,next:int):
@@ -60,4 +63,4 @@ func _roll_text(label:Label,previous:int,next:int):
 	var duration = MIN_DURATION + (STEP * change)
 	
 	var roll_text = self.create_tween()
-	roll_text.tween_property(label,"text",str(next),1).set_ease(Tween.EASE_IN_OUT)
+	roll_text.tween_property(label,"text",str(next),duration).set_ease(Tween.EASE_IN_OUT)

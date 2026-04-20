@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://mlo62bw7m14u"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_45npy"]
-[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_sqm03"]
+[ext_resource type="Texture2D" uid="uid://b072t3dnyjedx" path="res://Assets/18 Placeholders/9.png" id="2_sqm03"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_yf2ee"]
 
 [sub_resource type="Resource" id="Resource_fwnnq"]
@@ -13,6 +13,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 script = ExtResource("1_45npy")
 name = "Camel"
 effect_description = "Buff unit behind"
+sprite = ExtResource("2_sqm03")
 trigger_state = 3
 effect_type = 1
 magnitude = 1

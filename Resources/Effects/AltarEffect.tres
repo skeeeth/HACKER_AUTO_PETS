@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://bvo0sy1bqxuct"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_2bbqv"]
+[ext_resource type="Texture2D" uid="uid://me0u1mgfdndn" path="res://Assets/18 Placeholders/14.png" id="2_2bbqv"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_1wei3"]
+
+[sub_resource type="Resource" id="Resource_2bbqv"]
+script = ExtResource("3_1wei3")
+type = 2
+value = 3
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[resource]
+script = ExtResource("1_2bbqv")
+name = "Altar Effect"
+effect_description = "Give Third Position 3/3"
+sprite = ExtResource("2_2bbqv")
+trigger_state = 2
+effect_type = 1
+magnitude = 3
+targets = Array[ExtResource("3_1wei3")]([SubResource("Resource_2bbqv")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
