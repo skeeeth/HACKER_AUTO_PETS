@@ -15,8 +15,8 @@ effect = NodePath("Effect")
 sprite = NodePath("VBoxContainer/TextureRect")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=396016746]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 123.0
+offset_bottom = 223.0
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=1364059213]
 layout_mode = 2
@@ -25,6 +25,7 @@ text = "Name"
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1708096629]
 layout_mode = 2
 texture = SubResource("CompressedTexture2D_kvcsd")
+expand_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1496670750]
 layout_mode = 2

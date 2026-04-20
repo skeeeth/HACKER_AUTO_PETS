@@ -22,8 +22,7 @@ var holder : SimUnit
 	#draw_line(elbow_two,elbow_two+drop_vector,Color.BLACK,LINE_WIDTH)
 
 ##Connect to the appropriate triggers
-@warning_ignore("unused_parameter")
-func subscribe(units:Array[SimUnit]):
+func subscribe():
 	if data.subresource:
 		if data.sub_type == EffectData.SUBEFFECT_TYPES.EXTRA_EFFECT:
 			##instance and sync
@@ -42,6 +41,8 @@ func subscribe(units:Array[SimUnit]):
 		EffectData.TriggerStates.TURN_START:
 			manager.turn_start.connect(trigger)
 		
+		EffectData.TriggerStates.FAINT:
+			holder.died.connect(trigger.unbind(1))
 
 func trigger():
 	visible = true
@@ -77,6 +78,9 @@ func resolve():
 			EffectData.EffectTypes.APPLY:
 				assert(data.subresource) #ASSIGN A SUBRESOURCE
 				add_effect(target,data.subresource)
+				
+			EffectData.EffectTypes.SUMMON:
+				resolve_summon()
 	
 	if fizzled:
 		animation.set_parallel(false)
@@ -165,7 +169,29 @@ func _get_target_unit(t:Target) -> SimUnit:
 func resolve_give(target:SimUnit):
 	target.attack += get_magnitude()
 	target.health += get_magnitude() + data.mag_mod
-
+	
+func resolve_summon():
+	assert(data.subresource,"ASSIGN A SUBRESOURCE")
+	##setup new unit data
+	var new_data:UnitData = UnitData.new()
+	new_data.unit_name = data.subresource.name #yeah idk where to pass this in
+	new_data.attack = get_magnitude()
+	new_data.health = get_magnitude() + data.mag_mod
+	new_data.effect = data.subresource
+	
+	## Create new unit and place it into appropriate queue
+	var new_unit = manager._create_unit(new_data) #lmao we out here accessing a private method oops
+	var is_player_side : bool = manager.player_queue.has(holder)
+	var target_queue:Array[SimUnit]
+	
+	if is_player_side:
+		target_queue = manager.player_queue
+	else:
+		target_queue = manager.enemy_queue
+	
+	var index = target_queue.find(holder)
+	target_queue.insert(index,new_unit)
+	manager._arrange_units()
 
 func get_magnitude() -> int:
 	match data.magnitude_type:
@@ -182,6 +208,7 @@ func get_magnitude() -> int:
 		_: ##default
 			##this shouldn't come up, but it is necessary
 			## to appease compiler
+			assert(false, "Magnitude type not found")
 			return 67
 			
 func add_effect(target:SimUnit,effect_data_:EffectData):
@@ -191,8 +218,4 @@ func add_effect(target:SimUnit,effect_data_:EffectData):
 	new_effect.manager = manager
 	target.add_child(new_effect)
 	
-	#smelly copy-pasted code hmmm :/ idk should work and be fine
-	var all_units:Array[SimUnit] = manager.player_queue.duplicate()
-	all_units.append_array(manager.enemy_queue)
-	
-	new_effect.subscribe(all_units)
+	new_effect.subscribe()
