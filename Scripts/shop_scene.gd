@@ -3,6 +3,8 @@ class_name ShopManager
 
 const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 
+@export var combat_scene_file_path : String
+
 @export var purchasable_units : Array[UnitData]
 @export var purchase_buttons : Array[PurchaseButton]
 @export var coins : int = 10
@@ -20,10 +22,8 @@ func _ready() -> void:
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
 		_add_all_to_stack()
 	
-	for button in purchase_buttons:
-		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
-		button.add_unit_to_button(purchasable_units[random_unit_num])
-	
+	_set_buttons()
+
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:
@@ -59,7 +59,38 @@ func purchase_unit(unit:UnitData) -> void:
 		if coins >= unit_cost:
 			PlayerUnitsContainer.add_unit_to_list(unit)
 			_add_to_stack(unit)
-			coins -= unit_cost
-			_set_coin_text()
+			reduce_coin(unit_cost)
+			
 	else:
 		print("Size full")
+
+
+func sell() -> void:
+	increase_coin(1)
+	
+func reduce_coin(price : int) -> void:
+	coins -= price
+	_set_coin_text()
+
+func increase_coin(sell_price : int) -> void:
+	coins += sell_price
+	_set_coin_text()
+
+func _go_to_combat_scene() -> void:
+	if PlayerUnitsContainer.ally_unit_list.size() != 0:
+		get_tree().change_scene_to_file(combat_scene_file_path)
+	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:
+		print("No units and no coins? Here is some money.")
+		coins = unit_cost
+		_set_coin_text()
+		pass
+		
+func _reroll() -> void:
+	if coins != 0:
+		reduce_coin(1)
+		_set_buttons()
+
+func _set_buttons() -> void:
+	for button in purchase_buttons:
+		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
+		button.add_unit_to_button(purchasable_units[random_unit_num])

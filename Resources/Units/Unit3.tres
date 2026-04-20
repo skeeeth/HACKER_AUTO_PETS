@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_8tvhj")
-unit_name = "Unit3"
+unit_name = "Unit 3"
 attack = 1
 health = 6
 effect = ExtResource("1_ar660")
