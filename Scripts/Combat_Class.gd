@@ -3,6 +3,7 @@ class_name SimUnit
 
 signal died(who:SimUnit)
 signal hurt
+@warning_ignore("unused_signal")
 signal attack_queued
 
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
@@ -42,7 +43,7 @@ func dress(data:UnitData):
 	effect.holder = self
 
 ##calls hurt signal, different than setting hp
-func take_damage(amount:int): 
+func take_damage(amount:int):
 	health -= amount
 	hurt.emit()
 

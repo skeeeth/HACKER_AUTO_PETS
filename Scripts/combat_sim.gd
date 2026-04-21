@@ -48,13 +48,17 @@ func _ready() -> void:
 	for d in enemy_unit_data:
 		enemy_queue.append(_create_unit(d))
 	
-	var all_units:Array[SimUnit] = player_queue.duplicate()
-	all_units.append_array(enemy_queue)
+	var all_units = get_all_units()
 	for u in all_units:
-		u.effect.subscribe(all_units)
+		u.effect.subscribe()
 	
 	#combat_start.emit()
 	_arrange_units()
+
+func get_all_units() -> Array[SimUnit]:
+	var all_units:Array[SimUnit] = player_queue.duplicate()
+	all_units.append_array(enemy_queue)
+	return all_units
 
 ## This function creates a new CombatUnit scene 
 ## and spawns it into the level. Then, it sets the data perameter
@@ -114,8 +118,8 @@ func phase_action():
 	if current_battle_phase == BattlePhases.BATTLE_START:
 		combat_start.emit()
 	elif current_battle_phase == BattlePhases.TURN_START:
-		turn_start.emit()
 		print("Turn has begun")
+		turn_start.emit()
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
 		player_queue.front().attack_queued.emit()
