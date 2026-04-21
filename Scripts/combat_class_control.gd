@@ -2,6 +2,7 @@ extends Control
 class_name CombatUnitControl
 
 signal sell_unit
+signal moved_unit(this : CombatUnitControl, direction : int)
 
 @export var damage_label: Label
 @export var health_label: Label
@@ -29,6 +30,7 @@ var health : int:
 func _ready() -> void:
 	shop_manager = get_tree().get_root().get_node("ShopScene")
 	sell_unit.connect(shop_manager.sell)
+	moved_unit.connect(shop_manager.move_unit)
 
 
 ## This sets up the unit data for the unit
@@ -52,10 +54,14 @@ func _on_move_left_pressed() -> void:
 	
 	if moved_position == true:
 		object_index -= 1
+		moved_unit.emit(self, -1)
+	
+	
 
 func _on_move_right_pressed() -> void:
 	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, 1)
 	
 	if moved_position == true:
 		object_index += 1
+		moved_unit.emit(self, 1)
 	

@@ -103,3 +103,13 @@ func _set_buttons() -> void:
 	for button in purchase_buttons:
 		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
 		button.add_unit_to_button(purchasable_units[random_unit_num])
+
+
+func move_unit(unit : CombatUnitControl, direction : int) -> void:
+	print(unit.name_label.text, ": ", unit.get_index())
+	if direction == -1:
+		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() - 1)
+		print(unit.name_label.text, ": ", unit.get_index())
+	else:
+		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() + 1)
+		print(unit.name_label.text, ": ", unit.get_index())
