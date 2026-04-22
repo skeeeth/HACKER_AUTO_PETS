@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://5dmr2ejvk8a7" path="res://Resources/Effects/SummonVat.tres" id="1_y101q"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_sawal")
 unit_name = "The Sickness"
 attack = 4

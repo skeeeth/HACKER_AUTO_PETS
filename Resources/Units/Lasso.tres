@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://v3n0q3lq60l0" path="res://Resources/Effects/LassoEffect.tres" id="1_wgph8"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_2xymg")
 unit_name = "Lasso"
 attack = 4

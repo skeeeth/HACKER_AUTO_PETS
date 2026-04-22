@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="4_ehyos"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_ehyos")
 unit_name = "Harmonic"
 attack = 3

@@ -88,6 +88,7 @@ func increase_coin(sell_price : int) -> void:
 
 func _go_to_combat_scene() -> void:
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
+		save_stats_to_data()
 		get_tree().change_scene_to_file(combat_scene_file_path)
 	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:
 		print("No units and no coins? Here is some money.")
@@ -114,3 +115,15 @@ func move_unit(unit : CombatUnitControl, direction : int) -> void:
 	else:
 		unit_holder.move_child(unit, unit.get_index() + 1)
 		print(unit.name_label.text, ": ", unit.object_index)
+
+
+func save_stats_to_data():
+	PlayerUnitsContainer.ally_unit_list.clear()
+	
+	##iterating on unit holder has less type safety than player stack
+	## but player stack doesn't reflect movement
+	for u in unit_holder.get_children():
+		u.unit_data.attack = u.attack
+		u.unit_data.health = u.health
+		PlayerUnitsContainer.add_unit_to_list(u.unit_data)
+	pass

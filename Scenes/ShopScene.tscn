@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://y0ok33p8i555" path="res://Resources/Units/Lasso.tres" id="7_1qm6p"]
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="8_1itlx"]
 [ext_resource type="Resource" uid="uid://c6oxu8so4paxj" path="res://Resources/Units/ACID_BURN.tres" id="8_k8c1k"]
+[ext_resource type="Script" uid="uid://b2eyvdg5emr6k" path="res://Scripts/test_apple_button.gd" id="10_k8c1k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
 font_size = 12
@@ -130,8 +131,16 @@ label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Test Apple Button" type="Button" parent="." unique_id=770641714 node_paths=PackedStringArray("shop")]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Give index 1 Permanent 1+1"
+script = ExtResource("10_k8c1k")
+shop = NodePath("..")
+
 [connection signal="pressed" from="Buttons/PurchaseUnitButton1" to="Buttons/PurchaseUnitButton1" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton2" to="Buttons/PurchaseUnitButton2" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton3" to="Buttons/PurchaseUnitButton3" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/CombatSceneButton" to="." method="_go_to_combat_scene"]
 [connection signal="pressed" from="Buttons/RerollButton" to="." method="_reroll"]
+[connection signal="pressed" from="Test Apple Button" to="Test Apple Button" method="_on_pressed"]

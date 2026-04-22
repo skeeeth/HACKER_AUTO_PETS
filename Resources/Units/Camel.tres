@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="1_diqpq"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_8ijy0")
 unit_name = "Camel"
 attack = 3

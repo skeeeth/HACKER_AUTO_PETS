@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_uq7y6"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_uq7y6")
 unit_name = "Elephant"
 health = 5

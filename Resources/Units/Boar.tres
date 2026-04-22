@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_8jedi"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_8jedi")
 unit_name = "Boar"
 attack = 3

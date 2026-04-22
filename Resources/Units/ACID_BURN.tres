@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_u8t47"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_u8t47")
 unit_name = "ACID BURN"
 attack = 0

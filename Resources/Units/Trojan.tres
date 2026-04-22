@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://cavdj700pb1wi" path="res://Resources/Effects/TrojanEffect.tres" id="1_jlsbo"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_ctcvu")
 unit_name = "Trojan"
 attack = 1
