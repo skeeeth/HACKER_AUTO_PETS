@@ -10,6 +10,7 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var coins : int = 10
 @export var unit_cost : int = 3
 @export var coin_text_node : Label
+@export var unit_holder : HBoxContainer
 
 var base_coin_text : String
 
@@ -35,12 +36,11 @@ func _add_to_stack(data : UnitData) -> void:
 ## This function calls the _add_to_stack function 
 ## for each unit in the PlayerUnitsContainer class
 func _add_all_to_stack() -> void:
-	
 	for data in PlayerUnitsContainer.ally_unit_list:
 		var new_unit : CombatUnitControl
 		new_unit = UNIT_CONTROL_SCENE.instantiate()
 		new_unit.dress(data, list_index)
-		get_tree().get_root().get_node("ShopScene/UnitHolder").add_child(new_unit)
+		unit_holder.add_child(new_unit)
 		player_stack.append(new_unit)
 		list_index += 1
 	list_index = 0
@@ -52,7 +52,8 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	var new_unit : CombatUnitControl
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
 	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
-	get_tree().get_root().get_node("ShopScene/UnitHolder").add_child(new_unit)
+	unit_holder.add_child(new_unit)
+	unit_holder.move_child(new_unit, 0)
 	return new_unit
 
 
@@ -106,10 +107,10 @@ func _set_buttons() -> void:
 
 
 func move_unit(unit : CombatUnitControl, direction : int) -> void:
-	print(unit.name_label.text, ": ", unit.get_index())
+	print(unit.name_label.text, ": ", unit.object_index - 1)
 	if direction == -1:
-		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() - 1)
-		print(unit.name_label.text, ": ", unit.get_index())
+		unit_holder.move_child(unit, unit.get_index() - 1)
+		print(unit.name_label.text, ": ", unit.object_index)
 	else:
-		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() + 1)
-		print(unit.name_label.text, ": ", unit.get_index())
+		unit_holder.move_child(unit, unit.get_index() + 1)
+		print(unit.name_label.text, ": ", unit.object_index)

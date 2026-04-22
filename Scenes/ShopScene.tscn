@@ -19,12 +19,13 @@ font_size = 31
 [sub_resource type="LabelSettings" id="LabelSettings_3qq02"]
 font_size = 26
 
-[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node")]
+[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "unit_holder")]
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
 purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("5_1itlx"), ExtResource("5_medpt"), ExtResource("6_1itlx"), ExtResource("7_k8c1k"), ExtResource("8_k8c1k")])
 purchase_buttons = [NodePath("Buttons/PurchaseUnitButton1"), NodePath("Buttons/PurchaseUnitButton2"), NodePath("Buttons/PurchaseUnitButton3")]
 coin_text_node = NodePath("CoinText")
+unit_holder = NodePath("UnitHolder")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 

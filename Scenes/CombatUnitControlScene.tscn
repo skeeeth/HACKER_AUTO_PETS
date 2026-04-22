@@ -6,7 +6,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_e2tyl"]
 font_size = 8
 
-[node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label", "name_label")]
+[node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label", "name_label", "sprite")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 128.0
@@ -15,34 +15,35 @@ script = ExtResource("1_e2tyl")
 damage_label = NodePath("VBoxContainer/HBoxContainer/Damage")
 health_label = NodePath("VBoxContainer/HBoxContainer/Health")
 name_label = NodePath("VBoxContainer/Name")
+sprite = NodePath("VBoxContainer/TextureRect")
 
-[node name="MoveLeft" type="Button" parent="." unique_id=1347343440]
+[node name="MoveBack" type="Button" parent="." unique_id=1347343440]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 50.0
 offset_bottom = 23.0
 
-[node name="Label" type="Label" parent="MoveLeft" unique_id=312008566]
+[node name="Label" type="Label" parent="MoveBack" unique_id=312008566]
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 23.0
-text = "Move Left"
+text = "Move Back"
 label_settings = SubResource("LabelSettings_e2tyl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MoveRight" type="Button" parent="." unique_id=1208022678]
+[node name="MoveUp" type="Button" parent="." unique_id=1208022678]
 layout_mode = 0
 offset_left = 74.0
 offset_top = -1.0
 offset_right = 124.0
 offset_bottom = 23.0
 
-[node name="Label" type="Label" parent="MoveRight" unique_id=127537799]
+[node name="Label" type="Label" parent="MoveUp" unique_id=127537799]
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 23.0
-text = "Move Right"
+text = "Move Up"
 label_settings = SubResource("LabelSettings_e2tyl")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -54,9 +55,6 @@ offset_right = 128.0
 offset_bottom = 241.0
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1002196207]
-layout_mode = 2
-
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=14710546]
 layout_mode = 2
 text = "Name"
@@ -64,6 +62,7 @@ text = "Name"
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=666714825]
 layout_mode = 2
 texture = ExtResource("2_p5t4v")
+expand_mode = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1935330045]
 layout_mode = 2
@@ -80,11 +79,11 @@ size_flags_horizontal = 3
 text = "X"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=126880458]
+[node name="SellButton" type="Button" parent="VBoxContainer" unique_id=126880458]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/Button" unique_id=811910128]
+[node name="Label" type="Label" parent="VBoxContainer/SellButton" unique_id=811910128]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 32.0
@@ -92,6 +91,6 @@ text = "Sell"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="MoveLeft" to="." method="_on_move_left_pressed"]
-[connection signal="pressed" from="MoveRight" to="." method="_on_move_right_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="MoveBack" to="." method="_on_move_back_pressed"]
+[connection signal="pressed" from="MoveUp" to="." method="_on_move_up_pressed"]
+[connection signal="pressed" from="VBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]

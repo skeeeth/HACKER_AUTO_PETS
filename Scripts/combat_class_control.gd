@@ -7,9 +7,11 @@ signal moved_unit(this : CombatUnitControl, direction : int)
 @export var damage_label: Label
 @export var health_label: Label
 @export var name_label : Label
-@export var shop_manager : ShopManager
+@export var sprite : TextureRect
 
 @export var object_index : int
+var shop_manager : ShopManager
+
 var moved_position : bool
 var effect : EffectData
 var unit_data : UnitData
@@ -39,6 +41,7 @@ func dress(data : UnitData, index : int):
 	health = data.health
 	name_label.text = data.unit_name
 	effect = data.effect
+	sprite.texture = data.effect.sprite
 	unit_data = data
 	object_index = index
 
@@ -49,19 +52,19 @@ func _on_sell_button_pressed() -> void:
 	queue_free()
 
 
-func _on_move_left_pressed() -> void:
+func _on_move_up_pressed() -> void:
 	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, -1)
 	
 	if moved_position == true:
 		object_index -= 1
-		moved_unit.emit(self, -1)
+		moved_unit.emit(self, 1)
 	
 	
 
-func _on_move_right_pressed() -> void:
+func _on_move_back_pressed() -> void:
 	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, 1)
 	
 	if moved_position == true:
 		object_index += 1
-		moved_unit.emit(self, 1)
+		moved_unit.emit(self, -1)
 	
