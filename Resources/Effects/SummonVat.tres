@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://5dmr2ejvk8a7"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_ncghp"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_382he"]
+[ext_resource type="Texture2D" uid="uid://blli6cuvb1tq1" path="res://Assets/18 Placeholders/7.png" id="2_hsoco"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_hsoco"]
+[ext_resource type="Resource" uid="uid://b6cyk70fjva25" path="res://Resources/Effects/AcidStatus.tres" id="4_lw0tr"]
+
+[sub_resource type="Resource" id="Resource_hsoco"]
+script = ExtResource("3_hsoco")
+value = -1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_lw0tr"]
+script = ExtResource("3_hsoco")
+value = -2
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_utenc"]
+script = ExtResource("3_hsoco")
+value = 1
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_1rs6v"]
+script = ExtResource("3_hsoco")
+value = 2
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_0dy22"]
+script = ExtResource("1_ncghp")
+name = "Acid Vat"
+trigger_state = 1
+effect_type = 3
+magnitude = 1
+subresource = ExtResource("4_lw0tr")
+sub_type = 1
+targets = Array[ExtResource("3_hsoco")]([SubResource("Resource_hsoco"), SubResource("Resource_lw0tr"), SubResource("Resource_utenc"), SubResource("Resource_1rs6v")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_560m2"]
+script = ExtResource("3_hsoco")
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[resource]
+script = ExtResource("1_ncghp")
+name = "Summon Vat"
+effect_description = "Summon a 0/1 Acid Vat"
+sprite = ExtResource("2_hsoco")
+trigger_state = 1
+effect_type = 2
+mag_mod = 1
+subresource = SubResource("Resource_0dy22")
+targets = Array[ExtResource("3_hsoco")]([SubResource("Resource_560m2")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"

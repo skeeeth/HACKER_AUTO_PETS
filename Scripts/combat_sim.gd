@@ -6,6 +6,7 @@ enum BattlePhases
 
 signal combat_start
 signal turn_start
+signal turn_end
 
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
@@ -125,6 +126,7 @@ func phase_action():
 		player_queue.front().attack_queued.emit()
 		enemy_queue.front().attack_queued.emit()
 	elif current_battle_phase == BattlePhases.TURN_END:
+		turn_end.emit()
 		print("Turn has ended")
 
 ## This function calls the hit function

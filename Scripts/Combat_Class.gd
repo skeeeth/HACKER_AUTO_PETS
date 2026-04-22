@@ -56,7 +56,7 @@ func die():
 	squeeze.tween_property(self,"position:x",
 			position.x + (sprite.size.x/2.0), 0.1)
 	died.emit(self)
-	
+
 func _roll_text(label:Label,previous:int,next:int):
 	const MIN_DURATION:float = 0.017 * 3 #~3 frames @60 fps
 	const STEP:float = 1.0/60.0
