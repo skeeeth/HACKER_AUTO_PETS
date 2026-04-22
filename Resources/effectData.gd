@@ -4,7 +4,7 @@ class_name EffectData
 enum TriggerStates {BATTLE_START, FAINT, TURN_START,
 		HURT, B_ATTACK, A_ATTACK, TURN_END}
 
-enum EffectTypes {DAMAGE, GIVE, SUMMON, APPLY}
+enum EffectTypes {DAMAGE, GIVE, SUMMON, APPLY, SIGNAL}
 enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 #enum TargetCodes {S,O,A}
 

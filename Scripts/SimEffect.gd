@@ -43,6 +43,9 @@ func subscribe():
 		
 		EffectData.TriggerStates.FAINT:
 			holder.died.connect(trigger.unbind(1))
+			
+		EffectData.TriggerStates.TURN_END:
+			manager.turn_end.connect(trigger)
 
 func trigger():
 	visible = true
@@ -81,6 +84,15 @@ func resolve():
 				
 			EffectData.EffectTypes.SUMMON:
 				resolve_summon()
+			
+			EffectData.EffectTypes.SIGNAL:
+				##literally just do  the thing for now its chill
+				manager.turn_start.emit()
+				## not a great solution, but whatever it handles
+				## this edge case, maybe if this were a more common
+				## effect I would make a huge signal enum or something
+				#assert(data.magnitude_type == EffectData.MagnitudeTypes.CUSTOM)
+				#get_magnitude()
 	
 	if fizzled:
 		animation.set_parallel(false)
@@ -98,6 +110,10 @@ func resolve():
 		animation.tween_property(holder,"position:x",start,0.06)
 	
 	await animation.finished
+	
+	#if data.trigger_state == EffectData.TriggerStates.FAINT:
+		#manager.cleanup()
+
 	#animation.tween_callback(resolved.emit)
 	print("Resolved " + data.name)
 	resolved.emit()
@@ -137,6 +153,8 @@ func _get_target_unit(t:Target) -> SimUnit:
 				target_index -= t.value + shift
 		Target.TargetCodes.A:
 			target_index = t.value + shift
+		Target.TargetCodes.STRICT_SELF:
+			return holder
 	
 	if target_index <= 5:
 		target_index = 5 - target_index
@@ -191,6 +209,7 @@ func resolve_summon():
 	
 	var index = target_queue.find(holder)
 	target_queue.insert(index,new_unit)
+	new_unit.effect.subscribe()
 	manager._arrange_units()
 
 func get_magnitude() -> int:
@@ -203,7 +222,7 @@ func get_magnitude() -> int:
 			return holder.health
 		EffectData.MagnitudeTypes.CUSTOM:
 			##hmmmmmm idk about this
-			## if it comes up will have to be its own switch
+			
 			return 0 #0 for now
 		_: ##default
 			##this shouldn't come up, but it is necessary
