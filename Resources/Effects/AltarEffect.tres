@@ -17,6 +17,6 @@ effect_description = "Give Third Position 3/3"
 sprite = ExtResource("2_2bbqv")
 trigger_state = 2
 effect_type = 1
-magnitude = 3
+magnitude = 2
 targets = Array[ExtResource("3_1wei3")]([SubResource("Resource_2bbqv")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"

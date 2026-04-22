@@ -82,6 +82,9 @@ func resolve():
 				assert(data.subresource) #ASSIGN A SUBRESOURCE
 				add_effect(target,data.subresource)
 				
+			EffectData.EffectTypes.SHIFT:
+				target.effect.shift += get_magnitude()
+				
 			EffectData.EffectTypes.SUMMON:
 				resolve_summon()
 			

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_sk7pr")
 unit_name = "Altar"
-attack = 3
-health = 6
+attack = 4
+health = 4
 effect = ExtResource("1_kx3rc")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

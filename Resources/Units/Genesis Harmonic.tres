@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("4_ehyos")
 unit_name = "Harmonic"
-health = 8
+attack = 3
+health = 5
 effect = ExtResource("1_7ecmg")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

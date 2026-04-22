@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://d00wio1brnija"]
+
+[ext_resource type="Resource" uid="uid://d3a7yfgc635g1" path="res://Resources/Effects/BoarEffect.tres" id="1_u7osj"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_8jedi"]
+
+[resource]
+script = ExtResource("2_8jedi")
+unit_name = "Boar"
+attack = 3
+health = 5
+effect = ExtResource("1_u7osj")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"

@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Encounter.gd" id="1_uovx0"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_sach2"]
-[ext_resource type="Resource" uid="uid://cnfp86e7vp4op" path="res://Resources/Units/The Sickness.tres" id="3_c1r72"]
-[ext_resource type="Resource" uid="uid://c6oxu8so4paxj" path="res://Resources/Units/ACID_BURN.tres" id="3_ix367"]
-[ext_resource type="Resource" uid="uid://hf5uxrjba5ff" path="res://Resources/Units/Genesis Harmonic.tres" id="4_grfxq"]
-[ext_resource type="Resource" uid="uid://bqqtbngaaucge" path="res://Resources/Units/Altar.tres" id="5_grfxq"]
+[ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="3_c1r72"]
+[ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="4_c1r72"]
+[ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="4_grfxq"]
 
 [resource]
 script = ExtResource("1_uovx0")
-unit_data = Array[ExtResource("2_sach2")]([ExtResource("3_ix367"), ExtResource("3_c1r72"), ExtResource("4_grfxq"), ExtResource("5_grfxq")])
+unit_data = Array[ExtResource("2_sach2")]([ExtResource("3_c1r72"), ExtResource("4_c1r72"), ExtResource("4_grfxq"), ExtResource("4_grfxq")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

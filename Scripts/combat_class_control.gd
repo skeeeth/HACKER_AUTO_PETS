@@ -58,8 +58,6 @@ func _on_move_up_pressed() -> void:
 	if moved_position == true:
 		object_index -= 1
 		moved_unit.emit(self, 1)
-	
-	
 
 func _on_move_back_pressed() -> void:
 	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, 1)

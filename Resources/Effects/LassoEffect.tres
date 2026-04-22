@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://v3n0q3lq60l0"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_173hh"]
+[ext_resource type="Texture2D" uid="uid://bv7ix8vyghssh" path="res://Assets/18 Placeholders/6.png" id="2_173hh"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_a7241"]
+
+[sub_resource type="Resource" id="Resource_rvjiy"]
+script = ExtResource("3_a7241")
+value = 2
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[resource]
+script = ExtResource("1_173hh")
+name = "Lasso"
+effect_description = "Shift target by -2"
+sprite = ExtResource("2_173hh")
+effect_type = 5
+magnitude = 2
+targets = Array[ExtResource("3_a7241")]([SubResource("Resource_rvjiy")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
