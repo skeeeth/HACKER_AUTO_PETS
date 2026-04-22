@@ -15,6 +15,8 @@ var base_coin_text : String
 
 var player_stack : Array[CombatUnitControl]
 
+var list_index : int = 0
+
 func _ready() -> void:
 	base_coin_text = coin_text_node.text
 	_set_coin_text()
@@ -33,8 +35,15 @@ func _add_to_stack(data : UnitData) -> void:
 ## This function calls the _add_to_stack function 
 ## for each unit in the PlayerUnitsContainer class
 func _add_all_to_stack() -> void:
+	
 	for data in PlayerUnitsContainer.ally_unit_list:
-		_add_to_stack(data)
+		var new_unit : CombatUnitControl
+		new_unit = UNIT_CONTROL_SCENE.instantiate()
+		new_unit.dress(data, list_index)
+		get_tree().get_root().get_node("ShopScene/UnitHolder").add_child(new_unit)
+		player_stack.append(new_unit)
+		list_index += 1
+	list_index = 0
 
 ## This function creates a new CombatUnit scene 
 ## and spawns it into the level. Then, it sets the data perameter
@@ -42,7 +51,7 @@ func _add_all_to_stack() -> void:
 func _create_unit(data:UnitData) -> CombatUnitControl:
 	var new_unit : CombatUnitControl
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
-	new_unit.dress(data)
+	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
 	get_tree().get_root().get_node("ShopScene/UnitHolder").add_child(new_unit)
 	return new_unit
 
@@ -94,3 +103,13 @@ func _set_buttons() -> void:
 	for button in purchase_buttons:
 		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
 		button.add_unit_to_button(purchasable_units[random_unit_num])
+
+
+func move_unit(unit : CombatUnitControl, direction : int) -> void:
+	print(unit.name_label.text, ": ", unit.get_index())
+	if direction == -1:
+		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() - 1)
+		print(unit.name_label.text, ": ", unit.get_index())
+	else:
+		get_tree().get_root().get_node("ShopScene/UnitHolder").move_child(unit, unit.get_index() + 1)
+		print(unit.name_label.text, ": ", unit.get_index())

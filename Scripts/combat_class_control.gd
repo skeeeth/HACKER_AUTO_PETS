@@ -2,12 +2,15 @@ extends Control
 class_name CombatUnitControl
 
 signal sell_unit
+signal moved_unit(this : CombatUnitControl, direction : int)
 
 @export var damage_label: Label
 @export var health_label: Label
 @export var name_label : Label
 @export var shop_manager : ShopManager
 
+@export var object_index : int
+var moved_position : bool
 var effect : EffectData
 var unit_data : UnitData
 
@@ -27,18 +30,38 @@ var health : int:
 func _ready() -> void:
 	shop_manager = get_tree().get_root().get_node("ShopScene")
 	sell_unit.connect(shop_manager.sell)
+	moved_unit.connect(shop_manager.move_unit)
 
 
 ## This sets up the unit data for the unit
-func dress(data:UnitData):
+func dress(data : UnitData, index : int):
 	attack = data.attack
 	health = data.health
 	name_label.text = data.unit_name
 	effect = data.effect
 	unit_data = data
+	object_index = index
 
 
 func _on_sell_button_pressed() -> void:
 	PlayerUnitsContainer.remove_unit_from_list(unit_data)
 	sell_unit.emit()
 	queue_free()
+
+
+func _on_move_left_pressed() -> void:
+	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, -1)
+	
+	if moved_position == true:
+		object_index -= 1
+		moved_unit.emit(self, -1)
+	
+	
+
+func _on_move_right_pressed() -> void:
+	moved_position = PlayerUnitsContainer.move_unit_in_list(object_index, 1)
+	
+	if moved_position == true:
+		object_index += 1
+		moved_unit.emit(self, 1)
+	
