@@ -151,8 +151,8 @@ func advance_step():
 ## and reduces the units' health accordingly 
 func hit():
 	print("Attacking")
-	player_queue.front().take_damage(enemy_queue.front().attack)
-	enemy_queue.front().take_damage(player_queue.front().attack)
+	player_queue.front().take_damage(enemy_queue.front().attack,true)
+	enemy_queue.front().take_damage(player_queue.front().attack,true)
 
 func on_unit_death(dying_unit:SimUnit):
 	dying_units.append(dying_unit)
@@ -160,6 +160,7 @@ func on_unit_death(dying_unit:SimUnit):
 ##checks for dead bodies and removes them, only called when stack is empty
 func cleanup():
 	for dying_unit in dying_units:
+		await dying_unit.death_squeeze()
 		player_queue.erase(dying_unit)
 		enemy_queue.erase(dying_unit)
 		
@@ -172,10 +173,9 @@ func cleanup():
 			end_combat()
 		elif player_queue.size() == 0 and enemy_queue.size() == 0:
 			end_combat()
-
-		_arrange_units()
 		dying_unit.queue_free()
 	
+	_arrange_units()
 	dying_units.clear()
 	
 func trigger_effect(effect:Effect):

@@ -11,7 +11,7 @@ signal attack_queued
 @export var name_label:Label
 @export var effect:Effect
 @export var sprite:TextureRect
-
+var dead:bool
 #var effect : EffectData
 
 ## This variable has a set function that changes the attack text
@@ -25,11 +25,14 @@ var attack : int:
 ## and calls the die function to emit the died signal
 var health : int:
 	set(v):
+		##clamp to 0 is important so that hurt is only called on real hp loss
+		v = clamp(v,0,99)
 		_roll_text(health_label,health,v)
 		health = v
 		#health_label.text = str(health)
-		if health <= 0:
-			die()
+		if health == 0:
+			if !dead:
+				die()
 
 
 
@@ -43,19 +46,33 @@ func dress(data:UnitData):
 	effect.holder = self
 
 ##calls hurt signal, different than setting hp
-func take_damage(amount:int):
+func take_damage(amount:int, from_attack:bool = false):
+	var start = health
 	health -= amount
-	hurt.emit()
+	var end = health
+	
+	##actual change in hp may be different than queued damage due to clamp
+	## also dont call hurt on 0 damage effects, 
+	## but do call hurt on any attack, to prevent softlock
+	if (start - end) > 0 or from_attack:
+		hurt.emit()
 
 ## This function emits the died signal
 func die():
+	dead = true
+	died.emit(self)
+
+
+##Death animation
+func death_squeeze() -> Signal:
 	var squeeze = self.create_tween()
 	squeeze.set_parallel()
 	squeeze.tween_property(self, "scale:x", 0.0,0.1)
 	squeeze.tween_property(self,"position:y", -50, 0.1)
 	squeeze.tween_property(self,"position:x",
 			position.x + (sprite.size.x/2.0), 0.1)
-	died.emit(self)
+	
+	return squeeze.finished
 
 func _roll_text(label:Label,previous:int,next:int):
 	const MIN_DURATION:float = 0.017 * 3 #~3 frames @60 fps
