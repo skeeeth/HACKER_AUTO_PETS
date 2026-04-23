@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdw1rjisijbug" path="res://Scripts/combat_class_control.gd" id="1_e2tyl"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_p5t4v"]
+[ext_resource type="Script" uid="uid://tlkqqev42emn" path="res://Scripts/ShopEffect.gd" id="3_p5t4v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e2tyl"]
 font_size = 8
@@ -18,6 +19,7 @@ name_label = NodePath("VBoxContainer/Name")
 sprite = NodePath("VBoxContainer/TextureRect")
 
 [node name="MoveBack" type="Button" parent="." unique_id=1347343440]
+visible = false
 layout_mode = 0
 offset_top = -1.0
 offset_right = 50.0
@@ -33,6 +35,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MoveUp" type="Button" parent="." unique_id=1208022678]
+visible = false
 layout_mode = 0
 offset_left = 74.0
 offset_top = -1.0
@@ -90,6 +93,9 @@ offset_bottom = 32.0
 text = "Sell"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Node" type="Node" parent="." unique_id=474260885]
+script = ExtResource("3_p5t4v")
 
 [connection signal="pressed" from="MoveBack" to="." method="_on_move_back_pressed"]
 [connection signal="pressed" from="MoveUp" to="." method="_on_move_up_pressed"]

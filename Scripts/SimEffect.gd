@@ -46,6 +46,12 @@ func subscribe():
 			
 		EffectData.TriggerStates.TURN_END:
 			manager.turn_end.connect(trigger)
+			
+		EffectData.TriggerStates.SHOP_START:
+			assert(manager)
+		
+		EffectData.TriggerStates.SHOP_END:
+			assert(manager)
 
 func trigger():
 	visible = true

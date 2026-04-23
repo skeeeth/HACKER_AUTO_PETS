@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://y0ok33p8i555" path="res://Resources/Units/Lasso.tres" id="7_1qm6p"]
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="8_1itlx"]
 [ext_resource type="Resource" uid="uid://c6oxu8so4paxj" path="res://Resources/Units/ACID_BURN.tres" id="8_k8c1k"]
+[ext_resource type="Script" uid="uid://wivf5kctu05d" path="res://Scripts/ShopManager.gd" id="9_03ylq"]
 [ext_resource type="Script" uid="uid://b2eyvdg5emr6k" path="res://Scripts/test_apple_button.gd" id="10_k8c1k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
@@ -27,6 +28,9 @@ purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtRe
 purchase_buttons = [NodePath("Buttons/PurchaseUnitButton1"), NodePath("Buttons/PurchaseUnitButton2"), NodePath("Buttons/PurchaseUnitButton3")]
 coin_text_node = NodePath("CoinText")
 unit_holder = NodePath("UnitHolder")
+
+[node name="Node" type="Node" parent="." unique_id=903691850]
+script = ExtResource("9_03ylq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 

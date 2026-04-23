@@ -120,8 +120,8 @@ func move_unit(unit : CombatUnitControl, direction : int) -> void:
 func save_stats_to_data():
 	PlayerUnitsContainer.ally_unit_list.clear()
 	
-	##iterating on unit holder has less type safety than player stack
-	## but player stack doesn't reflect movement
+	#iterating on unit holder has less type safety than player stack
+	# but player stack doesn't reflect movement
 	for u in unit_holder.get_children():
 		u.unit_data.attack = u.attack
 		u.unit_data.health = u.health

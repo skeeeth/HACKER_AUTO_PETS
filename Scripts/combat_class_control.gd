@@ -36,7 +36,7 @@ func _ready() -> void:
 
 
 ## This sets up the unit data for the unit
-func dress(data : UnitData, index : int):
+func dress(data : UnitData, index : int = 0):
 	attack = data.attack
 	health = data.health
 	name_label.text = data.unit_name
@@ -66,3 +66,26 @@ func _on_move_back_pressed() -> void:
 		object_index += 1
 		moved_unit.emit(self, -1)
 	
+
+func _can_drop_data(position, data):
+	return typeof(data) == TYPE_DICTIONARY and data.has("source")
+
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	var preview_sprite = TextureRect.new()
+	preview_sprite.size = Vector2(64,64)
+	preview_sprite.texture = sprite
+	set_drag_preview(preview_sprite)
+	
+	var drop_data:Dictionary = {
+		"data" = unit_data,
+		"source" = self
+	}
+	return drop_data
+
+func _drop_data(at_position: Vector2, data: Variant) -> void:
+	var source_object = data["source"]
+	if source_object is CombatUnitControl:
+		source_object.dress(unit_data)
+	
+	dress(data["data"]) #data["data"] is fucked up what am i doing
