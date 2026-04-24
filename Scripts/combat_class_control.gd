@@ -7,15 +7,21 @@ signal moved_unit(this : CombatUnitControl, direction : int)
 @export var damage_label: Label
 @export var health_label: Label
 @export var name_label : Label
+@export var shift_label : Label
 @export var sprite : TextureRect
 
 @export var object_index : int
+@export var effect_node : ShopEffect
 var shop_manager : ShopManager
 
 var moved_position : bool
 var effect : EffectData
 var unit_data : UnitData
 
+var shift : int = 0:
+	set(v):
+		shift = v
+		shift_label.text = "%+s" % shift
 
 ## This variable has a set function that changes the attack text
 var attack : int:
@@ -44,6 +50,9 @@ func dress(data : UnitData, index : int = 0):
 	sprite.texture = data.effect.sprite
 	unit_data = data
 	object_index = index
+	shift = unit_data.shift
+	effect_node.data = data.effect
+	effect_node.holder = self
 
 
 func _on_sell_button_pressed() -> void:
@@ -70,8 +79,7 @@ func _on_move_back_pressed() -> void:
 func _can_drop_data(position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("source")
 
-
-func _get_drag_data(at_position: Vector2) -> Variant:
+func _get_drag_data(_at_position: Vector2) -> Variant:
 	var preview_sprite = TextureRect.new()
 	preview_sprite.size = Vector2(64,64)
 	preview_sprite.texture = sprite
@@ -83,7 +91,7 @@ func _get_drag_data(at_position: Vector2) -> Variant:
 	}
 	return drop_data
 
-func _drop_data(at_position: Vector2, data: Variant) -> void:
+func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var source_object = data["source"]
 	if source_object is CombatUnitControl:
 		source_object.dress(unit_data)

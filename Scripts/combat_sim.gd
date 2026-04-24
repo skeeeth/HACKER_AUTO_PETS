@@ -41,7 +41,7 @@ var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
 func _ready() -> void:
-	next_scene_button_node.visible = false
+	#next_scene_button_node.visible = false
 	enemy_unit_data = encounter.unit_data
 	# should load from shop phase/encounter list but export works
 	for d in PlayerUnitsContainer.ally_unit_list:

@@ -11,6 +11,7 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var unit_cost : int = 3
 @export var coin_text_node : Label
 @export var unit_holder : HBoxContainer
+@export var effect_manager:ShopEffectManager
 
 var base_coin_text : String
 
@@ -26,7 +27,8 @@ func _ready() -> void:
 		_add_all_to_stack()
 	
 	_set_buttons()
-
+	effect_manager.shop_entered.emit()
+	effect_manager.resolve_effects()
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:
@@ -40,7 +42,9 @@ func _add_all_to_stack() -> void:
 		var new_unit : CombatUnitControl
 		new_unit = UNIT_CONTROL_SCENE.instantiate()
 		new_unit.dress(data, list_index)
+		new_unit.effect_node.subscribe(effect_manager)
 		unit_holder.add_child(new_unit)
+		unit_holder.move_child(new_unit,0)
 		player_stack.append(new_unit)
 		list_index += 1
 	list_index = 0
@@ -54,6 +58,7 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
 	unit_holder.add_child(new_unit)
 	unit_holder.move_child(new_unit, 0)
+	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 
 
@@ -64,7 +69,6 @@ func _set_coin_text() -> void:
 ## based on the button pressed. 
 ## If there are not enough coins or space, the unit is not purchased.
 func purchase_unit(unit:UnitData) -> void:
-	
 	if PlayerUnitsContainer.ally_unit_list.size() != PlayerUnitsContainer.ARRAY_MAX_SIZE:
 		if coins >= unit_cost:
 			PlayerUnitsContainer.add_unit_to_list(unit)
@@ -122,8 +126,15 @@ func save_stats_to_data():
 	
 	#iterating on unit holder has less type safety than player stack
 	# but player stack doesn't reflect movement
-	for u in unit_holder.get_children():
+	for u in get_unit_stack():
 		u.unit_data.attack = u.attack
 		u.unit_data.health = u.health
+		u.unit_data.shift  = u.shift
 		PlayerUnitsContainer.add_unit_to_list(u.unit_data)
-	pass
+
+func get_unit_stack() -> Array[CombatUnitControl]:
+	var stack:Array[CombatUnitControl]
+	for u in unit_holder.get_children():
+		assert(u is CombatUnitControl, "Invalid Top-Level child!")
+		stack.push_front(u)
+	return stack

@@ -22,4 +22,4 @@ func add_unit_to_button(data : UnitData) -> void:
 
 
 func _on_button_pressed() -> void:
-	purchased_unit.emit(purchasable_unit)
+	purchased_unit.emit(purchasable_unit.duplicate())

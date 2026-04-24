@@ -193,7 +193,7 @@ func _get_target_unit(t:Target) -> SimUnit:
 		#else:
 			#target_queue = ally_queue
 
-func resolve_give(target:SimUnit):
+func resolve_give(target):
 	target.attack += get_magnitude()
 	target.health += get_magnitude() + data.mag_mod
 	

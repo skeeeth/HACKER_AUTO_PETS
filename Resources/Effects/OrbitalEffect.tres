@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://c15k7vb7h11my"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_gnjk5"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_3fs5u"]
+[ext_resource type="Texture2D" uid="uid://cmnfl4us2xewe" path="res://Assets/18 Placeholders/4.png" id="2_k215e"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_k215e"]
+
+[sub_resource type="Resource" id="Resource_3fs5u"]
+script = ExtResource("3_k215e")
+type = 3
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_xno7k"]
+script = ExtResource("1_gnjk5")
+name = "Orbital Self Shift"
+effect_description = "Orbital shift's self after each trigger"
+trigger_state = 9
+effect_type = 5
+magnitude = 1
+targets = Array[ExtResource("3_k215e")]([SubResource("Resource_3fs5u")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_gnjk5"]
+script = ExtResource("3_k215e")
+type = 2
+value = 5
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[resource]
+script = ExtResource("1_gnjk5")
+name = "Orbital"
+sprite = ExtResource("2_k215e")
+trigger_state = 7
+effect_type = 1
+magnitude = 1
+subresource = SubResource("Resource_xno7k")
+sub_type = 2
+targets = Array[ExtResource("3_k215e")]([SubResource("Resource_gnjk5")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"

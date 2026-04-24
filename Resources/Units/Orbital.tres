@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://cfuqgesrsqstv"]
+
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_lvdnl"]
+[ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="1_p3grd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_lvdnl")
+unit_name = "Orbital"
+attack = 3
+effect = ExtResource("1_p3grd")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
