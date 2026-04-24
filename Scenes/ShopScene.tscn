@@ -34,9 +34,9 @@ shop_main = NodePath("..")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 
 [node name="UnitHolder" type="HBoxContainer" parent="." unique_id=835860638]
-offset_left = -904.0
+offset_left = -727.0
 offset_top = -129.0
-offset_right = 1.0
+offset_right = 2.0
 offset_bottom = 127.0
 theme_override_constants/separation = 150
 alignment = 2
@@ -44,10 +44,10 @@ alignment = 2
 [node name="Buttons" type="Node" parent="." unique_id=1076780851]
 
 [node name="PurchaseUnitButton1" type="Button" parent="Buttons" unique_id=2054618790 node_paths=PackedStringArray("unit_name", "manager")]
-offset_left = -204.0
-offset_top = 234.0
-offset_right = -102.0
-offset_bottom = 277.0
+offset_left = -208.0
+offset_top = 415.0
+offset_right = -106.0
+offset_bottom = 458.0
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -64,10 +64,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PurchaseUnitButton2" type="Button" parent="Buttons" unique_id=602924199 node_paths=PackedStringArray("unit_name", "manager")]
-offset_left = -55.0
-offset_top = 234.0
-offset_right = 47.0
-offset_bottom = 277.0
+offset_left = -59.0
+offset_top = 415.0
+offset_right = 43.0
+offset_bottom = 458.0
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -84,10 +84,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PurchaseUnitButton3" type="Button" parent="Buttons" unique_id=2113805579 node_paths=PackedStringArray("unit_name", "manager")]
-offset_left = 104.0
-offset_top = 234.0
-offset_right = 206.0
-offset_bottom = 277.0
+offset_left = 100.0
+offset_top = 415.0
+offset_right = 202.0
+offset_bottom = 458.0
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -103,41 +103,43 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CombatSceneButton" type="Button" parent="Buttons" unique_id=52496184]
-offset_left = 420.0
-offset_top = 223.0
-offset_right = 542.0
-offset_bottom = 288.0
+offset_left = 786.0
+offset_top = 432.0
+offset_right = 908.0
+offset_bottom = 497.0
 text = "Go to Combat"
 
 [node name="RerollButton" type="Button" parent="Buttons" unique_id=1180264985]
-offset_left = -554.0
-offset_top = 223.0
-offset_right = -432.0
-offset_bottom = 288.0
+offset_left = -926.0
+offset_top = 429.0
+offset_right = -804.0
+offset_bottom = 494.0
 text = "Reroll"
 
 [node name="CoinText" type="Label" parent="." unique_id=899137773]
-offset_left = -535.0
-offset_top = -308.0
-offset_right = -300.0
-offset_bottom = -246.0
+offset_left = -900.0
+offset_top = -486.0
+offset_right = -665.0
+offset_bottom = -424.0
 text = "Coins: "
 label_settings = SubResource("LabelSettings_medpt")
 vertical_alignment = 1
 
 [node name="InfoText" type="Label" parent="." unique_id=737011921]
-offset_left = 155.0
-offset_top = -302.0
-offset_right = 553.0
-offset_bottom = -174.0
+offset_left = 532.0
+offset_top = -522.0
+offset_right = 930.0
+offset_bottom = -369.0
 text = "Each unit costs 3 coins. You can only have 5 units on your team. You need a least 1 unit to go into combat."
 label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Test Apple Button" type="Button" parent="." unique_id=770641714 node_paths=PackedStringArray("shop")]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -112.0
+offset_top = 296.0
+offset_right = 113.0
+offset_bottom = 327.0
 text = "Give index 1 Permanent 1+1"
 script = ExtResource("10_k8c1k")
 shop = NodePath("..")
