@@ -5,6 +5,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4iaox"]
 font_size = 70
 
+[sub_resource type="LabelSettings" id="LabelSettings_j8exe"]
+font_size = 33
+
 [node name="TitleScene" type="Control" unique_id=1492106318]
 layout_mode = 3
 anchors_preset = 15
@@ -26,11 +29,39 @@ label_settings = SubResource("LabelSettings_4iaox")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextSceneButton" parent="." unique_id=1641231628 instance=ExtResource("1_j8exe")]
+[node name="GameButton" parent="." unique_id=1641231628 instance=ExtResource("1_j8exe")]
 layout_mode = 0
-offset_left = -118.0
-offset_top = 238.0
-offset_right = 109.0
-offset_bottom = 377.0
-text = "Start Game"
+offset_left = 191.0
+offset_top = 260.0
+offset_right = 418.0
+offset_bottom = 399.0
+text = ""
 transition_scene_file_path = "res://Scenes/ShopScene.tscn"
+
+[node name="Label" type="Label" parent="GameButton" unique_id=263982140]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 225.0
+offset_bottom = 137.0
+text = "Start Game"
+label_settings = SubResource("LabelSettings_j8exe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsButton" parent="." unique_id=1314772830 instance=ExtResource("1_j8exe")]
+layout_mode = 0
+offset_left = -431.0
+offset_top = 260.0
+offset_right = -204.0
+offset_bottom = 399.0
+text = ""
+transition_scene_file_path = "res://Scenes/ShopScene.tscn"
+
+[node name="Label" type="Label" parent="CreditsButton" unique_id=1000110176]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 137.0
+text = "Credits"
+label_settings = SubResource("LabelSettings_j8exe")
+horizontal_alignment = 1
+vertical_alignment = 1
