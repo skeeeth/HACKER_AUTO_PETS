@@ -55,7 +55,7 @@ offset_top = 260.0
 offset_right = -204.0
 offset_bottom = 399.0
 text = ""
-transition_scene_file_path = "res://Scenes/ShopScene.tscn"
+transition_scene_file_path = "res://Scenes/CreditsScene.tscn"
 
 [node name="Label" type="Label" parent="CreditsButton" unique_id=1000110176]
 layout_mode = 0
