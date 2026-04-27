@@ -81,8 +81,8 @@ func _can_drop_data(position, data):
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	var preview_sprite = TextureRect.new()
-	preview_sprite.size = Vector2(64,64)
-	preview_sprite.texture = sprite
+	preview_sprite.texture = sprite.texture
+	preview_sprite.size = sprite.size
 	set_drag_preview(preview_sprite)
 	
 	var drop_data:Dictionary = {
@@ -96,4 +96,5 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	if source_object is CombatUnitControl:
 		source_object.dress(unit_data)
 	
-	dress(data["data"]) #data["data"] is fucked up what am i doing
+	dress(data["data"]) #data["data"] is fucked up naming what am i doing
+						#	^ok but the issue is data being plural and singluar
