@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HACKER_AUTO_PETS"
-run/main_scene="uid://cl8e6tpoh42op"
+run/main_scene="uid://dofgfyntslgun"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,7 @@ Gamestate="*uid://dvermrmix11go"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [physics]

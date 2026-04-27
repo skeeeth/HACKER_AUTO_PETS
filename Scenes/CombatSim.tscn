@@ -13,10 +13,10 @@ next_scene_button_node = NodePath("NextSceneButton")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
 
 [node name="NextSceneButton" parent="." unique_id=1641231628 instance=ExtResource("5_c2hfo")]
-offset_left = 393.0
-offset_top = 204.0
-offset_right = 540.0
-offset_bottom = 298.0
+offset_left = 755.0
+offset_top = 387.0
+offset_right = 902.0
+offset_bottom = 481.0
 text = "Go to shop
 "
 transition_scene_file_path = "res://Scenes/ShopScene.tscn"
