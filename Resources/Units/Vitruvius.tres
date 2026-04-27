@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://c3i3rupd05c6"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_i2y3n"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_ww8ef"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_dl0gf"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_ondnm"]
+
+[sub_resource type="Resource" id="Resource_xcyyu"]
+script = ExtResource("3_ondnm")
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_miyf5"]
+script = ExtResource("1_i2y3n")
+name = "Vitruvius"
+effect_description = "Combat Start -> Give Self 2/2"
+effect_type = 1
+magnitude = 2
+targets = Array[ExtResource("3_ondnm")]([SubResource("Resource_xcyyu")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[resource]
+script = ExtResource("1_ww8ef")
+unit_name = "Vitruvius"
+health = 1
+effect = SubResource("Resource_miyf5")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"

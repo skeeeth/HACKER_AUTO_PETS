@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UnitData" format=3 uid="uid://0d0438nllpuv"]
+
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_8do4e"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="1_r13tk"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_kwi7f"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_bkjn4"]
+
+[sub_resource type="Resource" id="Resource_x4pr5"]
+script = ExtResource("1_8do4e")
+name = "Worm"
+trigger_state = 7
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[resource]
+script = ExtResource("1_r13tk")
+unit_name = "Worm"
+attack = 1
+health = 4
+effect = SubResource("Resource_x4pr5")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"

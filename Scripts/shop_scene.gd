@@ -22,11 +22,14 @@ var list_index : int = 0
 func _ready() -> void:
 	base_coin_text = coin_text_node.text
 	_set_coin_text()
-	
+
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
 		_add_all_to_stack()
 	
+	purchasable_units.clear()
+	purchasable_units = Gamestate.purchaseable_units
 	_set_buttons()
+	
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
 
@@ -106,6 +109,7 @@ func _reroll() -> void:
 		_set_buttons()
 
 func _set_buttons() -> void:
+
 	for button in purchase_buttons:
 		var random_unit_num : int = randi_range(0, purchasable_units.size() - 1)
 		button.add_unit_to_button(purchasable_units[random_unit_num])

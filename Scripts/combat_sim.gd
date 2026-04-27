@@ -42,6 +42,7 @@ var dying_units:Array[SimUnit]
 
 func _ready() -> void:
 	#next_scene_button_node.visible = false
+	encounter = Gamestate.get_turn_encounter()
 	enemy_unit_data = encounter.unit_data
 	# should load from shop phase/encounter list but export works
 	for d in PlayerUnitsContainer.ally_unit_list:
@@ -167,6 +168,7 @@ func cleanup():
 		#maybe change this logic a bit to diff Win/Loss/Draw
 		if player_queue.size() == 0 and enemy_queue.size() != 0:
 			enemy_won = true
+			Gamestate.lose_life()
 			end_combat()
 		elif player_queue.size() != 0 and enemy_queue.size() == 0:
 			player_won = true
@@ -184,5 +186,6 @@ func trigger_effect(effect:Effect):
 ## This function shows the button to move to the shop scene.
 func end_combat():
 	combat_over = true
+	Gamestate.end_turn()
 	next_scene_button_node.visible = true
 	print("Combat Over")
