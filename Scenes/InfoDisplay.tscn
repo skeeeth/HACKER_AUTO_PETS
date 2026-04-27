@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://caqo5o73bgt5u"]
+
+[ext_resource type="Script" uid="uid://cyg8dkx04nmir" path="res://Scripts/info_display.gd" id="1_ha1f4"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_jciix"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jciix"]
+font_size = 28
+
+[node name="Info Display" type="HBoxContainer" unique_id=1549523259 node_paths=PackedStringArray("sprite", "title_label", "description")]
+offset_right = 809.0
+offset_bottom = 168.0
+script = ExtResource("1_ha1f4")
+sprite = NodePath("Sprite")
+title_label = NodePath("Info/Name")
+description = NodePath("Info/Description")
+
+[node name="Sprite" type="TextureRect" parent="." unique_id=1668459947]
+layout_mode = 2
+texture = ExtResource("2_jciix")
+expand_mode = 2
+
+[node name="Info" type="VBoxContainer" parent="." unique_id=956746328]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Info" unique_id=335833459]
+layout_mode = 2
+text = "name"
+label_settings = SubResource("LabelSettings_jciix")
+horizontal_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Info" unique_id=834718807]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=24]"

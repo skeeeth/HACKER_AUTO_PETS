@@ -97,6 +97,7 @@ text = "Sell"
 [node name="Node" type="Node" parent="." unique_id=474260885]
 script = ExtResource("3_p5t4v")
 
+[connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
 [connection signal="pressed" from="MoveBack" to="." method="_on_move_back_pressed"]
 [connection signal="pressed" from="MoveUp" to="." method="_on_move_up_pressed"]
 [connection signal="pressed" from="VBoxContainer/SellButton" to="." method="_on_sell_button_pressed"]

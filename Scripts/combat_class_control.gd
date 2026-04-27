@@ -74,7 +74,13 @@ func _on_move_back_pressed() -> void:
 	if moved_position == true:
 		object_index += 1
 		moved_unit.emit(self, -1)
-	
+
+func _mouse_entered():
+	var info : InfoDisplay = InfoDisplay.create(unit_data)
+	add_child(info)
+	info.position.y = -100
+	mouse_exited.connect(info.queue_free)
+
 
 func _can_drop_data(position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("source")
