@@ -152,8 +152,36 @@ func advance_step():
 ## and reduces the units' health accordingly 
 func hit():
 	print("Attacking")
-	player_queue.front().take_damage(enemy_queue.front().attack,true)
-	enemy_queue.front().take_damage(player_queue.front().attack,true)
+	var player_unit = player_queue.front()
+	var enemy_unit = enemy_queue.front()
+
+	## animation lambda
+	var attack_animation = func animate(unit:SimUnit,max_translation:float,max_rotation:float):
+		
+		var attack_tween = create_tween()
+		var starting_position = unit.position.x
+		
+		#windup
+		attack_tween.tween_property(unit,"position:x",
+				starting_position + max_translation*-0.25,0.1).set_ease(Tween.EASE_IN)
+		attack_tween.parallel().tween_property(unit,"rotation",max_rotation*-0.333,0.1)
+		
+		#action
+		attack_tween.tween_property(unit,"position:x",
+				starting_position + max_translation,0.03).set_delay(0.1)
+		attack_tween.parallel().tween_property(unit,"rotation",max_rotation,0.05)
+		
+		#recovery
+		attack_tween.tween_property(unit,"position:x",
+				starting_position,0.2).set_delay(0.1).set_ease(Tween.EASE_OUT)
+		attack_tween.parallel().tween_property(unit,"rotation",0,0.2).set_delay(0.1).set_ease(Tween.EASE_OUT)
+	
+	#call animation
+	attack_animation.call(player_unit,+80,+0.2)
+	attack_animation.call(enemy_unit ,-80,-0.2)
+	
+	player_unit.take_damage(enemy_unit.attack,true)
+	enemy_unit.take_damage(player_unit.attack,true)
 
 func on_unit_death(dying_unit:SimUnit):
 	dying_units.append(dying_unit)
