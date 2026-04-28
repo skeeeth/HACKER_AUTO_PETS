@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bmil0bci7vjh0"]
+
+[ext_resource type="Script" uid="uid://83in6d3daww" path="res://Scripts/Music.gd" id="1_fghhr"]
+
+[node name="Music" type="Node" unique_id=958484053]
+script = ExtResource("1_fghhr")
+
+[node name="ShopTrack" type="AudioStreamPlayer" parent="." unique_id=505831142]
+volume_db = -80.0
+
+[node name="CombatTrack" type="AudioStreamPlayer" parent="." unique_id=1795525845]
+volume_db = -80.0

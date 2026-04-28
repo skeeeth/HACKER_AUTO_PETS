@@ -131,9 +131,9 @@ func save_stats_to_data():
 	#iterating on unit holder has less type safety than player stack
 	# but player stack doesn't reflect movement
 	for u in get_unit_stack():
-		u.unit_data.attack = u.attack
-		u.unit_data.health = u.health
-		u.unit_data.shift  = u.shift
+		#u.unit_data.attack = u.attack
+		#u.unit_data.health = u.health
+		#u.unit_data.shift  = u.shift
 		PlayerUnitsContainer.add_unit_to_list(u.unit_data)
 
 func get_unit_stack() -> Array[CombatUnitControl]:

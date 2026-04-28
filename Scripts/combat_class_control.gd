@@ -22,18 +22,24 @@ var shift : int = 0:
 	set(v):
 		shift = v
 		shift_label.text = "%+s" % shift
+		if unit_data:
+			unit_data.shift = shift
 
 ## This variable has a set function that changes the attack text
 var attack : int:
 	set(v):
 		attack = v
 		damage_label.text = str(attack)
+		if unit_data:
+			unit_data.attack = attack
 
 ## This variable has a set function that changes the health text
 var health : int:
 	set(v):
 		health = v
 		health_label.text = str(health)
+		if unit_data:
+			unit_data.health = health
 
 func _ready() -> void:
 	shop_manager = get_tree().get_root().get_node("ShopScene")
@@ -43,16 +49,17 @@ func _ready() -> void:
 
 ## This sets up the unit data for the unit
 func dress(data : UnitData, index : int = 0):
+	unit_data = data
 	attack = data.attack
 	health = data.health
 	name_label.text = data.unit_name
 	effect = data.effect
 	sprite.texture = data.effect.sprite
-	unit_data = data
 	object_index = index
 	shift = unit_data.shift
 	effect_node.data = data.effect
 	effect_node.holder = self
+
 
 
 func _on_sell_button_pressed() -> void:
@@ -84,6 +91,11 @@ func _mouse_entered():
 
 func _can_drop_data(position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("source")
+
+#func save_stats_to_data():
+	#unit_data.attack = attack
+	#unit_data.health = health
+	#unit_data.shift = shift
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	var preview_sprite = TextureRect.new()
