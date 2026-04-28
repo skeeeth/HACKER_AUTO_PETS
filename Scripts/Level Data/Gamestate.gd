@@ -3,6 +3,7 @@ extends Node
 var purchaseable_units:Array[UnitData]
 var turn:int = 0
 var turn_cadence = 2
+
 var lives:int = 4
 
 var tier:int = -1

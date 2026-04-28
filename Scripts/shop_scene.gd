@@ -10,10 +10,14 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var coins : int = 10
 @export var unit_cost : int = 3
 @export var coin_text_node : Label
+@export var life_text_node : Label
+@export var turn_text_node : Label
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
 
 var base_coin_text : String
+var base_life_text : String
+var base_turn_text : String
 
 var player_stack : Array[CombatUnitControl]
 
@@ -21,6 +25,12 @@ var list_index : int = 0
 
 func _ready() -> void:
 	base_coin_text = coin_text_node.text
+	base_life_text = life_text_node.text
+	base_turn_text = turn_text_node.text
+	
+	life_text_node.text = base_life_text + str(Gamestate.lives)
+	turn_text_node.text = base_turn_text + str(Gamestate.turn)
+	
 	_set_coin_text()
 
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
