@@ -8,6 +8,8 @@ signal attack_queued
 
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health
+@export var shift_label:Label
+
 @export var name_label:Label
 @export var effect:Effect
 @export var sprite:TextureRect
@@ -33,6 +35,8 @@ var health : int:
 		if health == 0:
 			if !dead:
 				die()
+
+var shift:int = 0
 
 
 ## This sets up the unit data for the combat unit

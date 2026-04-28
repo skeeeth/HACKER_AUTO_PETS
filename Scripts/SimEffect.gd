@@ -3,6 +3,7 @@ class_name Effect
 
 #signal triggered
 signal resolved
+signal shifted
 
 var data : EffectData
 var shift : int = 0
@@ -146,6 +147,9 @@ func set_targets():
 		var i = get_index_from_target(t,is_player_side,my_index,shift)
 		try_target_index(i)
 
+
+##returns an int equal to the absolute index to be gotten from a Target resource
+#should maybe be part of Target class if anything, but adapted from an old Effect func
 static func get_index_from_target(t:Target,is_player_side:bool,my_index:int,with_shift:int) -> int:
 	var target_index : int = my_index
 	match t.type:
@@ -166,15 +170,23 @@ static func get_index_from_target(t:Target,is_player_side:bool,my_index:int,with
 		Target.TargetCodes.A:
 			target_index = t.value + with_shift
 		Target.TargetCodes.STRICT_SELF:
-			return my_index
+			if is_player_side:
+				target_index = 5 - my_index
+			else:
+				target_index = 6 + my_index
 	
 	print(target_index)
 	return target_index
 
 ##sets target_units_array
 func try_target_index(target_index:int) ->  void:
-	var indicator_:Indicator = Indicator.create(self,target_index,manager.step_size)
+	
+	var indicator_:Indicator = Indicator.create(data.effect_type, target_index,
+			manager.step_size, holder.sprite.size.x)
+	
+	resolved.connect(indicator_.queue_free)
 	manager.add_child(indicator_)
+	
 	var target_queue:Array
 	if target_index <= 5:
 		target_index = 5 - target_index

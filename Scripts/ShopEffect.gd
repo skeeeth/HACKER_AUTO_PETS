@@ -9,10 +9,12 @@ extends Node
 class_name ShopEffect
 
 signal triggered
+signal resolved
 
 var shop_manager:ShopEffectManager
 var data:EffectData
 var holder:CombatUnitControl
+var targets : Array[CombatUnitControl]
 
 func subscribe(manager:ShopEffectManager):
 	shop_manager = manager
@@ -36,11 +38,36 @@ func trigger():
 	shop_manager.effect_stack.append(self)
 	triggered.emit()
 
-func resolve():
+func set_targets():
+	var unit_stack = shop_manager.shop_main.get_unit_stack()
+	var my_index = unit_stack.find(holder)
 	for t in data.targets:
-		var target = get_target(t)
-		if !target:
+		
+		var x_spacing = 150 #shop_manager.shop_main.unit_holder.theme.get_constant("separation")
+		#x_spacing = holder.size.x
+		var absolute_index = Effect.get_index_from_target(t,true,my_index,holder.shift)
+		var indicator = Indicator.create(data.effect_type,absolute_index,
+				x_spacing,holder.size.x,+x_spacing)
+		
+		shop_manager.add_child(indicator)
+		
+		var i = 5 - absolute_index
+		if i < 0 or i >= 5:
 			continue
+		
+		if i >= unit_stack.size():
+			continue
+		
+		targets.append(unit_stack[i])
+
+func resolve():
+	#var indicator = Indicator.create(self,)
+	#shop_manager.add_child()
+	set_targets()
+	for target in targets:
+		#var target = get_target(t)
+		#if !target:
+			#continue
 		match data.effect_type:
 			##ok im pretty sure these are the only 2 things that need to happen in shop
 			## everything else is TODO to be implemented
@@ -51,29 +78,7 @@ func resolve():
 				target.health += data.magnitude + data.mag_mod
 			EffectData.EffectTypes.SHIFT:
 				target.shift += data.magnitude #modifer???
-
-func get_target(t:Target) -> CombatUnitControl:
-	var unit_stack = shop_manager.shop_main.get_unit_stack()
-	var my_index = unit_stack.find(holder)
-	assert(my_index != -1, "Effect called outside the club?")
-	var target_index:int = 0
-	match t.type:
-		Target.TargetCodes.O:
-			#technically this should be supported in engine, like target O with -shift
-			# could hit team, but i dont have any SHOP effects with target O
-			# so im pretty sure this isn't even going to be called, and null is fine
-			# if it does get called
-			return null
-		Target.TargetCodes.STRICT_SELF:
-			return holder
-		Target.TargetCodes.S:
-			target_index = my_index - t.value + holder.shift
-		Target.TargetCodes.A:
-			target_index = t.value + holder.shift
-	target_index -= 5
-	if target_index < 0 or target_index >= 5:
-		return null
-	
-	if target_index >= unit_stack.size():
-		return null
-	return unit_stack[target_index]
+			EffectData.EffectTypes.STOCK:
+				pass
+				
+	resolved.emit()

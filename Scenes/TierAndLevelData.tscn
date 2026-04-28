@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://b80416xpo266g" path="res://Resources/Effects/ElephantEffect.tres" id="17_08tc8"]
 [ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="17_ddkd5"]
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
+[ext_resource type="Resource" uid="uid://c3i3rupd05c6" path="res://Resources/Units/Vitruvius.tres" id="18_mxa0m"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
 
 [sub_resource type="Resource" id="Resource_fqv3h"]
@@ -43,7 +44,7 @@ metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
 [sub_resource type="Resource" id="Resource_08tc8"]
 script = ExtResource("16_vxcpi")
-unit_data = Array[ExtResource("3_gvkr2")]([ExtResource("10_vxcpi"), ExtResource("6_2x0wx")])
+unit_data = Array[ExtResource("3_gvkr2")]([ExtResource("18_mxa0m"), ExtResource("18_mxa0m"), ExtResource("18_mxa0m")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
 [sub_resource type="Resource" id="Resource_6f83a"]

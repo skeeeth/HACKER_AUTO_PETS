@@ -89,7 +89,7 @@ func _mouse_entered():
 	mouse_exited.connect(info.queue_free)
 
 
-func _can_drop_data(position, data):
+func _can_drop_data(_position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("source")
 
 #func save_stats_to_data():
