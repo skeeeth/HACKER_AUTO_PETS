@@ -6,7 +6,6 @@ extends Node
 
 func shop_entered():
 	var feed = create_tween()
-	feed
 	pass
 
 func combat_entered():

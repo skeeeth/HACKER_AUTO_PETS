@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 PlayerUnitsContainer="*uid://cg035k5ginn54"
 Gamestate="*uid://dvermrmix11go"
-Music="*uid://bmil0bci7vjh0"
 
 [display]
 
