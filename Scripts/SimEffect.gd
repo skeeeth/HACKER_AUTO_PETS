@@ -10,6 +10,7 @@ var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
 
+var target_units:Array[SimUnit]
 #var elbow_one:Vector2 = Vector2.ZERO
 #var elbow_two:Vector2 = Vector2.ZERO
 #const DRAW_DROP:float = 50
@@ -56,6 +57,7 @@ func subscribe():
 func trigger():
 	visible = true
 	manager.trigger_effect(self)
+	#set_targets()
 	print(data.name + " Triggered")
 	#TEMP, replace with more sophisticated art later
 	holder.position.y -= 40 #bump unit up to show its active
@@ -66,16 +68,16 @@ func resolve():
 	
 	var fizzled = true ##true until proven otherwise
 	
-	for t in data.targets:
-		var target = _get_target_unit(t)
-		if !target: continue #fails if target not found
+	set_targets()
+	for target in target_units:
+		#var target = _get_target_unit(t)
+		#if !target: continue #fails if target not found
 		
 		#if target found even once, not fizzled
 		fizzled = false
-		
-		var indicator_:Indicator = Indicator.create(self,target)
-		target.add_child(indicator_)
-		animation.tween_property(indicator_,"position:y",0,0.1).set_ease(Tween.EASE_IN_OUT)
+		animation.tween_property(self,"position:y",40,0.1).set_ease(Tween.EASE_IN_OUT)
+		animation.tween_property(self,"position:y",-20,0.1).set_ease(Tween.EASE_IN_OUT)
+		animation.tween_property(self,"position:y",0,0.1).set_ease(Tween.EASE_IN_OUT)
 		
 		match data.effect_type:
 			EffectData.EffectTypes.GIVE:
@@ -130,41 +132,50 @@ func resolve():
 	#visible = false
 
 
-func _get_target_unit(t:Target) -> SimUnit:
+func set_targets():
+	target_units.clear()
 	var is_player_side : bool = manager.player_queue.has(holder)
 	var ally_queue:Array
-	@warning_ignore("unused_variable")
-	var opp_queue:Array
 	if is_player_side:
 		ally_queue = manager.player_queue
-		opp_queue = manager.enemy_queue
 	else:
 		ally_queue = manager.enemy_queue
-		opp_queue = manager.player_queue
 		
 	var my_index = ally_queue.find(holder)
-	var target_index:int = my_index #- t.value - shift
-	var target_queue:Array
+	for t in data.targets:
+		var i = get_index_from_target(t,is_player_side,my_index,shift)
+		try_target_index(i)
+
+static func get_index_from_target(t:Target,is_player_side:bool,my_index:int,with_shift:int) -> int:
+	var target_index : int = my_index
 	match t.type:
 		Target.TargetCodes.S:
 			if is_player_side:
 				target_index = 5 - my_index
-				target_index += t.value + shift
+				target_index += t.value + with_shift
 			else:
 				target_index = 6 + my_index
-				target_index -= t.value + shift
+				target_index -= t.value + with_shift
 		Target.TargetCodes.O:
 			if is_player_side:
 				target_index = 6 + my_index
-				target_index += t.value + shift
+				target_index += t.value + with_shift
 			else:
 				target_index = 5 - my_index
-				target_index -= t.value + shift
+				target_index -= t.value + with_shift
 		Target.TargetCodes.A:
-			target_index = t.value + shift
+			target_index = t.value + with_shift
 		Target.TargetCodes.STRICT_SELF:
-			return holder
+			return my_index
 	
+	print(target_index)
+	return target_index
+
+##sets target_units_array
+func try_target_index(target_index:int) ->  void:
+	var indicator_:Indicator = Indicator.create(self,target_index,manager.step_size)
+	manager.add_child(indicator_)
+	var target_queue:Array
 	if target_index <= 5:
 		target_index = 5 - target_index
 		target_queue = manager.player_queue
@@ -172,16 +183,34 @@ func _get_target_unit(t:Target) -> SimUnit:
 		target_index = target_index - 6
 		target_queue = manager.enemy_queue
 
+
+	
 	if target_index >= target_queue.size():
 		#fails if target is too far
 		#print(data.name + str(target_index))
-		return null
-		
-	var target_unit:SimUnit = target_queue[target_index]
-	#elbow_one = holder.position + Vector2(0,-100)
-	#elbow_two = target_unit.position + Vector2(0,-100)
-	#queue_redraw()
-	return target_unit
+		return
+
+	target_units.append(target_queue[target_index])
+
+
+#func _get_target_unit(t:Target) -> SimUnit:
+	#var is_player_side : bool = manager.player_queue.has(holder)
+	#var ally_queue:Array
+	#@warning_ignore("unused_variable")
+	#var opp_queue:Array
+	#if is_player_side:
+		#ally_queue = manager.player_queue
+		#opp_queue = manager.enemy_queue
+	#else:
+		#ally_queue = manager.enemy_queue
+		#opp_queue = manager.player_queue
+		#
+	#var my_index = ally_queue.find(holder)
+	#var target_index:int = my_index #- t.value - shift
+	##elbow_one = holder.position + Vector2(0,-100)
+	##elbow_two = target_unit.position + Vector2(0,-100)
+	##queue_redraw()
+	#return target_unit
 
 	#if target_index < 0: #if reaching other side
 		##flip to opp context

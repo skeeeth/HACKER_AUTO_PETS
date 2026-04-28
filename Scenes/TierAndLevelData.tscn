@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="15_mxa0m"]
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="16_vxcpi"]
 [ext_resource type="Resource" uid="uid://b80416xpo266g" path="res://Resources/Effects/ElephantEffect.tres" id="17_08tc8"]
+[ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="17_ddkd5"]
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
 
@@ -80,4 +81,4 @@ metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 [node name="Node" type="Node" unique_id=239818472]
 script = ExtResource("1_n5s8k")
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
-encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
+encounter_sequence = Array[ExtResource("16_vxcpi")]([ExtResource("17_ddkd5"), SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])

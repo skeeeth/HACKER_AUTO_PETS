@@ -35,7 +35,6 @@ var health : int:
 				die()
 
 
-
 ## This sets up the unit data for the combat unit
 func dress(data:UnitData):
 	attack = data.attack

@@ -21,7 +21,7 @@ var unit_data : UnitData
 var shift : int = 0:
 	set(v):
 		shift = v
-		shift_label.text = "%+s" % shift
+		shift_label.text = "%+d" % shift
 
 ## This variable has a set function that changes the attack text
 var attack : int:
