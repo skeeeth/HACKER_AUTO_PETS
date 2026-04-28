@@ -4,11 +4,15 @@
 [ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="2_yfu46"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="5_c2hfo"]
 
-[node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node")]
+[sub_resource type="LabelSettings" id="LabelSettings_yfu46"]
+font_size = 88
+
+[node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node", "combat_timer")]
 script = ExtResource("1_pc1ni")
 encounter = ExtResource("2_yfu46")
 step_size = 150
 next_scene_button_node = NodePath("NextSceneButton")
+combat_timer = NodePath("Timer")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
 
@@ -20,3 +24,19 @@ offset_bottom = 481.0
 text = "Go to shop
 "
 transition_scene_file_path = "res://Scenes/ShopScene.tscn"
+
+[node name="Timer" type="Timer" parent="." unique_id=1449441377]
+wait_time = 0.6
+
+[node name="TimerText" type="Label" parent="Timer" unique_id=1323616315]
+visible = false
+offset_left = -156.0
+offset_top = -507.0
+offset_right = 143.0
+offset_bottom = -386.0
+text = "00"
+label_settings = SubResource("LabelSettings_yfu46")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_combat_timer_timeout"]

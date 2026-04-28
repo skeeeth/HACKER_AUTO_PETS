@@ -23,6 +23,7 @@ var enemy_unit_data : Array[UnitData]
 ## This variable is for spacing the units
 @export var step_size : int
 @export var next_scene_button_node : Button
+@export var combat_timer : Timer
 
 var player_won : bool = false
 var enemy_won : bool = false
@@ -41,7 +42,7 @@ var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
 func _ready() -> void:
-	#next_scene_button_node.visible = false
+	next_scene_button_node.visible = false
 	encounter = Gamestate.get_turn_encounter()
 	enemy_unit_data = encounter.unit_data
 	# should load from shop phase/encounter list but export works
@@ -56,6 +57,13 @@ func _ready() -> void:
 	
 	#combat_start.emit()
 	_arrange_units()
+	
+	combat_timer.start()
+
+func _process(delta: float) -> void:
+	#$Timer/TimerText.text = str(combat_timer.time_left)
+	pass
+
 
 func get_all_units() -> Array[SimUnit]:
 	var all_units:Array[SimUnit] = player_queue.duplicate()
@@ -91,15 +99,24 @@ func _arrange_units():
 
 ## This function is called when the player presses the spacebar button.
 ## This goes through the battle phases.
-func _input(event: InputEvent) -> void:
+#func _input(event: InputEvent) -> void:
 	#activates when you press the spacebar button
 	#and when there is still players and enemies alive
-	if event.is_action_pressed("ui_accept"):
-		if combat_over == false:
+	#if event.is_action_pressed("ui_accept"):
+		#if combat_over == false:
 			#phase_action()
-			advance_step() #DEBUG hotkey
-		else:
-			print("Combat has stopped already")
+			#advance_step() #DEBUG hotkey
+		#else:
+			#print("Combat has stopped already")
+
+func _on_combat_timer_timeout() -> void:
+	if combat_over == false:
+		#phase_action()
+		advance_step() #DEBUG hotkey
+		combat_timer.start()
+	else:
+		combat_timer.stop()
+		print("Combat has stopped already")
 
 ## This function sets the current battle phase based on the phase number
 func connect_number_to_phase():
@@ -193,21 +210,22 @@ func cleanup():
 		player_queue.erase(dying_unit)
 		enemy_queue.erase(dying_unit)
 		
-		#maybe change this logic a bit to diff Win/Loss/Draw
-		if player_queue.size() == 0 and enemy_queue.size() != 0:
-			enemy_won = true
-			Gamestate.lose_life()
-			end_combat()
-		elif player_queue.size() != 0 and enemy_queue.size() == 0:
-			player_won = true
-			end_combat()
-		elif player_queue.size() == 0 and enemy_queue.size() == 0:
-			end_combat()
 		dying_unit.queue_free()
 	
 	_arrange_units()
 	dying_units.clear()
 	
+	#maybe change this logic a bit to diff Win/Loss/Draw
+	if player_queue.size() == 0 and enemy_queue.size() != 0:
+		enemy_won = true
+		Gamestate.lose_life()
+		end_combat()
+	elif player_queue.size() != 0 and enemy_queue.size() == 0:
+		player_won = true
+		end_combat()
+	elif player_queue.size() == 0 and enemy_queue.size() == 0:
+		end_combat()
+
 func trigger_effect(effect:Effect):
 	effect_stack.append(effect)
 
