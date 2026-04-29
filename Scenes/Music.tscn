@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bmxmmcm25i66m"]
+[gd_scene format=3 uid="uid://bmil0bci7vjh0"]
 
 [ext_resource type="Script" uid="uid://83in6d3daww" path="res://Scripts/Music.gd" id="1_fghhr"]
 [ext_resource type="AudioStream" uid="uid://dfyvcxveurrbs" path="res://Assets/Music/Shop Theme V1.wav" id="2_p1bea"]

@@ -5,12 +5,13 @@
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="3_je6ka"]
 [ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_1qm6p"]
 [ext_resource type="Script" uid="uid://dxx7fw30vqxw2" path="res://Scripts/shop_purchase_button.gd" id="6_3qq02"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="7_1itlx"]
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="8_1itlx"]
 [ext_resource type="Script" uid="uid://wivf5kctu05d" path="res://Scripts/ShopManager.gd" id="9_03ylq"]
-[ext_resource type="Script" uid="uid://b2eyvdg5emr6k" path="res://Scripts/test_apple_button.gd" id="10_k8c1k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
 font_size = 12
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_medpt"]
 font_size = 31
@@ -19,6 +20,7 @@ font_size = 31
 font_size = 26
 
 [node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "unit_holder", "effect_manager")]
+visible = false
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
 purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("8_1itlx"), ExtResource("5_1qm6p")])
@@ -50,6 +52,7 @@ offset_left = -208.0
 offset_top = 415.0
 offset_right = -106.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -60,6 +63,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 102.0
 offset_bottom = 42.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
@@ -70,6 +74,7 @@ offset_left = -59.0
 offset_top = 415.0
 offset_right = 43.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -80,6 +85,7 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 102.0
 offset_bottom = 42.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
@@ -90,6 +96,7 @@ offset_left = 100.0
 offset_top = 415.0
 offset_right = 202.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -99,6 +106,7 @@ layout_mode = 0
 offset_left = 1.0
 offset_right = 102.0
 offset_bottom = 41.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
@@ -109,22 +117,15 @@ offset_left = 786.0
 offset_top = 432.0
 offset_right = 908.0
 offset_bottom = 497.0
-text = "Go to Combat"
-
-[node name="Test Apple Button" type="Button" parent="Buttons" unique_id=770641714 node_paths=PackedStringArray("shop")]
-offset_left = -112.0
-offset_top = 296.0
-offset_right = 113.0
-offset_bottom = 327.0
-text = "Give index 1 Permanent 1+1"
-script = ExtResource("10_k8c1k")
-shop = NodePath("../..")
+theme = ExtResource("7_1itlx")
+text = "Launch Virus"
 
 [node name="RerollButton" type="Button" parent="Buttons" unique_id=1180264985]
 offset_left = -926.0
 offset_top = 429.0
 offset_right = -804.0
 offset_bottom = 494.0
+theme = ExtResource("7_1itlx")
 text = "Reroll"
 
 [node name="Texts" type="Node" parent="." unique_id=701841042]
@@ -180,5 +181,4 @@ layout_mode = 2
 [connection signal="pressed" from="Buttons/PurchaseUnitButton2" to="Buttons/PurchaseUnitButton2" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton3" to="Buttons/PurchaseUnitButton3" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/CombatSceneButton" to="." method="_go_to_combat_scene"]
-[connection signal="pressed" from="Buttons/Test Apple Button" to="Buttons/Test Apple Button" method="_on_pressed"]
 [connection signal="pressed" from="Buttons/RerollButton" to="." method="_reroll"]
