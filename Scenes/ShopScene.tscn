@@ -166,6 +166,16 @@ label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1913499572]
+offset_left = -910.0
+offset_top = 39.0
+offset_right = -782.0
+offset_bottom = 316.0
+
+[node name="FoodContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=1867670123]
+unique_name_in_owner = true
+layout_mode = 2
+
 [connection signal="pressed" from="Buttons/PurchaseUnitButton1" to="Buttons/PurchaseUnitButton1" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton2" to="Buttons/PurchaseUnitButton2" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton3" to="Buttons/PurchaseUnitButton3" method="_on_button_pressed"]

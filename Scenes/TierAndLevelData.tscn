@@ -20,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
 [ext_resource type="Resource" uid="uid://c3i3rupd05c6" path="res://Resources/Units/Vitruvius.tres" id="18_mxa0m"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
+[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="21_aud3e"]
+[ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Apple.tres" id="22_xxyny"]
 
 [sub_resource type="Resource" id="Resource_fqv3h"]
 script = ExtResource("2_mew4d")
@@ -78,7 +80,22 @@ script = ExtResource("16_vxcpi")
 unit_data = Array[ExtResource("3_gvkr2")]([SubResource("Resource_6f83a"), SubResource("Resource_1sr8e"), SubResource("Resource_cucxj")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
+[sub_resource type="Resource" id="Resource_qji3b"]
+script = ExtResource("21_aud3e")
+type = 1
+magnitude = 1
+display_string = ">"
+metadata/_custom_type_script = "uid://c11s6yam75hw8"
+
+[sub_resource type="Resource" id="Resource_fyhii"]
+script = ExtResource("21_aud3e")
+type = 1
+magnitude = -1
+display_string = "<"
+metadata/_custom_type_script = "uid://c11s6yam75hw8"
+
 [node name="Node" type="Node" unique_id=239818472]
 script = ExtResource("1_n5s8k")
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
 encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
+food_sequence = Array[ExtResource("21_aud3e")]([ExtResource("22_xxyny"), SubResource("Resource_qji3b"), SubResource("Resource_fyhii")])

@@ -14,6 +14,7 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var turn_text_node : Label
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
+var food_pool:Array[FoodData]
 
 @onready var combat_scene_button: Button = $Buttons/CombatSceneButton
 
@@ -41,6 +42,9 @@ func _ready() -> void:
 	purchasable_units.clear()
 	purchasable_units = Gamestate.purchaseable_units
 	_set_buttons()
+	
+	food_pool = Gamestate.food_pool
+	create_food()
 	
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
@@ -76,6 +80,10 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 
+func create_food():
+	var new_food = Food.create(food_pool.pick_random())
+	new_food.shop = self
+	%FoodContainer.add_child(new_food)
 
 func _set_coin_text() -> void:
 	coin_text_node.text = base_coin_text + str(coins)
@@ -121,6 +129,9 @@ func _reroll() -> void:
 	if coins != 0:
 		reduce_coin(1)
 		_set_buttons()
+		for f in %FoodContainer.get_children():
+			f.queue_free()
+		create_food()
 
 func _set_buttons() -> void:
 

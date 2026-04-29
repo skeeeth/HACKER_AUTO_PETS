@@ -85,3 +85,6 @@ func _roll_text(label:Label,previous:int,next:int):
 	
 	var roll_text = self.create_tween()
 	roll_text.tween_property(label,"text",str(next),duration).set_ease(Tween.EASE_IN_OUT)
+
+func on_effect_shifted():
+	shift_label.text = "%+d" % effect.shift

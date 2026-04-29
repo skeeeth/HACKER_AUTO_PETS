@@ -113,6 +113,16 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var source_object = data["source"]
 	if source_object is CombatUnitControl:
 		source_object.dress(unit_data)
-	
-	dress(data["data"]) #data["data"] is fucked up naming what am i doing
+		dress(data["data"]) #data["data"] is fucked up naming what am i doing
 						#	^ok but the issue is data being plural and singluar
+	elif source_object is Food:
+		if source_object.try_purchase():
+			accept_food(data["data"])
+
+func accept_food(food_data:FoodData):
+	match food_data.type:
+		FoodData.food_types.SHIFT:
+			shift += food_data.magnitude
+		FoodData.food_types.GIVE:
+			attack += food_data.magnitude
+			health += food_data.magnitude #+ food mod
