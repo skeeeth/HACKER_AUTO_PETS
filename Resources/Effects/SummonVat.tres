@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_ncghp"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_382he"]
 [ext_resource type="Texture2D" uid="uid://blli6cuvb1tq1" path="res://Assets/Placeholder Sprites/7.png" id="2_hsoco"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_lw0tr"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_hsoco"]
 [ext_resource type="Resource" uid="uid://b6cyk70fjva25" path="res://Resources/Effects/AcidStatus.tres" id="4_lw0tr"]
 
@@ -46,6 +47,7 @@ script = ExtResource("1_ncghp")
 name = "Summon Vat"
 effect_description = "Summon a 0/1 Acid Vat"
 sprite = ExtResource("2_hsoco")
+sound_effect = ExtResource("2_lw0tr")
 trigger_state = 1
 effect_type = 2
 mag_mod = 1

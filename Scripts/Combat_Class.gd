@@ -60,6 +60,7 @@ func dress(data:UnitData):
 	sprite.texture = data.effect.sprite
 	effect.data = data.effect
 	effect.holder = self
+	effect.sound_effect = data.effect.sound_effect
 	shift = data.shift
 	effect.shift = shift
 
@@ -68,6 +69,8 @@ func take_damage(amount:int, from_attack:bool = false):
 	var start = health
 	health -= amount
 	var end = health
+	
+	SoundManager.play_sound_from_path("res://Assets/Sound Effects/Fireball.mp3")
 	
 	##actual change in hp may be different than queued damage due to clamp
 	## also dont call hurt on 0 damage effects, 

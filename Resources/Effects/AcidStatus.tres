@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_m8kxc"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_fnx2l"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_n4eym"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_n4eym"]
 
 [sub_resource type="Resource" id="Resource_m8kxc"]
@@ -12,6 +13,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 script = ExtResource("1_m8kxc")
 name = "Acid Status"
 effect_description = "Deal 1 to self"
+sound_effect = ExtResource("2_n4eym")
 trigger_state = 2
 magnitude = 1
 targets = Array[ExtResource("3_n4eym")]([SubResource("Resource_m8kxc")])

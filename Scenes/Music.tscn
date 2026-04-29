@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://doux1p7skwhaa" path="res://Assets/Music/Battle Theme V1.wav" id="3_0chwm"]
 [ext_resource type="AudioStream" uid="uid://weiljju8vrk4" path="res://Assets/Music/Boot Up.wav" id="4_0chwm"]
 
-[node name="Music" type="Node" unique_id=958484053]
+[node name="MusicManager" type="Node" unique_id=958484053]
 script = ExtResource("1_fghhr")
 
 [node name="ShopTrack" type="AudioStreamPlayer" parent="." unique_id=505831142]

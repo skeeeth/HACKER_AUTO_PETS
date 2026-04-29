@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://mlo62bw7m14u"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_45npy"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_aucn7"]
 [ext_resource type="Texture2D" uid="uid://b072t3dnyjedx" path="res://Assets/Placeholder Sprites/9.png" id="2_sqm03"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_yf2ee"]
 
@@ -14,6 +15,7 @@ script = ExtResource("1_45npy")
 name = "Camel"
 effect_description = "Buff unit behind"
 sprite = ExtResource("2_sqm03")
+sound_effect = ExtResource("2_aucn7")
 trigger_state = 3
 effect_type = 1
 magnitude = 1

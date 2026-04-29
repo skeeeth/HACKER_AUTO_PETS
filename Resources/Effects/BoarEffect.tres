@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://d3a7yfgc635g1"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_uyyu5"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_u8pdf"]
 [ext_resource type="Texture2D" uid="uid://cnfjtsr6yjnc2" path="res://Assets/Placeholder Sprites/16.png" id="2_uyyu5"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_rpakn"]
 
@@ -13,6 +14,7 @@ script = ExtResource("1_uyyu5")
 name = "Boar"
 effect_description = "Give Self 4/2 before attack"
 sprite = ExtResource("2_uyyu5")
+sound_effect = ExtResource("2_u8pdf")
 trigger_state = 4
 effect_type = 1
 magnitude = 4
