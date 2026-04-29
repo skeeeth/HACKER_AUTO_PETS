@@ -6,7 +6,7 @@ enum TriggerStates {BATTLE_START, FAINT, TURN_START,
 		SHOP_START, SHOP_END, SUPER_TRIGGERED}
 
 enum EffectTypes {DAMAGE, GIVE, SUMMON, APPLY, SIGNAL, SHIFT, STOCK}
-enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
+enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM, SHIFT}
 #enum TargetCodes {S,O,A}
 
 @export_group("Identity")

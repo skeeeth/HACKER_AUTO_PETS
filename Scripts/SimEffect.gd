@@ -6,7 +6,10 @@ signal resolved
 signal shifted
 
 var data : EffectData
-var shift : int = 0
+var shift : int = 0:
+	set(v):
+		shift = v
+		shifted.emit()
 var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
@@ -270,6 +273,8 @@ func get_magnitude() -> int:
 			return holder.attack #could use mag_mod as a coeffecient here 
 		EffectData.MagnitudeTypes.HEALTH:
 			return holder.health
+		EffectData.MagnitudeTypes.SHIFT:
+			return shift
 		EffectData.MagnitudeTypes.CUSTOM:
 			##hmmmmmm idk about this
 			

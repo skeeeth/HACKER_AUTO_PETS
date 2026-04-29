@@ -39,17 +39,17 @@ var health : int:
 var shift:int = 0:
 	set(v):
 		shift = v
-		var shift_string:String = ""
-		var shift_character:String = ""
-		if shift < 0:
-			shift_character = "<"
-		else:
-			shift_character = ">"
+		#var shift_string:String = ""
+		#var shift_character:String = ""
+		#if shift < 0:
+			#shift_character = "<"
+		#else:
+			#shift_character = ">"
+		#
+		#for i in range(abs(shift)):
+			#shift_string += shift_character
 		
-		for i in range(abs(shift)):
-			shift_string += shift_character
-		
-		shift_label.text = shift_string
+		shift_label.text = "%+d" % shift #shift_string
 
 
 ## This sets up the unit data for the combat unit
@@ -61,6 +61,7 @@ func dress(data:UnitData):
 	effect.data = data.effect
 	effect.holder = self
 	shift = data.shift
+	effect.shift = shift
 
 ##calls hurt signal, different than setting hp
 func take_damage(amount:int, from_attack:bool = false):
@@ -101,4 +102,5 @@ func _roll_text(label:Label,previous:int,next:int):
 	roll_text.tween_property(label,"text",str(next),duration).set_ease(Tween.EASE_IN_OUT)
 
 func on_effect_shifted():
-	shift_label.text = "%+d" % effect.shift
+	shift = effect.shift
+	#shift_label.text = "%+d" % effect.shift
