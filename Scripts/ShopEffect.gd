@@ -31,7 +31,7 @@ func subscribe(manager:ShopEffectManager):
 			new_effect.holder = holder
 			new_effect.data = data.subresource
 			new_effect.shop_manager = shop_manager
-			triggered.connect(new_effect.trigger) #syncs
+			resolved.connect(new_effect.trigger) #syncs
 			add_sibling(new_effect)
 
 func trigger():
@@ -46,10 +46,12 @@ func set_targets():
 		var x_spacing = 150 #shop_manager.shop_main.unit_holder.theme.get_constant("separation")
 		#x_spacing = holder.size.x
 		var absolute_index = Effect.get_index_from_target(t,true,my_index,holder.shift)
-		var indicator = Indicator.create(data.effect_type,absolute_index,
-				x_spacing,holder.size.x,+x_spacing)
+		var indicator = Indicator.create(data, absolute_index,
+				x_spacing, holder.size.x, x_spacing)
 		
-		shop_manager.add_child(indicator)
+		shop_manager.shop_main.add_child.call_deferred(indicator)
+		indicator.drop()
+		indicator.tree_exiting.connect(resolved.emit)
 		
 		var i = 5 - absolute_index
 		if i < 0 or i >= 5:
@@ -81,4 +83,4 @@ func resolve():
 			EffectData.EffectTypes.STOCK:
 				pass
 				
-	resolved.emit()
+	#resolved.emit()

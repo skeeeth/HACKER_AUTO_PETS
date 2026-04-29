@@ -15,6 +15,8 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
 
+@onready var combat_scene_button: Button = $Buttons/CombatSceneButton
+
 var base_coin_text : String
 var base_life_text : String
 var base_turn_text : String
@@ -105,6 +107,8 @@ func increase_coin(sell_price : int) -> void:
 
 func _go_to_combat_scene() -> void:
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
+		effect_manager.end_combat()
+		await effect_manager.ending_resolved
 		save_stats_to_data()
 		get_tree().change_scene_to_file(combat_scene_file_path)
 	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:

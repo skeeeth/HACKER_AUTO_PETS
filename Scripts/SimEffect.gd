@@ -181,10 +181,10 @@ static func get_index_from_target(t:Target,is_player_side:bool,my_index:int,with
 ##sets target_units_array
 func try_target_index(target_index:int) ->  void:
 	
-	var indicator_:Indicator = Indicator.create(data.effect_type, target_index,
+	var indicator_:Indicator = Indicator.create(data, target_index,
 			manager.step_size, holder.sprite.size.x)
 	
-	resolved.connect(indicator_.queue_free)
+	resolved.connect(indicator_.drop)
 	manager.add_child(indicator_)
 	
 	var target_queue:Array

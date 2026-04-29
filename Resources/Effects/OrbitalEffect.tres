@@ -16,7 +16,7 @@ name = "Orbital Self Shift"
 effect_description = "Orbital shift's self after each trigger"
 trigger_state = 9
 effect_type = 5
-magnitude = 1
+magnitude = -1
 targets = Array[ExtResource("3_k215e")]([SubResource("Resource_3fs5u")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"
 
@@ -31,7 +31,7 @@ script = ExtResource("1_gnjk5")
 name = "Orbital"
 effect_description = "Shop Start: Give Frontmost Position 1/1, then shift self -1"
 sprite = ExtResource("2_k215e")
-trigger_state = 7
+trigger_state = 8
 effect_type = 1
 magnitude = 1
 subresource = SubResource("Resource_xno7k")

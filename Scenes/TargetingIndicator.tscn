@@ -2,24 +2,47 @@
 
 [ext_resource type="Script" uid="uid://dy1hq3kj5cw82" path="res://Scripts/targeting_indicator.gd" id="1_dpvq5"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_dpvq5"]
+font_size = 64
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8vbvw"]
 load_path = "res://.godot/imported/Dithererd Triangle.png-144500e56b7e8202c01a34e4701dacec.ctex"
 
-[node name="Node2D" type="VBoxContainer" unique_id=184819710]
+[node name="Node2D" type="VBoxContainer" unique_id=184819710 node_paths=PackedStringArray("center_label", "attack_label", "health_label", "stat_container")]
+z_index = 6
 offset_right = 38.0
 offset_bottom = 61.0
 script = ExtResource("1_dpvq5")
+center_label = NodePath("Center")
+attack_label = NodePath("HBoxContainer/Left")
+health_label = NodePath("HBoxContainer/Right")
+stat_container = NodePath("HBoxContainer")
+
+[node name="Icon" type="Label" parent="." unique_id=627492573]
+visible = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_dpvq5")
+horizontal_alignment = 1
+
+[node name="Center" type="Label" parent="." unique_id=1576183102]
+visible = false
+layout_mode = 2
+text = "9"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1823555399]
+visible = false
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=2046911152]
+[node name="Left" type="Label" parent="HBoxContainer" unique_id=2046911152]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "1"
 
-[node name="Label2" type="Label" parent="HBoxContainer" unique_id=1882536349]
+[node name="Right" type="Label" parent="HBoxContainer" unique_id=1882536349]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "1"
 
 [node name="Sprite2D" type="TextureRect" parent="." unique_id=668422581]
 texture_filter = 1
