@@ -60,6 +60,7 @@ func dress(data:UnitData):
 	sprite.texture = data.effect.sprite
 	effect.data = data.effect
 	effect.holder = self
+	effect.sound_effect = data.effect.sound_effect
 	shift = data.shift
 	effect.shift = shift
 

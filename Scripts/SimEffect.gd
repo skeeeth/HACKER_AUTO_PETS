@@ -13,6 +13,7 @@ var shift : int = 0:
 var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
+var sound_effect : AudioStream
 
 var target_units:Array[SimUnit]
 #var elbow_one:Vector2 = Vector2.ZERO
@@ -67,6 +68,10 @@ func trigger():
 	holder.position.y -= 40 #bump unit up to show its active
 
 func resolve():
+	
+	#Play sound effect
+	SoundManager.play_sound(sound_effect)
+	
 	var animation = self.create_tween()
 	animation.set_parallel()
 	

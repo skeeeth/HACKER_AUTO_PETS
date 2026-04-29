@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://cavdj700pb1wi"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_f5x7p"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_cv3sp"]
 [ext_resource type="Texture2D" uid="uid://d1vfrumh6nqu8" path="res://Assets/Placeholder Sprites/1.png" id="2_f5x7p"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_o260o"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_cv3sp"]
@@ -19,6 +20,7 @@ script = ExtResource("1_f5x7p")
 name = "Trojan"
 effect_description = "Summon a Warrior on death"
 sprite = ExtResource("2_f5x7p")
+sound_effect = ExtResource("2_cv3sp")
 trigger_state = 1
 effect_type = 2
 magnitude = 4

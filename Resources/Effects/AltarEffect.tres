@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_2bbqv"]
 [ext_resource type="Texture2D" uid="uid://me0u1mgfdndn" path="res://Assets/Placeholder Sprites/14.png" id="2_2bbqv"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_hdjjo"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_1wei3"]
 
 [sub_resource type="Resource" id="Resource_2bbqv"]
@@ -15,6 +16,7 @@ script = ExtResource("1_2bbqv")
 name = "Altar Effect"
 effect_description = "Give Third Position 3/3"
 sprite = ExtResource("2_2bbqv")
+sound_effect = ExtResource("2_hdjjo")
 trigger_state = 2
 effect_type = 1
 magnitude = 2

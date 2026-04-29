@@ -13,6 +13,7 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM, SHIFT}
 @export var name : String
 @export var effect_description : String
 @export var sprite : Texture2D = preload("res://icon.svg")
+@export var sound_effect : AudioStream
 @export var trigger_state : TriggerStates
 @export var effect_type : EffectTypes
 

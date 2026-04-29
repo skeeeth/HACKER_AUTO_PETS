@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://dtftyovtanfad"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_qphde"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_0ovpp"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_776mi"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_u0hfi"]
 
@@ -11,6 +12,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_qphde")
 name = "Start 2/2"
+sound_effect = ExtResource("2_0ovpp")
 effect_type = 1
 magnitude = 2
 targets = Array[ExtResource("2_u0hfi")]([SubResource("Resource_u0hfi")])
