@@ -10,10 +10,15 @@ class_name ShopEffect
 
 signal triggered
 signal resolved
+signal holder_changed(to:CombatUnitControl)
 
 var shop_manager:ShopEffectManager
 var data:EffectData
-var holder:CombatUnitControl
+var holder:CombatUnitControl:
+	set(v):
+		holder = v
+		holder_changed.emit(holder)
+
 var targets : Array[CombatUnitControl]
 
 func subscribe(manager:ShopEffectManager):
@@ -31,8 +36,11 @@ func subscribe(manager:ShopEffectManager):
 			new_effect.holder = holder
 			new_effect.data = data.subresource
 			new_effect.shop_manager = shop_manager
+			var follow_holder = func fh(h:CombatUnitControl):
+				new_effect.holder = h
+			holder_changed.connect(follow_holder)
 			resolved.connect(new_effect.trigger) #syncs
-			add_sibling(new_effect)
+			add_child(new_effect) #allowed to exist after holder slot is sold
 
 func trigger():
 	shop_manager.effect_stack.append(self)
@@ -47,7 +55,7 @@ func set_targets():
 		#x_spacing = holder.size.x
 		var absolute_index = Effect.get_index_from_target(t,true,my_index,holder.shift)
 		var indicator = Indicator.create(data, absolute_index,
-				x_spacing, holder.size.x, x_spacing)
+				x_spacing, holder.sprite.size.x, x_spacing)
 		
 		shop_manager.shop_main.add_child.call_deferred(indicator)
 		indicator.drop()

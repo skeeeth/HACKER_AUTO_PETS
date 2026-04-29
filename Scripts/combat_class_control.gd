@@ -112,9 +112,17 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var source_object = data["source"]
 	if source_object is CombatUnitControl:
+		effect_node.reparent(source_object)
+		source_object.effect_node.reparent(self)
+		
+		var original_node = effect_node
+		effect_node = source_object.effect_node
+		source_object.effect_node = original_node
+		
 		source_object.dress(unit_data)
 		dress(data["data"]) #data["data"] is fucked up naming what am i doing
 						#	^ok but the issue is data being plural and singluar
+		
 	elif source_object is Food:
 		if source_object.try_purchase():
 			accept_food(data["data"])
