@@ -42,6 +42,8 @@ var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
 func _ready() -> void:
+	Music.combat_entered()
+	
 	next_scene_button_node.visible = false
 	encounter = Gamestate.get_turn_encounter()
 	enemy_unit_data = encounter.unit_data

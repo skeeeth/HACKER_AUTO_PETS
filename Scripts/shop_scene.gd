@@ -48,6 +48,8 @@ func _ready() -> void:
 	
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
+	
+	Music.shop_entered()
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:

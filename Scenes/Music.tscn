@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://bmxmmcm25i66m"]
 
 [ext_resource type="Script" uid="uid://83in6d3daww" path="res://Scripts/Music.gd" id="1_fghhr"]
+[ext_resource type="AudioStream" uid="uid://dfyvcxveurrbs" path="res://Assets/Music/Shop Theme V1.wav" id="2_p1bea"]
+[ext_resource type="AudioStream" uid="uid://doux1p7skwhaa" path="res://Assets/Music/Battle Theme V1.wav" id="3_0chwm"]
+[ext_resource type="AudioStream" uid="uid://weiljju8vrk4" path="res://Assets/Music/Boot Up.wav" id="4_0chwm"]
 
 [node name="Music" type="Node" unique_id=958484053]
 script = ExtResource("1_fghhr")
 
 [node name="ShopTrack" type="AudioStreamPlayer" parent="." unique_id=505831142]
-volume_db = -80.0
+stream = ExtResource("2_p1bea")
+volume_db = 1.0
 
 [node name="CombatTrack" type="AudioStreamPlayer" parent="." unique_id=1795525845]
-volume_db = -80.0
+stream = ExtResource("3_0chwm")
+volume_db = 1.0
+
+[node name="TitleTrack" type="AudioStreamPlayer" parent="." unique_id=2040928936]
+stream = ExtResource("4_0chwm")
+volume_db = 1.0
