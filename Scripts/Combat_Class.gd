@@ -70,8 +70,6 @@ func take_damage(amount:int, from_attack:bool = false):
 	health -= amount
 	var end = health
 	
-	SoundManager.play_sound_from_path("res://Assets/Sound Effects/Fireball.mp3")
-	
 	##actual change in hp may be different than queued damage due to clamp
 	## also dont call hurt on 0 damage effects, 
 	## but do call hurt on any attack, to prevent softlock

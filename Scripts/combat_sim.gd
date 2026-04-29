@@ -190,6 +190,9 @@ func hit():
 				starting_position + max_translation,0.03).set_delay(0.1)
 		attack_tween.parallel().tween_property(unit,"rotation",max_rotation,0.05)
 		
+		attack_tween.tween_callback(SoundManager.play_sound_from_path.bind("res://Assets/Sound Effects/Fireball.mp3"))
+		
+		
 		#recovery
 		attack_tween.tween_property(unit,"position:x",
 				starting_position,0.2).set_delay(0.1).set_ease(Tween.EASE_OUT)
