@@ -40,7 +40,7 @@ func subscribe(manager:ShopEffectManager):
 				new_effect.holder = h
 			holder_changed.connect(follow_holder)
 			resolved.connect(new_effect.trigger) #syncs
-			add_child(new_effect) #allowed to exist after holder slot is sold
+			add_child(new_effect) #move with parent
 
 func trigger():
 	shop_manager.effect_stack.append(self)
