@@ -36,7 +36,20 @@ var health : int:
 			if !dead:
 				die()
 
-var shift:int = 0
+var shift:int = 0:
+	set(v):
+		shift = v
+		var shift_string:String = ""
+		var shift_character:String = ""
+		if shift < 0:
+			shift_character = "<"
+		else:
+			shift_character = ">"
+		
+		for i in range(abs(shift)):
+			shift_string += shift_character
+		
+		shift_label.text = shift_string
 
 
 ## This sets up the unit data for the combat unit
@@ -47,6 +60,7 @@ func dress(data:UnitData):
 	sprite.texture = data.effect.sprite
 	effect.data = data.effect
 	effect.holder = self
+	shift = data.shift
 
 ##calls hurt signal, different than setting hp
 func take_damage(amount:int, from_attack:bool = false):

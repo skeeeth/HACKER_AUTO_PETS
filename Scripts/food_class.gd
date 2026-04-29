@@ -14,10 +14,10 @@ static func create(from_data:FoodData) -> Food:
 	return new_food
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
-	#var preview_sprite = TextureRect.new()
+	var preview_sprite = create(food_data)
 	#preview_sprite.texture = sprite.texture
 	#preview_sprite.size = sprite.size
-	#set_drag_preview(preview_sprite)
+	set_drag_preview(preview_sprite)
 	
 	var drop_data:Dictionary = {
 		"data" = food_data,

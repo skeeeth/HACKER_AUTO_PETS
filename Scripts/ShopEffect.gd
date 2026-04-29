@@ -81,6 +81,21 @@ func resolve():
 			EffectData.EffectTypes.SHIFT:
 				target.shift += data.magnitude #modifer???
 			EffectData.EffectTypes.STOCK:
-				pass
+				resolve_stock()
 				
 	#resolved.emit()
+
+func resolve_stock():
+	assert(data.subresource)
+	var new_food_data = FoodData.new()
+	match data.subresource.effect_type:
+		EffectData.EffectTypes.SHIFT:
+			new_food_data.type = FoodData.food_types.SHIFT
+			new_food_data.magnitude = data.subresource.magnitude
+			new_food_data.display_string = ">>"
+			
+		##TODO GIVE, though nothing does that right now
+	
+	new_food_data.price = data.subresource.mag_mod
+	
+	shop_manager.shop_main.create_food(new_food_data)

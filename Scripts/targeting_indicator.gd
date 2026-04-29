@@ -31,8 +31,8 @@ static func create(data:EffectData, index:int,
 	
 func drop():
 	var drop = create_tween().bind_node(self)
-	drop.tween_property(self,"position:y",0,0.2)
-	drop.tween_callback(queue_free)
+	#drop.tween_property(self,"position:y",0,0.2)
+	drop.tween_callback(queue_free).set_delay(0.3)
 	
 
 func dress(data:EffectData):

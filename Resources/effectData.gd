@@ -27,7 +27,7 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 @export var mag_mod: int = 0
 
 @export_subgroup("Subeffect")
-enum SUBEFFECT_TYPES {SUMMON, STATUS, EXTRA_EFFECT}
+enum SUBEFFECT_TYPES {SUMMON, STATUS, EXTRA_EFFECT, FOOD}
 @export var subresource:EffectData
 @export var sub_type:SUBEFFECT_TYPES
 

@@ -44,7 +44,7 @@ func _ready() -> void:
 	_set_buttons()
 	
 	food_pool = Gamestate.food_pool
-	create_food()
+	create_food(food_pool.pick_random())
 	
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
@@ -80,8 +80,8 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 
-func create_food():
-	var new_food = Food.create(food_pool.pick_random())
+func create_food(food_data:FoodData):
+	var new_food = Food.create(food_data)
 	new_food.shop = self
 	%FoodContainer.add_child(new_food)
 
@@ -131,7 +131,7 @@ func _reroll() -> void:
 		_set_buttons()
 		for f in %FoodContainer.get_children():
 			f.queue_free()
-		create_food()
+		create_food(food_pool.pick_random())
 
 func _set_buttons() -> void:
 

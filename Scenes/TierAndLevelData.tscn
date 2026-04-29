@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://c3i3rupd05c6" path="res://Resources/Units/Vitruvius.tres" id="18_mxa0m"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
 [ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="21_aud3e"]
-[ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Apple.tres" id="22_xxyny"]
+[ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Resources/Food/Apple.tres" id="22_xxyny"]
 
 [sub_resource type="Resource" id="Resource_fqv3h"]
 script = ExtResource("2_mew4d")
