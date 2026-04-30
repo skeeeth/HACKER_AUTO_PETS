@@ -25,6 +25,9 @@ var enemy_unit_data : Array[UnitData]
 @export var next_scene_button_node : Button
 @export var combat_timer : Timer
 
+@export var lose_scene_path : String
+@export var win_scene_path : String
+
 var player_won : bool = false
 var enemy_won : bool = false
 var combat_over : bool = false
@@ -224,9 +227,15 @@ func cleanup():
 	if player_queue.size() == 0 and enemy_queue.size() != 0:
 		enemy_won = true
 		Gamestate.lose_life()
-		end_combat()
+		
+		if Gamestate.lives == 0:
+			get_tree().change_scene_to_file(lose_scene_path)
+			MusicManager.results_screen_entered()
+		else:
+			end_combat()
 	elif player_queue.size() != 0 and enemy_queue.size() == 0:
 		player_won = true
+		Gamestate.log_win()
 		end_combat()
 	elif player_queue.size() == 0 and enemy_queue.size() == 0:
 		end_combat()
@@ -238,5 +247,6 @@ func trigger_effect(effect:Effect):
 func end_combat():
 	combat_over = true
 	Gamestate.end_turn()
+
 	next_scene_button_node.visible = true
 	print("Combat Over")

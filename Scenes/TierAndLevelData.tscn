@@ -162,6 +162,7 @@ metadata/_custom_type_script = "uid://c11s6yam75hw8"
 
 [node name="Node" type="Node" unique_id=239818472]
 script = ExtResource("1_n5s8k")
+lives = 1
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
 encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
 food_sequence = Array[ExtResource("21_aud3e")]([ExtResource("22_xxyny"), SubResource("Resource_qji3b"), SubResource("Resource_fyhii")])

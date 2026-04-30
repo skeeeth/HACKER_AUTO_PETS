@@ -13,6 +13,8 @@ encounter = ExtResource("2_yfu46")
 step_size = 150
 next_scene_button_node = NodePath("NextSceneButton")
 combat_timer = NodePath("Timer")
+lose_scene_path = "res://Scenes/LoseScene.tscn"
+win_scene_path = "res://Scenes/WinScene.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
 
@@ -39,4 +41,5 @@ label_settings = SubResource("LabelSettings_yfu46")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="NextSceneButton" to="NextSceneButton" method="_change_scene"]
 [connection signal="timeout" from="Timer" to="." method="_on_combat_timer_timeout"]

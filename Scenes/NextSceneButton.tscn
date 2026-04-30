@@ -7,5 +7,3 @@ offset_right = 147.0
 offset_bottom = 94.0
 text = "Text"
 script = ExtResource("1_w5wlv")
-
-[connection signal="pressed" from="." to="." method="_on_pressed"]

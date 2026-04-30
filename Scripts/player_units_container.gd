@@ -28,3 +28,6 @@ func move_unit_in_list(index : int, direction : int) -> bool:
 			return true
 		else:
 			return false
+
+func clear_list():
+	ally_unit_list.clear()
