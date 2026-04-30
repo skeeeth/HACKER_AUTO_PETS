@@ -104,7 +104,7 @@ func create_food(food_data:FoodData):
 
 func create_shop_item(from_data:UnitData):
 	item_list.add_item(from_data.unit_name)
-	shop_data.append(from_data)
+	shop_data.append(from_data.duplicate())
 
 func on_shop_item_activated(index:int):
 	item_list.remove_item(index)

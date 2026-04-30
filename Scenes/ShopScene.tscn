@@ -40,6 +40,7 @@ font_size = 26
 font_color = Color(0, 0, 0, 1)
 
 [node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "unit_holder", "effect_manager", "info_display")]
+texture_filter = 1
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
 purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("8_1itlx"), ExtResource("5_1qm6p")])

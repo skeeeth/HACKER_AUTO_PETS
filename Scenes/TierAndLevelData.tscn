@@ -8,11 +8,13 @@
 [ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_gpyln"]
 [ext_resource type="Resource" uid="uid://c6oxu8so4paxj" path="res://Resources/Units/ACID_BURN.tres" id="6_2x0wx"]
 [ext_resource type="Resource" uid="uid://y0ok33p8i555" path="res://Resources/Units/Lasso.tres" id="7_e4neh"]
+[ext_resource type="Resource" uid="uid://c3i3rupd05c6" path="res://Resources/Units/Vitruvius.tres" id="9_cucxj"]
 [ext_resource type="Resource" uid="uid://cnfp86e7vp4op" path="res://Resources/Units/The Sickness.tres" id="9_qei4y"]
 [ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="10_vxcpi"]
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="11_nwtii"]
 [ext_resource type="Resource" uid="uid://hf5uxrjba5ff" path="res://Resources/Units/Genesis Harmonic.tres" id="12_hy120"]
 [ext_resource type="Resource" uid="uid://bqqtbngaaucge" path="res://Resources/Units/Altar.tres" id="13_08tc8"]
+[ext_resource type="Resource" uid="uid://blg3tch3ikte0" path="res://Resources/Units/Copycat.tres" id="13_53y5s"]
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="14_ddkd5"]
 [ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="15_mxa0m"]
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="16_vxcpi"]
@@ -22,17 +24,17 @@
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="19_53y5s"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
-[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="21_aud3e"]
+[ext_resource type="Script" path="res://Resources/FoodData.gd" id="21_aud3e"]
 [ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Resources/Food/Apple.tres" id="22_xxyny"]
 
 [sub_resource type="Resource" id="Resource_fqv3h"]
 script = ExtResource("2_mew4d")
-units = Array[ExtResource("3_gvkr2")]([ExtResource("4_mnf74"), ExtResource("5_2x0wx"), ExtResource("5_gpyln"), ExtResource("6_2x0wx"), ExtResource("7_e4neh")])
+units = Array[ExtResource("3_gvkr2")]([ExtResource("4_mnf74"), ExtResource("5_2x0wx"), ExtResource("5_gpyln"), ExtResource("6_2x0wx"), ExtResource("7_e4neh"), ExtResource("9_cucxj")])
 metadata/_custom_type_script = "uid://dpyn25ocjuy1w"
 
 [sub_resource type="Resource" id="Resource_aud3e"]
 script = ExtResource("2_mew4d")
-units = Array[ExtResource("3_gvkr2")]([ExtResource("9_qei4y"), ExtResource("10_vxcpi"), ExtResource("11_nwtii")])
+units = Array[ExtResource("3_gvkr2")]([ExtResource("9_qei4y"), ExtResource("10_vxcpi"), ExtResource("11_nwtii"), ExtResource("13_53y5s")])
 metadata/_custom_type_script = "uid://dpyn25ocjuy1w"
 
 [sub_resource type="Resource" id="Resource_xxyny"]
@@ -151,14 +153,12 @@ script = ExtResource("21_aud3e")
 type = 1
 magnitude = 1
 display_string = ">"
-metadata/_custom_type_script = "uid://c11s6yam75hw8"
 
 [sub_resource type="Resource" id="Resource_fyhii"]
 script = ExtResource("21_aud3e")
 type = 1
 magnitude = -1
 display_string = "<"
-metadata/_custom_type_script = "uid://c11s6yam75hw8"
 
 [node name="Node" type="Node" unique_id=239818472]
 script = ExtResource("1_n5s8k")

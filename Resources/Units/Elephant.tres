@@ -6,7 +6,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_uq7y6")
-unit_name = "Elephant"
+unit_name = "Love Hz"
 health = 5
 effect = ExtResource("1_nqgec")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"
