@@ -39,7 +39,7 @@ font_size = 26
 [sub_resource type="LabelSettings" id="LabelSettings_03ylq"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "unit_holder", "effect_manager", "info_display")]
+[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "wins_text_node", "unit_holder", "effect_manager", "info_display")]
 texture_filter = 1
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
@@ -48,6 +48,7 @@ purchase_buttons = [NodePath("Buttons/PurchaseUnitButton1"), NodePath("Buttons/P
 coin_text_node = NodePath("Texts/CoinText")
 life_text_node = NodePath("Texts/LifeText")
 turn_text_node = NodePath("Texts/TurnText")
+wins_text_node = NodePath("Texts/Wins")
 unit_holder = NodePath("PanelContainer/VBoxContainer/UnitHolder")
 effect_manager = NodePath("ShopManager")
 info_display = NodePath("Shop Panel/HBoxContainer/Info Display")
@@ -345,6 +346,13 @@ text = "Each unit costs 3 coins. You can only have 5 units on your team. You nee
 label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Wins" type="Label" parent="Texts" unique_id=96149084]
+offset_left = -101.0
+offset_top = -480.0
+offset_right = -61.0
+offset_bottom = -457.0
+text = "Wins"
 
 [node name="Food Panel" type="PanelContainer" parent="." unique_id=1913499572]
 offset_left = -857.0
