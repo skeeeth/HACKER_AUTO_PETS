@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://dybbobuppfgia"]
+
+[ext_resource type="Texture2D" uid="uid://dxvucdee0kqiu" path="res://Assets/finalSprites/EMC_Inverted.png" id="1_sy6wn"]
+[ext_resource type="Texture2D" uid="uid://bhdmmo6yjf6xu" path="res://Assets/finalSprites/EMC_Inverted_corrupted.png" id="2_k3u1c"]
+[ext_resource type="Texture2D" uid="uid://cc3rwmtntogj3" path="res://Assets/finalSprites/shinesprite1.png" id="3_d7ppd"]
+[ext_resource type="Texture2D" uid="uid://cclxiqlet1gkd" path="res://Assets/finalSprites/shinesprite2.png" id="4_idauy"]
+[ext_resource type="Texture2D" uid="uid://cuahh0rqtkkmb" path="res://Assets/finalSprites/shinesprite3.png" id="5_2glm4"]
+[ext_resource type="Texture2D" uid="uid://cxdcm6bt1lwkl" path="res://Assets/finalSprites/shinesprite4.png" id="6_8tfov"]
+
+[sub_resource type="Animation" id="Animation_lhmue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_sy6wn")]
+}
+
+[sub_resource type="Animation" id="Animation_8pjxk"]
+resource_name = "boot_anim"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 7.6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_sy6wn"), ExtResource("2_k3u1c")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrv2r"]
+_data = {
+&"RESET": SubResource("Animation_lhmue"),
+&"boot_anim": SubResource("Animation_8pjxk")
+}
+
+[sub_resource type="Animation" id="Animation_42mym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_d7ppd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(295, 42)]
+}
+
+[sub_resource type="Animation" id="Animation_aao4e"]
+resource_name = "boot_anim"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6666666, 2.4333334, 3.1, 3.8333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9000001, 1, 1.1000001, 1.2, 1.3000001, 1.4000001, 1.5000001, 1.6000001, 1.7, 1.8, 1.8999999, 2, 2.1, 2.1999998, 2.2999997, 2.4, 2.5, 2.6, 2.7000003, 2.8000002, 2.9000003, 3.0000002, 3.1000001, 3.2, 3.3000004, 3.4000003, 3.5000002, 3.5999997, 3.6999996, 3.7999997, 3.8999996, 3.9999995, 4.0999994, 4.2, 4.2999997, 4.3999996, 4.5000005, 4.6000004, 4.700001, 4.8, 4.9000006, 5, 5.1000004, 5.200001, 5.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd"), ExtResource("4_idauy"), ExtResource("5_2glm4"), ExtResource("6_8tfov"), ExtResource("3_d7ppd")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.3666666, 2.4298332),
+"transitions": PackedFloat32Array(1, 1, 1e-05),
+"update": 0,
+"values": [Vector2(295, 42), Vector2(295, 42), Vector2(361, 167)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsc7y"]
+_data = {
+&"RESET": SubResource("Animation_42mym"),
+&"boot_anim": SubResource("Animation_aao4e")
+}
+
+[node name="BootUpSequence" type="Control" unique_id=1672031196]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2042271494]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1923371279]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sy6wn")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1695279858]
+libraries/ = SubResource("AnimationLibrary_xrv2r")
+autoplay = &"boot_anim"
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=1998453111]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 42.0
+offset_right = 395.0
+offset_bottom = 141.99963
+texture = ExtResource("3_d7ppd")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/TextureRect" unique_id=544999059]
+libraries/ = SubResource("AnimationLibrary_qsc7y")
+autoplay = &"boot_anim"
