@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 PlayerUnitsContainer="*uid://cg035k5ginn54"
 Gamestate="*uid://dvermrmix11go"
-MusicManager="*uid://bmxmmcm25i66m"
-SoundManager="*uid://dj2gwraukc00d"
+MusicManager="*uid://bmil0bci7vjh0"
+SoundManager="*uid://x2rxpidogaq7"
 
 [display]
 
@@ -28,6 +28,14 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[input]
+
+lmb={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [physics]
 

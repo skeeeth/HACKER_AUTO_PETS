@@ -1,6 +1,8 @@
 [gd_resource type="Theme" format=3 uid="uid://dvf4ta26l2lat"]
 
+[ext_resource type="Texture2D" uid="uid://d3lpwcmxh82rs" path="res://Themes/Windows98/textures/panel_container.png" id="1_0yj33"]
 [ext_resource type="FontFile" uid="uid://ctqn2p4elvwm" path="res://Themes/Windows98/font/microsoft_sans_serif.ttf" id="1_vei3r"]
+[ext_resource type="Texture2D" uid="uid://bmbaxhfwh3vpb" path="res://Themes/Windows98/textures/tab.png" id="2_3s8ym"]
 [ext_resource type="Texture2D" uid="uid://bpevspjs57jni" path="res://Themes/Windows98/textures/button_hover.png" id="2_6vv4s"]
 [ext_resource type="Texture2D" uid="uid://clhnqknwxd3k4" path="res://Themes/Windows98/textures/button_normal.png" id="2_ydgmh"]
 [ext_resource type="Texture2D" uid="uid://c0ngose1kkxg4" path="res://Themes/Windows98/textures/button_focus.png" id="3_7ncg0"]
@@ -23,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://qdsjm76ocgay" path="res://Themes/Windows98/textures/tree_arrow.png" id="27_ft3xs"]
 [ext_resource type="Texture2D" uid="uid://bigyukt63hwh4" path="res://Themes/Windows98/textures/tree_arrow_collapse.png" id="28_3ntyq"]
 [ext_resource type="Texture2D" uid="uid://cn4xnyqk7o8as" path="res://Themes/Windows98/textures/window_close.png" id="36_fsj5q"]
+[ext_resource type="Texture2D" uid="uid://b0ngxm0687tes" path="res://Themes/Windows98/textures/window.png" id="36_xy74y"]
 [ext_resource type="Texture2D" uid="uid://cf6gm1t2pd5if" path="res://Themes/Windows98/textures/window_close_hover.png" id="37_0cd8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6akc0"]
@@ -127,6 +130,9 @@ region_rect = Rect2(0, 0, 8, 4)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0nf5a"]
 region_rect = Rect2(0, 0, 8, 4)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yap7w"]
+bg_color = Color(0.11249998, 0.11249998, 0.75, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15vrp"]
 content_margin_left = 6.0
 content_margin_top = 4.0
@@ -181,6 +187,11 @@ content_margin_left = 6.0
 content_margin_top = 6.0
 content_margin_right = 6.0
 content_margin_bottom = 6.0
+texture = ExtResource("1_0yj33")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 region_rect = Rect2(0, 0, 16, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6vw7"]
@@ -224,6 +235,7 @@ content_margin_left = 8.0
 content_margin_top = 4.0
 content_margin_right = 8.0
 content_margin_bottom = 4.0
+texture = ExtResource("2_3s8ym")
 expand_margin_top = 3.0
 expand_margin_bottom = 2.0
 region_rect = Rect2(0, 0, 22, 22)
@@ -298,6 +310,7 @@ content_margin_left = 12.0
 content_margin_top = 12.0
 content_margin_right = 12.0
 content_margin_bottom = 12.0
+texture = ExtResource("36_xy74y")
 expand_margin_top = 28.0
 region_rect = Rect2(0, 0, 480, 48)
 
@@ -397,6 +410,12 @@ HSlider/icons/tick = ExtResource("10_dnrw1")
 HSlider/styles/grabber_area = SubResource("StyleBoxTexture_8hwx6")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_ta27f")
 HSlider/styles/slider = SubResource("StyleBoxTexture_0nf5a")
+ItemList/colors/font_color = Color(0, 0, 0, 1)
+ItemList/font_sizes/font_size = 64
+ItemList/styles/hovered = SubResource("StyleBoxFlat_yap7w")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_yap7w")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_yap7w")
+ItemList/styles/selected = SubResource("StyleBoxFlat_yap7w")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 0)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
