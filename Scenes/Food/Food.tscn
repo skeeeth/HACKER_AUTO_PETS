@@ -1,29 +1,43 @@
 [gd_scene format=3 uid="uid://ct3bbwrecsopt"]
 
 [ext_resource type="Script" uid="uid://cgnwhsw83pt4o" path="res://Scripts/food_class.gd" id="1_1qtg7"]
-[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="2_hw7qn"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="1_tvqpf"]
+[ext_resource type="Script" path="res://Resources/FoodData.gd" id="2_hw7qn"]
 
 [sub_resource type="Resource" id="Resource_tvqpf"]
 script = ExtResource("2_hw7qn")
 type = 1
 magnitude = 1
-metadata/_custom_type_script = "uid://c11s6yam75hw8"
 
-[sub_resource type="LabelSettings" id="LabelSettings_gr0gl"]
-font_size = 64
+[sub_resource type="LabelSettings" id="LabelSettings_tvqpf"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebyin"]
 
 [node name="PanelContainer" type="PanelContainer" unique_id=458909049 node_paths=PackedStringArray("display_label")]
-offset_right = 128.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(0, 96)
+offset_right = 96.0
+offset_bottom = 96.0
+theme = ExtResource("1_tvqpf")
 script = ExtResource("1_1qtg7")
 food_data = SubResource("Resource_tvqpf")
 display_label = NodePath("CenterContainer/Label")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=417428559]
+texture_filter = 1
+clip_contents = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer" unique_id=1391903069]
 layout_mode = 2
 text = "[>>]"
-label_settings = SubResource("LabelSettings_gr0gl")
+label_settings = SubResource("LabelSettings_tvqpf")
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=630866425]
+layout_mode = 2
+size_flags_vertical = 0
+text = "2"
+label_settings = SubResource("LabelSettings_ebyin")
+horizontal_alignment = 2

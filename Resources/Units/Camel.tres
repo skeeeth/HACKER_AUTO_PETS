@@ -6,7 +6,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_8ijy0")
-unit_name = "Camel"
+unit_name = "Tough Guy"
 attack = 3
 health = 3
 effect = ExtResource("1_diqpq")

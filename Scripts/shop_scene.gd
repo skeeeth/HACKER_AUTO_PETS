@@ -12,27 +12,36 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var coin_text_node : Label
 @export var life_text_node : Label
 @export var turn_text_node : Label
+@export var wins_text_node : Label
+
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
+@export var info_display:InfoDisplay
 var food_pool:Array[FoodData]
 
 @onready var combat_scene_button: Button = $Buttons/CombatSceneButton
+@onready var item_list: ItemList = $"Shop Panel/HBoxContainer/ItemList"
+
 
 var base_coin_text : String
 var base_life_text : String
 var base_turn_text : String
+var base_wins_text : String
 
 var player_stack : Array[CombatUnitControl]
 
 var list_index : int = 0
+var shop_data:Array[UnitData]
 
 func _ready() -> void:
 	base_coin_text = coin_text_node.text
 	base_life_text = life_text_node.text
 	base_turn_text = turn_text_node.text
+	base_wins_text = wins_text_node.text
 	
 	life_text_node.text = base_life_text + str(Gamestate.lives)
 	turn_text_node.text = base_turn_text + str(Gamestate.turn)
+	wins_text_node.text = base_wins_text + str(Gamestate.wins) + "/" + str(Gamestate.max_wins)
 	
 	_set_coin_text()
 
@@ -42,6 +51,9 @@ func _ready() -> void:
 	purchasable_units.clear()
 	purchasable_units = Gamestate.purchaseable_units
 	_set_buttons()
+	restock_shop()
+	item_list.item_activated.connect(on_shop_item_activated)
+	item_list.item_clicked.connect(on_shop_item_selected)
 	
 	food_pool = Gamestate.food_pool
 	create_food(food_pool.pick_random())
@@ -60,15 +72,16 @@ func _add_to_stack(data : UnitData) -> void:
 ## for each unit in the PlayerUnitsContainer class
 func _add_all_to_stack() -> void:
 	for data in PlayerUnitsContainer.ally_unit_list:
-		var new_unit : CombatUnitControl
-		new_unit = UNIT_CONTROL_SCENE.instantiate()
-		new_unit.dress(data, list_index)
-		new_unit.effect_node.subscribe(effect_manager)
-		unit_holder.add_child(new_unit)
-		unit_holder.move_child(new_unit,0)
-		player_stack.append(new_unit)
-		list_index += 1
-	list_index = 0
+		_create_unit(data)
+		#var new_unit : CombatUnitControl
+		#new_unit = UNIT_CONTROL_SCENE.instantiate()
+		#new_unit.dress(data, list_index)
+		#new_unit.effect_node.subscribe(effect_manager)
+		#unit_holder.add_child(new_unit)
+		#unit_holder.move_child(new_unit,0)
+		#player_stack.append(new_unit)
+		#list_index += 1
+	#list_index = 0
 
 ## This function creates a new CombatUnit scene 
 ## and spawns it into the level. Then, it sets the data perameter
@@ -77,8 +90,15 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	var new_unit : CombatUnitControl
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
 	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
-	unit_holder.add_child(new_unit)
-	unit_holder.move_child(new_unit, 0)
+	new_unit.clicked.connect(info_display.set_info)
+	for i in range(4,-1,-1):
+		var panel = unit_holder.get_child(i)
+		if panel.get_children().size() == 0:
+			panel.add_child(new_unit)
+			#unit_holder.move_child(panel, 0)
+			break
+	#unit_holder.add_child(new_unit)
+
 	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 
@@ -86,6 +106,24 @@ func create_food(food_data:FoodData):
 	var new_food = Food.create(food_data)
 	new_food.shop = self
 	%FoodContainer.add_child(new_food)
+
+func create_shop_item(from_data:UnitData):
+	item_list.add_item(from_data.unit_name)
+	shop_data.append(from_data.duplicate())
+
+func on_shop_item_activated(index:int):
+	item_list.remove_item(index)
+	purchase_unit(shop_data[index])
+	shop_data.remove_at(index)
+	
+func restock_shop():
+	shop_data.clear()
+	item_list.clear()
+	for i in range(3):
+		create_shop_item(purchasable_units.pick_random())
+
+func on_shop_item_selected(index:int, at_position, _button):
+	info_display.set_info(shop_data[index])
 
 func _set_coin_text() -> void:
 	coin_text_node.text = base_coin_text + str(coins)
@@ -99,7 +137,6 @@ func purchase_unit(unit:UnitData) -> void:
 			PlayerUnitsContainer.add_unit_to_list(unit)
 			_add_to_stack(unit)
 			reduce_coin(unit_cost)
-			
 	else:
 		print("Size full")
 
@@ -131,6 +168,7 @@ func _reroll() -> void:
 	if coins != 0:
 		reduce_coin(1)
 		_set_buttons()
+		restock_shop()
 		for f in %FoodContainer.get_children():
 			f.queue_free()
 		create_food(food_pool.pick_random())
@@ -165,7 +203,9 @@ func save_stats_to_data():
 
 func get_unit_stack() -> Array[CombatUnitControl]:
 	var stack:Array[CombatUnitControl]
-	for u in unit_holder.get_children():
-		assert(u is CombatUnitControl, "Invalid Top-Level child!")
-		stack.push_front(u)
+	for panel in unit_holder.get_children():
+		if panel.get_children().size() > 0:
+			var u = panel.get_child(0)
+			assert(u is CombatUnitControl, "Invalid Top-Level child!")
+			stack.push_front(u)
 	return stack

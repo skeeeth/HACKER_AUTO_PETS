@@ -1,6 +1,7 @@
 extends Control
 class_name CombatUnitControl
 
+signal clicked(data)
 signal sell_unit
 signal moved_unit(this : CombatUnitControl, direction : int)
 
@@ -21,7 +22,7 @@ var unit_data : UnitData
 var shift : int = 0:
 	set(v):
 		shift = v
-		shift_label.text = "%+d" % shift
+		shift_label.text = "Shift: %+d" % shift
 		if unit_data:
 			unit_data.shift = shift
 
@@ -82,11 +83,11 @@ func _on_move_back_pressed() -> void:
 		object_index += 1
 		moved_unit.emit(self, -1)
 
-func _mouse_entered():
-	var info : InfoDisplay = InfoDisplay.create(unit_data)
-	add_child(info)
-	info.position.y = -100
-	mouse_exited.connect(info.queue_free)
+#func _mouse_entered():
+	#var info : InfoDisplay = InfoDisplay.create(unit_data)
+	#add_child(info)
+	#info.position.y = -100
+	#mouse_exited.connect(info.queue_free)
 
 
 func _can_drop_data(_position, data):
@@ -134,3 +135,7 @@ func accept_food(food_data:FoodData):
 		FoodData.food_types.GIVE:
 			attack += food_data.magnitude
 			health += food_data.magnitude #+ food mod
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action("lmb"):
+		clicked.emit(unit_data)

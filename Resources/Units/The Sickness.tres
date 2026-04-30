@@ -6,7 +6,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_sawal")
-unit_name = "The Sickness"
+unit_name = "Radio Threat"
 attack = 4
 effect = ExtResource("1_y101q")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

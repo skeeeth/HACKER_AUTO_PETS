@@ -13,11 +13,16 @@ static func create(from_data:FoodData) -> Food:
 	new_food.display_label.text = "[" + from_data.display_string + "]"
 	return new_food
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("lmb"):
+		visible = true
+
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	var preview_sprite = create(food_data)
 	#preview_sprite.texture = sprite.texture
 	#preview_sprite.size = sprite.size
 	set_drag_preview(preview_sprite)
+	visible = false
 	
 	var drop_data:Dictionary = {
 		"data" = food_data,
@@ -26,6 +31,13 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	
 	return drop_data
 
+#func _drop_data(_at_position: Vector2, _data: Variant) -> void:
+	#visible = true
+	#
+#
+#func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
+	#visible = true
+	#return false
 
 func try_purchase():
 	if shop.coins >= food_data.price:

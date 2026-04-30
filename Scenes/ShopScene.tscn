@@ -5,12 +5,30 @@
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="3_je6ka"]
 [ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_1qm6p"]
 [ext_resource type="Script" uid="uid://dxx7fw30vqxw2" path="res://Scripts/shop_purchase_button.gd" id="6_3qq02"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="7_1itlx"]
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="8_1itlx"]
+[ext_resource type="Texture2D" uid="uid://ct5cy6ynfrsrr" path="res://Themes/Windows98/textures/tree_panel.png" id="8_gs7he"]
+[ext_resource type="Texture2D" uid="uid://b0ngxm0687tes" path="res://Themes/Windows98/textures/window.png" id="8_k8c1k"]
 [ext_resource type="Script" uid="uid://wivf5kctu05d" path="res://Scripts/ShopManager.gd" id="9_03ylq"]
-[ext_resource type="Script" uid="uid://b2eyvdg5emr6k" path="res://Scripts/test_apple_button.gd" id="10_k8c1k"]
+[ext_resource type="StyleBox" uid="uid://bu7hoi35niabd" path="res://Resources/Syles/ConcaveStyleBox.tres" id="9_fepw0"]
+[ext_resource type="PackedScene" uid="uid://caqo5o73bgt5u" path="res://Scenes/InfoDisplay.tscn" id="11_03ylq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fepw0"]
+texture = ExtResource("8_gs7he")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8c1k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
 font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gs7he"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_medpt"]
 font_size = 31
@@ -18,7 +36,11 @@ font_size = 31
 [sub_resource type="LabelSettings" id="LabelSettings_3qq02"]
 font_size = 26
 
-[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "unit_holder", "effect_manager")]
+[sub_resource type="LabelSettings" id="LabelSettings_03ylq"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "wins_text_node", "unit_holder", "effect_manager", "info_display")]
+texture_filter = 1
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
 purchasable_units = Array[ExtResource("2_medpt")]([ExtResource("3_je6ka"), ExtResource("8_1itlx"), ExtResource("5_1qm6p")])
@@ -26,8 +48,10 @@ purchase_buttons = [NodePath("Buttons/PurchaseUnitButton1"), NodePath("Buttons/P
 coin_text_node = NodePath("Texts/CoinText")
 life_text_node = NodePath("Texts/LifeText")
 turn_text_node = NodePath("Texts/TurnText")
-unit_holder = NodePath("UnitHolder")
+wins_text_node = NodePath("Texts/Wins")
+unit_holder = NodePath("PanelContainer/VBoxContainer/UnitHolder")
 effect_manager = NodePath("ShopManager")
+info_display = NodePath("Shop Panel/HBoxContainer/Info Display")
 
 [node name="ShopManager" type="Node" parent="." unique_id=903691850 node_paths=PackedStringArray("shop_main")]
 script = ExtResource("9_03ylq")
@@ -35,21 +59,162 @@ shop_main = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 
-[node name="UnitHolder" type="HBoxContainer" parent="." unique_id=835860638]
-offset_left = -727.0
-offset_top = -129.0
-offset_right = 2.0
-offset_bottom = 127.0
-theme_override_constants/separation = 150
+[node name="Shop Panel" type="PanelContainer" parent="." unique_id=1983522865]
+offset_left = -850.0
+offset_top = -364.0
+offset_right = 689.0
+offset_bottom = -56.0
+theme = ExtResource("7_1itlx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop Panel" unique_id=657103613]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop Panel/HBoxContainer" unique_id=1679721708]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=1836806042]
+layout_mode = 2
+text = "SOME INFO COPY"
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=929142391]
+layout_mode = 2
+
+[node name="RerollButton" type="Button" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=1180264985]
+layout_mode = 2
+theme = ExtResource("7_1itlx")
+text = "Next Folder"
+
+[node name="PanelContainer" type="PanelContainer" parent="Shop Panel/HBoxContainer" unique_id=1611997246]
+visible = false
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="Shop Panel/HBoxContainer" unique_id=637154121]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_fepw0")
+item_count = 1
+
+[node name="Info Display" parent="Shop Panel/HBoxContainer" unique_id=1549523259 instance=ExtResource("11_03ylq")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1469432332]
+offset_left = -861.0
+offset_top = 21.0
+offset_right = -23.0
+offset_bottom = 363.0
+mouse_filter = 2
+theme = ExtResource("7_1itlx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1966633413]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/VBoxContainer" unique_id=2083479329]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("8_k8c1k")
+region_rect = Rect2(4, 4, 472.594, 40)
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/NinePatchRect" unique_id=603455017]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 12.0
+text = " Virus  List"
+label_settings = SubResource("LabelSettings_k8c1k")
+
+[node name="Index Labels" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=109320837]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1676177736]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1951504952]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=680612249]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+
+[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1420307976]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+
+[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1647746331]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="UnitHolder" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=835860638]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+mouse_filter = 2
 alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=272101986]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=902602629]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=1578135981]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=1844668206]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=41892739]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="Label2" type="Label" parent="PanelContainer" unique_id=300115845]
+layout_mode = 2
+size_flags_vertical = 8
+text = "+ Shift -->"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="PanelContainer" unique_id=1450847028]
+layout_mode = 2
+size_flags_vertical = 8
+text = "- Shift <-"
 
 [node name="Buttons" type="Node" parent="." unique_id=1076780851]
 
 [node name="PurchaseUnitButton1" type="Button" parent="Buttons" unique_id=2054618790 node_paths=PackedStringArray("unit_name", "manager")]
+visible = false
 offset_left = -208.0
 offset_top = 415.0
 offset_right = -106.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -60,16 +225,19 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 102.0
 offset_bottom = 42.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PurchaseUnitButton2" type="Button" parent="Buttons" unique_id=602924199 node_paths=PackedStringArray("unit_name", "manager")]
+visible = false
 offset_left = -59.0
 offset_top = 415.0
 offset_right = 43.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -80,16 +248,19 @@ offset_left = 1.0
 offset_top = 1.0
 offset_right = 102.0
 offset_bottom = 42.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PurchaseUnitButton3" type="Button" parent="Buttons" unique_id=2113805579 node_paths=PackedStringArray("unit_name", "manager")]
+visible = false
 offset_left = 100.0
 offset_top = 415.0
 offset_right = 202.0
 offset_bottom = 458.0
+theme = ExtResource("7_1itlx")
 script = ExtResource("6_3qq02")
 unit_name = NodePath("Label")
 manager = NodePath("../..")
@@ -99,33 +270,39 @@ layout_mode = 0
 offset_left = 1.0
 offset_right = 102.0
 offset_bottom = 41.0
+theme = ExtResource("7_1itlx")
 text = "Get "
 label_settings = SubResource("LabelSettings_x7s06")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CombatSceneButton" type="Button" parent="Buttons" unique_id=52496184]
-offset_left = 786.0
-offset_top = 432.0
-offset_right = 908.0
-offset_bottom = 497.0
-text = "Go to Combat"
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 202.0
+offset_top = -134.0
+offset_right = 901.0
+offset_bottom = -31.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("7_1itlx")
 
-[node name="Test Apple Button" type="Button" parent="Buttons" unique_id=770641714 node_paths=PackedStringArray("shop")]
-offset_left = -112.0
-offset_top = 296.0
-offset_right = 113.0
-offset_bottom = 327.0
-text = "Give index 1 Permanent 1+1"
-script = ExtResource("10_k8c1k")
-shop = NodePath("../..")
-
-[node name="RerollButton" type="Button" parent="Buttons" unique_id=1180264985]
-offset_left = -926.0
-offset_top = 429.0
-offset_right = -804.0
-offset_bottom = 494.0
-text = "Reroll"
+[node name="Label" type="Label" parent="Buttons/CombatSceneButton" unique_id=34621955]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -9.0
+offset_right = 45.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Launch Virus"
+label_settings = SubResource("LabelSettings_gs7he")
 
 [node name="Texts" type="Node" parent="." unique_id=701841042]
 
@@ -134,7 +311,8 @@ offset_left = -900.0
 offset_top = -486.0
 offset_right = -665.0
 offset_bottom = -424.0
-text = "Coins: "
+theme = ExtResource("7_1itlx")
+text = "Data: "
 label_settings = SubResource("LabelSettings_medpt")
 vertical_alignment = 1
 
@@ -143,6 +321,7 @@ offset_left = -650.0
 offset_top = -485.0
 offset_right = -415.0
 offset_bottom = -423.0
+theme = ExtResource("7_1itlx")
 text = "Lives:  "
 label_settings = SubResource("LabelSettings_medpt")
 vertical_alignment = 1
@@ -152,7 +331,8 @@ offset_left = -375.0
 offset_top = -486.0
 offset_right = -140.0
 offset_bottom = -424.0
-text = "Turns:  "
+theme = ExtResource("7_1itlx")
+text = "Cycle:  "
 label_settings = SubResource("LabelSettings_medpt")
 vertical_alignment = 1
 
@@ -161,24 +341,160 @@ offset_left = 532.0
 offset_top = -522.0
 offset_right = 930.0
 offset_bottom = -369.0
+theme = ExtResource("7_1itlx")
 text = "Each unit costs 3 coins. You can only have 5 units on your team. You need a least 1 unit to go into combat."
 label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1913499572]
-offset_left = -910.0
-offset_top = 39.0
-offset_right = -782.0
-offset_bottom = 316.0
+[node name="Wins" type="Label" parent="Texts" unique_id=96149084]
+offset_left = -101.0
+offset_top = -480.0
+offset_right = -61.0
+offset_bottom = -457.0
+text = "Wins"
 
-[node name="FoodContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=1867670123]
+[node name="Food Panel" type="PanelContainer" parent="." unique_id=1913499572]
+offset_left = -857.0
+offset_top = 375.0
+offset_right = -32.0
+offset_bottom = 434.0
+theme = ExtResource("7_1itlx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Food Panel" unique_id=2126660655]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Food Panel/VBoxContainer" unique_id=1129424385]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Food Panel/VBoxContainer/HBoxContainer" unique_id=1521969429]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Mutations:"
+label_settings = SubResource("LabelSettings_03ylq")
+
+[node name="VSeparator" type="VSeparator" parent="Food Panel/VBoxContainer/HBoxContainer" unique_id=1022744482]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Food Panel/VBoxContainer/HBoxContainer" unique_id=1789612274]
+layout_mode = 2
+text = "Drag onto a virus to alter it. Costs data"
+
+[node name="FoodContainer" type="HBoxContainer" parent="Food Panel/VBoxContainer" unique_id=16583515]
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1859090577]
+visible = false
+offset_left = 53.0
+offset_top = 25.0
+offset_right = 891.0
+offset_bottom = 367.0
+mouse_filter = 2
+theme = ExtResource("7_1itlx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=306297098]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer2/VBoxContainer" unique_id=1265740980]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("8_k8c1k")
+region_rect = Rect2(4, 4, 472.594, 40)
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/NinePatchRect" unique_id=1955302150]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 12.0
+text = " Virus  List"
+label_settings = SubResource("LabelSettings_k8c1k")
+
+[node name="Index Labels" type="HBoxContainer" parent="PanelContainer2/VBoxContainer" unique_id=1986717054]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=4919871]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+
+[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=512829820]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+
+[node name="Label3" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=997454621]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+
+[node name="Label4" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=558111884]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+
+[node name="Label5" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=363051837]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+
+[node name="UnitHolder" type="HBoxContainer" parent="PanelContainer2/VBoxContainer" unique_id=1109314170]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1622413628]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1483860071]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=510187638]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=38384753]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1722213626]
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("9_fepw0")
+
+[node name="Label2" type="Label" parent="PanelContainer2" unique_id=285402038]
+layout_mode = 2
+size_flags_vertical = 8
+text = "+ Shift -->"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="PanelContainer2" unique_id=125615390]
+layout_mode = 2
+size_flags_vertical = 8
+text = "<-- Shift"
+
+[connection signal="pressed" from="Shop Panel/HBoxContainer/VBoxContainer/RerollButton" to="." method="_reroll"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton1" to="Buttons/PurchaseUnitButton1" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton2" to="Buttons/PurchaseUnitButton2" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton3" to="Buttons/PurchaseUnitButton3" method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons/CombatSceneButton" to="." method="_go_to_combat_scene"]
-[connection signal="pressed" from="Buttons/Test Apple Button" to="Buttons/Test Apple Button" method="_on_pressed"]
-[connection signal="pressed" from="Buttons/RerollButton" to="." method="_reroll"]
