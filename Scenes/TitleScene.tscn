@@ -31,9 +31,9 @@ vertical_alignment = 1
 
 [node name="GameButton" parent="." unique_id=1641231628 instance=ExtResource("1_j8exe")]
 layout_mode = 0
-offset_left = 191.0
+offset_left = -102.0
 offset_top = 260.0
-offset_right = 418.0
+offset_right = 125.0
 offset_bottom = 399.0
 text = ""
 transition_scene_file_path = "res://Scenes/ShopScene.tscn"
@@ -50,9 +50,9 @@ vertical_alignment = 1
 
 [node name="CreditsButton" parent="." unique_id=1314772830 instance=ExtResource("1_j8exe")]
 layout_mode = 0
-offset_left = -431.0
+offset_left = -649.0
 offset_top = 260.0
-offset_right = -204.0
+offset_right = -422.0
 offset_bottom = 399.0
 text = ""
 transition_scene_file_path = "res://Scenes/CreditsScene.tscn"
@@ -65,3 +65,25 @@ text = "Credits"
 label_settings = SubResource("LabelSettings_j8exe")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="QuitButton" parent="." unique_id=1029968620 instance=ExtResource("1_j8exe")]
+layout_mode = 0
+offset_left = 459.0
+offset_top = 260.0
+offset_right = 686.0
+offset_bottom = 399.0
+text = ""
+transition_scene_file_path = "res://Scenes/CreditsScene.tscn"
+
+[node name="Label" type="Label" parent="QuitButton" unique_id=454737185]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 137.0
+text = "Quit"
+label_settings = SubResource("LabelSettings_j8exe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="GameButton" to="GameButton" method="_change_scene"]
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_change_scene"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_quit_game"]

@@ -7,7 +7,7 @@ var first_time_load : bool = false
 @onready var boot_up_track: AudioStreamPlayer = $TitleTrack
 
 func _ready() -> void:
-	boot_up_track.play()
+	title_entered()
 
 func shop_entered():
 	#var feed = create_tween()
@@ -25,3 +25,12 @@ func shop_entered():
 func combat_entered():
 	combat_track.volume_db = 1
 	shop_track.volume_db = -80
+
+func results_screen_entered():
+	combat_track.stop()
+	shop_track.stop()
+	
+
+func title_entered():
+	boot_up_track.play()
+	first_time_load = false

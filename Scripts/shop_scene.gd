@@ -12,6 +12,8 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var coin_text_node : Label
 @export var life_text_node : Label
 @export var turn_text_node : Label
+@export var wins_text_node : Label
+
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
 @export var info_display:InfoDisplay
@@ -24,6 +26,7 @@ var food_pool:Array[FoodData]
 var base_coin_text : String
 var base_life_text : String
 var base_turn_text : String
+var base_wins_text : String
 
 var player_stack : Array[CombatUnitControl]
 
@@ -34,9 +37,11 @@ func _ready() -> void:
 	base_coin_text = coin_text_node.text
 	base_life_text = life_text_node.text
 	base_turn_text = turn_text_node.text
+	base_wins_text = wins_text_node.text
 	
 	life_text_node.text = base_life_text + str(Gamestate.lives)
 	turn_text_node.text = base_turn_text + str(Gamestate.turn)
+	wins_text_node.text = base_wins_text + str(Gamestate.wins) + "/" + str(Gamestate.max_wins)
 	
 	_set_coin_text()
 
@@ -132,7 +137,6 @@ func purchase_unit(unit:UnitData) -> void:
 			PlayerUnitsContainer.add_unit_to_list(unit)
 			_add_to_stack(unit)
 			reduce_coin(unit_cost)
-			
 	else:
 		print("Size full")
 
