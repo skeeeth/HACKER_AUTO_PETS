@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 	life_text_node.text = base_life_text + str(Gamestate.lives)
 	turn_text_node.text = base_turn_text + str(Gamestate.turn)
-	wins_text_node.text = base_wins_text + str(Gamestate.wins)
+	wins_text_node.text = base_wins_text + str(Gamestate.wins) + "/" + str(Gamestate.max_wins)
 	
 	_set_coin_text()
 
@@ -104,7 +104,6 @@ func purchase_unit(unit:UnitData) -> void:
 			PlayerUnitsContainer.add_unit_to_list(unit)
 			_add_to_stack(unit)
 			reduce_coin(unit_cost)
-			
 	else:
 		print("Size full")
 

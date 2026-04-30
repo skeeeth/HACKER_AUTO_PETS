@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://8uw8rlkbkub6"]
 
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="1_ntd6c"]
+[ext_resource type="Script" uid="uid://8cbvfluncsuh" path="res://Scripts/results_scene.gd" id="1_raalc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntd6c"]
 font_size = 136
@@ -8,13 +9,24 @@ font_size = 136
 [sub_resource type="LabelSettings" id="LabelSettings_8c3nt"]
 font_size = 33
 
-[node name="WinScene" type="Control" unique_id=5130707]
+[sub_resource type="LabelSettings" id="LabelSettings_raalc"]
+font_size = 31
+
+[sub_resource type="LabelSettings" id="LabelSettings_2o7h2"]
+font_size = 31
+
+[node name="WinScene" type="Control" unique_id=5130707 node_paths=PackedStringArray("turn_text_node", "wins_text_node", "life_text_node", "unit_holder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_raalc")
+turn_text_node = NodePath("TurnText")
+wins_text_node = NodePath("WinsText")
+life_text_node = NodePath("LifeText")
+unit_holder = NodePath("UnitHolder")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=39799639]
 
@@ -64,6 +76,44 @@ text = "Quit"
 label_settings = SubResource("LabelSettings_8c3nt")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TurnText" type="Label" parent="." unique_id=1540149537]
+layout_mode = 0
+offset_left = -368.0
+offset_top = -251.0
+offset_right = -133.0
+offset_bottom = -189.0
+text = "Turns:  "
+label_settings = SubResource("LabelSettings_raalc")
+vertical_alignment = 1
+
+[node name="WinsText" type="Label" parent="." unique_id=967516866]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -251.0
+offset_right = 161.0
+offset_bottom = -189.0
+text = "Wins:  "
+label_settings = SubResource("LabelSettings_raalc")
+vertical_alignment = 1
+
+[node name="LifeText" type="Label" parent="." unique_id=820773395]
+layout_mode = 0
+offset_left = 199.0
+offset_top = -251.0
+offset_right = 434.0
+offset_bottom = -189.0
+text = "Lives:  "
+label_settings = SubResource("LabelSettings_2o7h2")
+vertical_alignment = 1
+
+[node name="UnitHolder" type="HBoxContainer" parent="." unique_id=899538278]
+layout_mode = 0
+offset_left = -913.0
+offset_top = -37.0
+offset_right = 474.0
+offset_bottom = 219.0
+theme_override_constants/separation = 150
 
 [connection signal="pressed" from="TitleButton" to="TitleButton" method="_change_to_title"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_quit_game"]

@@ -236,7 +236,13 @@ func cleanup():
 	elif player_queue.size() != 0 and enemy_queue.size() == 0:
 		player_won = true
 		Gamestate.log_win()
-		end_combat()
+		
+		if Gamestate.wins == Gamestate.max_wins:
+			get_tree().change_scene_to_file(win_scene_path)
+			MusicManager.results_screen_entered()
+		else:
+			end_combat()
+			
 	elif player_queue.size() == 0 and enemy_queue.size() == 0:
 		end_combat()
 

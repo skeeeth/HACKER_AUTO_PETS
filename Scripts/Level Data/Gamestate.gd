@@ -5,12 +5,12 @@ var food_pool:Array[FoodData]
 var turn:int = 0
 var turn_cadence = 2
 
-
-var wins : int = 0
-
-var tier:int = -1
+var tier : int = -1
 
 var base_lives : int
+var wins : int = 0
+
+@export var max_wins : int = 2
 @export var lives : int = 4
 
 @export var tiers:Array[TierData]

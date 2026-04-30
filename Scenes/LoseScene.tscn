@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b5sq8fg6b8hc2"]
 
+[ext_resource type="Script" uid="uid://8cbvfluncsuh" path="res://Scripts/results_scene.gd" id="1_nelb7"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="1_o6134"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6134"]
@@ -11,13 +12,21 @@ font_size = 33
 [sub_resource type="LabelSettings" id="LabelSettings_nelb7"]
 font_size = 31
 
-[node name="LoseScene" type="Control" unique_id=5130707]
+[sub_resource type="LabelSettings" id="LabelSettings_gj2ut"]
+font_size = 31
+
+[node name="LoseScene" type="Control" unique_id=5130707 node_paths=PackedStringArray("turn_text_node", "wins_text_node", "life_text_node", "unit_holder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nelb7")
+turn_text_node = NodePath("TurnText")
+wins_text_node = NodePath("WinsText")
+life_text_node = NodePath("LifeText")
+unit_holder = NodePath("UnitHolder")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=39799639]
 
@@ -70,9 +79,9 @@ vertical_alignment = 1
 
 [node name="TurnText" type="Label" parent="." unique_id=1867490073]
 layout_mode = 0
-offset_left = -283.0
+offset_left = -368.0
 offset_top = -251.0
-offset_right = -48.0
+offset_right = -133.0
 offset_bottom = -189.0
 text = "Turns:  "
 label_settings = SubResource("LabelSettings_nelb7")
@@ -80,22 +89,31 @@ vertical_alignment = 1
 
 [node name="WinsText" type="Label" parent="." unique_id=535566099]
 layout_mode = 0
-offset_left = 11.0
+offset_left = -74.0
 offset_top = -251.0
-offset_right = 246.0
+offset_right = 161.0
 offset_bottom = -189.0
 text = "Wins:  "
 label_settings = SubResource("LabelSettings_nelb7")
 vertical_alignment = 1
 
+[node name="LifeText" type="Label" parent="." unique_id=1882337592]
+layout_mode = 0
+offset_left = 199.0
+offset_top = -251.0
+offset_right = 434.0
+offset_bottom = -189.0
+text = "Lives:  "
+label_settings = SubResource("LabelSettings_gj2ut")
+vertical_alignment = 1
+
 [node name="UnitHolder" type="HBoxContainer" parent="." unique_id=1670973621]
 layout_mode = 0
-offset_left = -359.0
+offset_left = -926.0
 offset_top = -37.0
-offset_right = 370.0
+offset_right = 547.0
 offset_bottom = 219.0
 theme_override_constants/separation = 150
-alignment = 2
 
 [connection signal="pressed" from="TitleButton" to="TitleButton" method="_change_to_title"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_quit_game"]
