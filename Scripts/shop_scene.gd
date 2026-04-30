@@ -14,6 +14,9 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var turn_text_node : Label
 @export var unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
+var food_pool:Array[FoodData]
+
+@onready var combat_scene_button: Button = $Buttons/CombatSceneButton
 
 var base_coin_text : String
 var base_life_text : String
@@ -40,8 +43,13 @@ func _ready() -> void:
 	purchasable_units = Gamestate.purchaseable_units
 	_set_buttons()
 	
+	food_pool = Gamestate.food_pool
+	create_food(food_pool.pick_random())
+	
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
+	
+	MusicManager.shop_entered()
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:
@@ -74,6 +82,10 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 
+func create_food(food_data:FoodData):
+	var new_food = Food.create(food_data)
+	new_food.shop = self
+	%FoodContainer.add_child(new_food)
 
 func _set_coin_text() -> void:
 	coin_text_node.text = base_coin_text + str(coins)
@@ -105,6 +117,8 @@ func increase_coin(sell_price : int) -> void:
 
 func _go_to_combat_scene() -> void:
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
+		effect_manager.end_combat()
+		await effect_manager.ending_resolved
 		save_stats_to_data()
 		get_tree().change_scene_to_file(combat_scene_file_path)
 	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:
@@ -117,6 +131,9 @@ func _reroll() -> void:
 	if coins != 0:
 		reduce_coin(1)
 		_set_buttons()
+		for f in %FoodContainer.get_children():
+			f.queue_free()
+		create_food(food_pool.pick_random())
 
 func _set_buttons() -> void:
 

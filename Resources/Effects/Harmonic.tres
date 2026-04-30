@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://msigu3xbkimh"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_i8wfa"]
-[ext_resource type="Texture2D" uid="uid://d1vfrumh6nqu8" path="res://Assets/18 Placeholders/1.png" id="2_i8wfa"]
+[ext_resource type="Texture2D" uid="uid://d1vfrumh6nqu8" path="res://Assets/Placeholder Sprites/1.png" id="2_i8wfa"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_imax7"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_usa4u"]
 
 [sub_resource type="Resource" id="Resource_i8wfa"]
@@ -14,6 +15,7 @@ script = ExtResource("1_i8wfa")
 name = "Harmonic"
 effect_description = "Trigger Turn start Effects an addittional time"
 sprite = ExtResource("2_i8wfa")
+sound_effect = ExtResource("2_imax7")
 trigger_state = 6
 effect_type = 4
 magnitude_type = 3

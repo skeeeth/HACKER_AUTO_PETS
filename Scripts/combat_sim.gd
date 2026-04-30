@@ -42,6 +42,8 @@ var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
 func _ready() -> void:
+	MusicManager.combat_entered()
+	
 	next_scene_button_node.visible = false
 	encounter = Gamestate.get_turn_encounter()
 	enemy_unit_data = encounter.unit_data
@@ -187,6 +189,9 @@ func hit():
 		attack_tween.tween_property(unit,"position:x",
 				starting_position + max_translation,0.03).set_delay(0.1)
 		attack_tween.parallel().tween_property(unit,"rotation",max_rotation,0.05)
+		
+		attack_tween.tween_callback(SoundManager.play_sound_from_path.bind("res://Assets/Sound Effects/Fireball.mp3"))
+		
 		
 		#recovery
 		attack_tween.tween_property(unit,"position:x",

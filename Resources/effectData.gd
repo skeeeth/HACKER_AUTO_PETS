@@ -6,13 +6,14 @@ enum TriggerStates {BATTLE_START, FAINT, TURN_START,
 		SHOP_START, SHOP_END, SUPER_TRIGGERED}
 
 enum EffectTypes {DAMAGE, GIVE, SUMMON, APPLY, SIGNAL, SHIFT, STOCK}
-enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
+enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM, SHIFT}
 #enum TargetCodes {S,O,A}
 
 @export_group("Identity")
 @export var name : String
 @export var effect_description : String
 @export var sprite : Texture2D = preload("res://icon.svg")
+@export var sound_effect : AudioStream
 @export var trigger_state : TriggerStates
 @export var effect_type : EffectTypes
 
@@ -27,7 +28,7 @@ enum MagnitudeTypes {RAW, ATTACK, HEALTH, CUSTOM}
 @export var mag_mod: int = 0
 
 @export_subgroup("Subeffect")
-enum SUBEFFECT_TYPES {SUMMON, STATUS, EXTRA_EFFECT}
+enum SUBEFFECT_TYPES {SUMMON, STATUS, EXTRA_EFFECT, FOOD}
 @export var subresource:EffectData
 @export var sub_type:SUBEFFECT_TYPES
 

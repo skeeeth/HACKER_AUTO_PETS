@@ -8,6 +8,8 @@ signal attack_queued
 
 @export var damage_label: Label #= $VBoxContainer/HBoxContainer/Damage
 @export var health_label: Label #= $VBoxContainer/HBoxContainer/Health
+@export var shift_label:Label
+
 @export var name_label:Label
 @export var effect:Effect
 @export var sprite:TextureRect
@@ -34,6 +36,21 @@ var health : int:
 			if !dead:
 				die()
 
+var shift:int = 0:
+	set(v):
+		shift = v
+		#var shift_string:String = ""
+		#var shift_character:String = ""
+		#if shift < 0:
+			#shift_character = "<"
+		#else:
+			#shift_character = ">"
+		#
+		#for i in range(abs(shift)):
+			#shift_string += shift_character
+		
+		shift_label.text = "%+d" % shift #shift_string
+
 
 ## This sets up the unit data for the combat unit
 func dress(data:UnitData):
@@ -43,6 +60,9 @@ func dress(data:UnitData):
 	sprite.texture = data.effect.sprite
 	effect.data = data.effect
 	effect.holder = self
+	effect.sound_effect = data.effect.sound_effect
+	shift = data.shift
+	effect.shift = shift
 
 ##calls hurt signal, different than setting hp
 func take_damage(amount:int, from_attack:bool = false):
@@ -81,3 +101,7 @@ func _roll_text(label:Label,previous:int,next:int):
 	
 	var roll_text = self.create_tween()
 	roll_text.tween_property(label,"text",str(next),duration).set_ease(Tween.EASE_IN_OUT)
+
+func on_effect_shifted():
+	shift = effect.shift
+	#shift_label.text = "%+d" % effect.shift

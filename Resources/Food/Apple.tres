@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FoodData" format=3 uid="uid://dqio3annxn5h8"]
+
+[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="1_1ly62"]
+
+[resource]
+script = ExtResource("1_1ly62")
+magnitude = 1
+display_string = "+1"
+metadata/_custom_type_script = "uid://c11s6yam75hw8"

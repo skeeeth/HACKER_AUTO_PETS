@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_gnjk5"]
 [ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="2_3fs5u"]
-[ext_resource type="Texture2D" uid="uid://cmnfl4us2xewe" path="res://Assets/18 Placeholders/4.png" id="2_k215e"]
+[ext_resource type="Texture2D" uid="uid://cmnfl4us2xewe" path="res://Assets/Placeholder Sprites/4.png" id="2_k215e"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_xno7k"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_k215e"]
 
 [sub_resource type="Resource" id="Resource_3fs5u"]
@@ -16,7 +17,7 @@ name = "Orbital Self Shift"
 effect_description = "Orbital shift's self after each trigger"
 trigger_state = 9
 effect_type = 5
-magnitude = 1
+magnitude = -1
 targets = Array[ExtResource("3_k215e")]([SubResource("Resource_3fs5u")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"
 
@@ -31,7 +32,8 @@ script = ExtResource("1_gnjk5")
 name = "Orbital"
 effect_description = "Shop Start: Give Frontmost Position 1/1, then shift self -1"
 sprite = ExtResource("2_k215e")
-trigger_state = 7
+sound_effect = ExtResource("2_xno7k")
+trigger_state = 8
 effect_type = 1
 magnitude = 1
 subresource = SubResource("Resource_xno7k")

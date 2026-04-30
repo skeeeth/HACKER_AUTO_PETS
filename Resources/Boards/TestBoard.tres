@@ -2,85 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_uovx0"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_sach2"]
-[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="3_vkwrk"]
 [ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="4_c1r72"]
-[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="4_gfnir"]
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="4_grfxq"]
-[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="5_7e3dm"]
+[ext_resource type="Resource" uid="uid://dyo8b8uguix6m" path="res://Resources/Effects/Copycat.tres" id="4_ix367"]
+[ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_grfxq"]
 
-[sub_resource type="Resource" id="Resource_hwojk"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 1
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_u1583"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 2
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_akyuv"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 3
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_7ct5a"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 4
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_6xqmg"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 5
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_bwp1t"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 6
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_118hp"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 7
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_jsi5g"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 8
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_trpeg"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 9
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_tswne"]
-script = ExtResource("5_7e3dm")
-type = 2
-value = 10
-metadata/_custom_type_script = "uid://by520cy10c7wa"
-
-[sub_resource type="Resource" id="Resource_8qoem"]
-script = ExtResource("3_vkwrk")
-effect_type = 1
-magnitude = 1
-targets = Array[ExtResource("5_7e3dm")]([SubResource("Resource_hwojk"), SubResource("Resource_u1583"), SubResource("Resource_akyuv"), SubResource("Resource_7ct5a"), SubResource("Resource_6xqmg"), SubResource("Resource_bwp1t"), SubResource("Resource_118hp"), SubResource("Resource_jsi5g"), SubResource("Resource_trpeg"), SubResource("Resource_tswne")])
-metadata/_custom_type_script = "uid://d6hrknb1lvds"
-
-[sub_resource type="Resource" id="Resource_1ujxd"]
+[sub_resource type="Resource" id="Resource_grfxq"]
 script = ExtResource("2_sach2")
-effect = SubResource("Resource_8qoem")
+unit_name = "Copycat"
+attack = 6
+health = 1
+effect = ExtResource("4_ix367")
+shift = 2
 metadata/_custom_type_script = "uid://6i4niaslfrq8"
 
 [resource]
 script = ExtResource("1_uovx0")
-unit_data = Array[ExtResource("2_sach2")]([SubResource("Resource_1ujxd"), ExtResource("4_c1r72"), ExtResource("4_grfxq")])
+unit_data = Array[ExtResource("2_sach2")]([ExtResource("4_c1r72"), ExtResource("4_grfxq"), ExtResource("5_grfxq"), SubResource("Resource_grfxq")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

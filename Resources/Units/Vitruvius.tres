@@ -9,7 +9,7 @@
 script = ExtResource("3_ondnm")
 metadata/_custom_type_script = "uid://by520cy10c7wa"
 
-[sub_resource type="Resource" id="Resource_miyf5"]
+[sub_resource type="Resource" id="Resource_i2y3n"]
 script = ExtResource("1_i2y3n")
 name = "Vitruvius"
 effect_description = "Combat Start -> Give Self 2/2"
@@ -22,5 +22,5 @@ metadata/_custom_type_script = "uid://d6hrknb1lvds"
 script = ExtResource("1_ww8ef")
 unit_name = "Vitruvius"
 health = 1
-effect = SubResource("Resource_miyf5")
+effect = SubResource("Resource_i2y3n")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

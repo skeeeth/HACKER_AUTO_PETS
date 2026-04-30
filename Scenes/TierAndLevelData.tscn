@@ -16,10 +16,14 @@
 [ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="14_ddkd5"]
 [ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="15_mxa0m"]
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="16_vxcpi"]
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="17_1sr8e"]
 [ext_resource type="Resource" uid="uid://b80416xpo266g" path="res://Resources/Effects/ElephantEffect.tres" id="17_08tc8"]
-[ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="17_ddkd5"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="18_cucxj"]
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="19_53y5s"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
+[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="21_aud3e"]
+[ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Resources/Food/Apple.tres" id="22_xxyny"]
 
 [sub_resource type="Resource" id="Resource_fqv3h"]
 script = ExtResource("2_mew4d")
@@ -41,9 +45,73 @@ script = ExtResource("16_vxcpi")
 unit_data = Array[ExtResource("3_gvkr2")]([ExtResource("5_2x0wx"), ExtResource("4_mnf74")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
+[sub_resource type="Resource" id="Resource_xcyyu"]
+script = ExtResource("19_53y5s")
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_i2y3n"]
+script = ExtResource("17_1sr8e")
+name = "Vitruvius"
+effect_description = "Combat Start -> Give Self 2/2"
+effect_type = 1
+magnitude = 2
+targets = Array[ExtResource("19_53y5s")]([SubResource("Resource_xcyyu")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_7ea1c"]
+script = ExtResource("3_gvkr2")
+health = 1
+effect = SubResource("Resource_i2y3n")
+shift = -1
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_mi2j0"]
+script = ExtResource("3_gvkr2")
+unit_name = "Vitruvius"
+health = 1
+effect = SubResource("Resource_i2y3n")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_08hwn"]
+script = ExtResource("3_gvkr2")
+unit_name = "Vitruvius"
+health = 1
+effect = SubResource("Resource_i2y3n")
+shift = 1
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_8do4e"]
+script = ExtResource("17_1sr8e")
+effect_type = 5
+magnitude = 2
+mag_mod = 1
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_kwi7f"]
+script = ExtResource("19_53y5s")
+type = 3
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_x4pr5"]
+script = ExtResource("17_1sr8e")
+name = "Worm"
+trigger_state = 7
+effect_type = 6
+subresource = SubResource("Resource_8do4e")
+targets = Array[ExtResource("19_53y5s")]([SubResource("Resource_kwi7f")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_4v8fh"]
+script = ExtResource("3_gvkr2")
+unit_name = "Worm"
+attack = 1
+health = 4
+effect = SubResource("Resource_x4pr5")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
 [sub_resource type="Resource" id="Resource_08tc8"]
 script = ExtResource("16_vxcpi")
-unit_data = Array[ExtResource("3_gvkr2")]([ExtResource("10_vxcpi"), ExtResource("6_2x0wx")])
+unit_data = Array[ExtResource("3_gvkr2")]([SubResource("Resource_7ea1c"), SubResource("Resource_mi2j0"), SubResource("Resource_08hwn"), SubResource("Resource_4v8fh")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
 [sub_resource type="Resource" id="Resource_6f83a"]
@@ -78,7 +146,22 @@ script = ExtResource("16_vxcpi")
 unit_data = Array[ExtResource("3_gvkr2")]([SubResource("Resource_6f83a"), SubResource("Resource_1sr8e"), SubResource("Resource_cucxj")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
 
+[sub_resource type="Resource" id="Resource_qji3b"]
+script = ExtResource("21_aud3e")
+type = 1
+magnitude = 1
+display_string = ">"
+metadata/_custom_type_script = "uid://c11s6yam75hw8"
+
+[sub_resource type="Resource" id="Resource_fyhii"]
+script = ExtResource("21_aud3e")
+type = 1
+magnitude = -1
+display_string = "<"
+metadata/_custom_type_script = "uid://c11s6yam75hw8"
+
 [node name="Node" type="Node" unique_id=239818472]
 script = ExtResource("1_n5s8k")
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
-encounter_sequence = Array[ExtResource("16_vxcpi")]([ExtResource("17_ddkd5"), SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
+encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
+food_sequence = Array[ExtResource("21_aud3e")]([ExtResource("22_xxyny"), SubResource("Resource_qji3b"), SubResource("Resource_fyhii")])

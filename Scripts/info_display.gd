@@ -11,6 +11,5 @@ static func create(data:UnitData) -> InfoDisplay:
 	new_info.sprite.texture = data.effect.sprite
 	new_info.title_label.text = data.unit_name
 	new_info.description.add_text(data.effect.effect_description)
-	print(data.effect.effect_description)
 	return new_info
 	

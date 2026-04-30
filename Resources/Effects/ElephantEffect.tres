@@ -1,8 +1,9 @@
 [gd_resource type="Resource" script_class="EffectData" format=3 uid="uid://b80416xpo266g"]
 
 [ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="1_gr1em"]
-[ext_resource type="Texture2D" uid="uid://blli6cuvb1tq1" path="res://Assets/18 Placeholders/7.png" id="2_4ekid"]
+[ext_resource type="Texture2D" uid="uid://blli6cuvb1tq1" path="res://Assets/Placeholder Sprites/7.png" id="2_4ekid"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="2_74t7c"]
+[ext_resource type="AudioStream" uid="uid://c2h2svqdtsfgw" path="res://Assets/Sound Effects/Fireball.mp3" id="2_s6cw7"]
 
 [sub_resource type="Resource" id="Resource_l3i72"]
 script = ExtResource("2_74t7c")
@@ -14,6 +15,7 @@ script = ExtResource("1_gr1em")
 name = "Elephant"
 effect_description = "The elephant does damage to unit behind self before the attack."
 sprite = ExtResource("2_4ekid")
+sound_effect = ExtResource("2_s6cw7")
 trigger_state = 4
 magnitude = 1
 targets = Array[ExtResource("2_74t7c")]([SubResource("Resource_l3i72")])
