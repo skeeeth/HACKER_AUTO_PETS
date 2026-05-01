@@ -16,16 +16,9 @@ var holder : SimUnit
 var sound_effect : AudioStream
 const audio_data = preload("res://Resources/EffectAudio.tres")
 var target_units:Array[SimUnit]
-#var elbow_one:Vector2 = Vector2.ZERO
-#var elbow_two:Vector2 = Vector2.ZERO
-#const DRAW_DROP:float = 50
-#const LINE_WIDTH:float = 5
-#
-#func _draw() -> void:
-	#var drop_vector = Vector2(0,DRAW_DROP)
-	#draw_line(elbow_one,elbow_two,Color.BLACK,LINE_WIDTH)
-	#draw_line(elbow_one,elbow_one+drop_vector,Color.BLACK,LINE_WIDTH)
-	#draw_line(elbow_two,elbow_two+drop_vector,Color.BLACK,LINE_WIDTH)
+
+const RESOLVING_BG = preload("res://Resources/Syles/ResolvingBG.tres")
+const STANDARD_BG = preload("res://Resources/Syles/standard_background.tres")
 
 ##Connect to the appropriate triggers
 func subscribe():
@@ -65,15 +58,15 @@ func trigger():
 	#set_targets()
 	print(data.name + " Triggered")
 	#TEMP, replace with more sophisticated art later
-	holder.position.y -= 40 #bump unit up to show its active
+	#holder.position.y -= 40 #bump unit up to show its active
 
 func resolve():
-	
-	#Play sound effect
-	SoundManager.play_sound(sound_effect)
+	holder.set_background_style(RESOLVING_BG)
+	##Play sound effect
+	#SoundManager.play_sound(sound_effect)
 	
 	var animation = self.create_tween()
-	animation.set_parallel()
+	#animation.set_parallel()
 	
 	var fizzled = true ##true until proven otherwise
 	
@@ -129,16 +122,17 @@ func resolve():
 			wiggle_scale *= 0.75
 		
 		animation.tween_property(holder,"position:x",start,0.06)
+		animation.tween_callback(resolved.emit)
 	
 	await animation.finished
 	
+	holder.set_background_style(STANDARD_BG)
 	#if data.trigger_state == EffectData.TriggerStates.FAINT:
 		#manager.cleanup()
 
-	#animation.tween_callback(resolved.emit)
 	print("Resolved " + data.name)
 	resolved.emit()
-	holder.position.y += 40 #reset
+	#holder.position.y += 40 #reset
 	#visible = false
 
 
@@ -193,7 +187,7 @@ func try_target_index(target_index:int) ->  void:
 	var indicator_:Indicator = Indicator.create(data, target_index,
 			manager.step_size, holder.sprite.size.x)
 	
-	resolved.connect(indicator_.drop)
+	indicator_.drop().connect(resolved.emit)
 	manager.add_child(indicator_)
 	
 	var target_queue:Array

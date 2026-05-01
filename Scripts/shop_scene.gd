@@ -159,6 +159,7 @@ func _go_to_combat_scene() -> void:
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
 		effect_manager.end_combat()
 		await effect_manager.ending_resolved
+		save_stats_to_data()
 		shop_closing.emit()
 		get_tree().change_scene_to_file(combat_scene_file_path)
 	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:

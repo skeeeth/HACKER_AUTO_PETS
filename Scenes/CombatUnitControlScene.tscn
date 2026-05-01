@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://tlkqqev42emn" path="res://Scripts/ShopEffect.gd" id="3_p5t4v"]
 [ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="3_vsrog"]
 [ext_resource type="Texture2D" uid="uid://ct5cy6ynfrsrr" path="res://Themes/Windows98/textures/tree_panel.png" id="4_osle1"]
+[ext_resource type="Texture2D" uid="uid://diyoq7ru7sewf" path="res://Assets/ProdSprites/win95arrow.png" id="6_7vjvf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e2tyl"]
 font_size = 8
@@ -22,6 +23,7 @@ texture_margin_bottom = 4.0
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Control" type="Control" unique_id=1160461755 node_paths=PackedStringArray("damage_label", "health_label", "name_label", "shift_label", "sprite", "effect_node")]
+texture_filter = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 3
 anchors_preset = 0
@@ -97,6 +99,16 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7vjvf")
 layout_mode = 2
 texture = ExtResource("2_p5t4v")
 expand_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/CenterContainer/TextureRect" unique_id=591096466]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("6_7vjvf")
 
 [node name="Shift" type="Label" parent="PanelContainer/VBoxContainer" unique_id=596246929]
 layout_mode = 2

@@ -29,10 +29,11 @@ static func create(data:EffectData, index:int,
 	#source.resolved.connect(instance.queue_free)
 	return instance
 	
-func drop():
+func drop() -> Signal:
 	var drop = create_tween().bind_node(self)
 	#drop.tween_property(self,"position:y",0,0.2)
-	drop.tween_callback(queue_free).set_delay(0.3)
+	drop.tween_callback(queue_free).set_delay(0.5)
+	return drop.finished
 	
 
 func dress(data:EffectData):

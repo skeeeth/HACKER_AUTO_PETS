@@ -2,55 +2,99 @@
 
 [ext_resource type="Script" uid="uid://bdhujuxoghmda" path="res://Scripts/Combat_Class.gd" id="1_kvcsd"]
 [ext_resource type="Script" uid="uid://d1f7tay3kxv3x" path="res://Scripts/SimEffect.gd" id="3_bmh0u"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="3_nv3v6"]
+[ext_resource type="Texture2D" uid="uid://ct5cy6ynfrsrr" path="res://Themes/Windows98/textures/tree_panel.png" id="4_fcdb8"]
+[ext_resource type="Texture2D" uid="uid://d04pyr2iaplbn" path="res://icon.svg" id="5_doend"]
+[ext_resource type="StyleBox" uid="uid://b10lfhso5bn01" path="res://Resources/Syles/standard_background.tres" id="5_snnnq"]
+[ext_resource type="Texture2D" uid="uid://diyoq7ru7sewf" path="res://Assets/ProdSprites/win95arrow.png" id="6_fcdb8"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kvcsd"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snnnq"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+texture = ExtResource("4_fcdb8")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+region_rect = Rect2(0, 0, 16, 16)
+draw_center = false
 
 [node name="Node2D" type="Node2D" unique_id=253418010 node_paths=PackedStringArray("damage_label", "health_label", "shift_label", "name_label", "effect", "sprite")]
+texture_filter = 1
 script = ExtResource("1_kvcsd")
-damage_label = NodePath("VBoxContainer/HBoxContainer/Damage")
-health_label = NodePath("VBoxContainer/HBoxContainer/Health")
-shift_label = NodePath("VBoxContainer/Shift")
-name_label = NodePath("VBoxContainer/Name")
+damage_label = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Damage")
+health_label = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Health")
+shift_label = NodePath("PanelContainer/VBoxContainer/Shift")
+name_label = NodePath("PanelContainer/VBoxContainer/Name")
 effect = NodePath("Effect")
-sprite = NodePath("VBoxContainer/TextureRect")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=396016746]
-offset_right = 123.0
-offset_bottom = 223.0
-
-[node name="Shift" type="Label" parent="VBoxContainer" unique_id=1538155723]
-layout_mode = 2
-horizontal_alignment = 1
-
-[node name="Name" type="Label" parent="VBoxContainer" unique_id=1364059213]
-layout_mode = 2
-text = "Name"
-autowrap_trim_flags = 128
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1708096629]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_kvcsd")
-expand_mode = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1496670750]
-layout_mode = 2
-
-[node name="Damage" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1251785317]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-horizontal_alignment = 1
-
-[node name="Health" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=554622054]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-horizontal_alignment = 1
+sprite = NodePath("PanelContainer/VBoxContainer/BevelContainer/Background/TextureRect")
 
 [node name="Effect" type="Node2D" parent="." unique_id=1896288495]
 visible = false
 script = ExtResource("3_bmh0u")
 metadata/_custom_type_script = "uid://d1f7tay3kxv3x"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=574133448]
+offset_right = 155.0
+offset_bottom = 203.0
+size_flags_vertical = 4
+mouse_filter = 1
+theme = ExtResource("3_nv3v6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1461294249]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer" unique_id=956705063]
+layout_mode = 2
+mouse_filter = 1
+text = "Name"
+
+[node name="BevelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=678113769]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_snnnq")
+
+[node name="Background" type="PanelContainer" parent="PanelContainer/VBoxContainer/BevelContainer" unique_id=382288308]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_snnnq")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/BevelContainer/Background" unique_id=546834179]
+layout_mode = 2
+texture = ExtResource("5_doend")
+expand_mode = 4
+
+[node name="Arrow" type="TextureRect" parent="PanelContainer/VBoxContainer/BevelContainer/Background/TextureRect" unique_id=883509169]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("6_fcdb8")
+
+[node name="Shift" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1746482950]
+layout_mode = 2
+mouse_filter = 1
+text = "+0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1867075172]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1581989538]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+text = "X"
+horizontal_alignment = 1
+
+[node name="Health" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1098286526]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+text = "X"
+horizontal_alignment = 1
 
 [connection signal="shifted" from="Effect" to="." method="on_effect_shifted"]

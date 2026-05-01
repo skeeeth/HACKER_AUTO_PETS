@@ -13,6 +13,9 @@ signal attack_queued
 @export var name_label:Label
 @export var effect:Effect
 @export var sprite:TextureRect
+@onready var background: PanelContainer = $PanelContainer/VBoxContainer/BevelContainer/Background
+const DEAD_BACKGROUND = preload("uid://bdvdcqe04dvv1")
+
 var dead:bool
 #var effect : EffectData
 
@@ -39,6 +42,7 @@ var health : int:
 var shift:int = 0:
 	set(v):
 		shift = v
+		shift_label.text = "Shift: %+d" % shift #shift_string
 		#var shift_string:String = ""
 		#var shift_character:String = ""
 		#if shift < 0:
@@ -48,9 +52,6 @@ var shift:int = 0:
 		#
 		#for i in range(abs(shift)):
 			#shift_string += shift_character
-		
-		shift_label.text = "%+d" % shift #shift_string
-
 
 ## This sets up the unit data for the combat unit
 func dress(data:UnitData):
@@ -80,6 +81,7 @@ func take_damage(amount:int, from_attack:bool = false):
 func die():
 	dead = true
 	died.emit(self)
+	set_background_style(DEAD_BACKGROUND)
 
 
 ##Death animation
@@ -105,3 +107,7 @@ func _roll_text(label:Label,previous:int,next:int):
 func on_effect_shifted():
 	shift = effect.shift
 	#shift_label.text = "%+d" % effect.shift
+
+func set_background_style(style:StyleBox):
+	background.add_theme_stylebox_override("panel",style)
+	pass
