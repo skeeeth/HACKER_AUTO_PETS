@@ -2,21 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_uovx0"]
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_sach2"]
-[ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="4_c1r72"]
-[ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="4_grfxq"]
-[ext_resource type="Resource" uid="uid://cmuv01lo5s0db" path="res://Resources/Effects/Copycat.tres" id="4_ix367"]
-[ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_grfxq"]
+[ext_resource type="Resource" uid="uid://bdng0x32h0e84" path="res://Resources/Units/Swordfish.tres" id="3_c1r72"]
+[ext_resource type="Resource" uid="uid://blg3tch3ikte0" path="res://Resources/Units/Copycat.tres" id="4_grfxq"]
+[ext_resource type="Resource" uid="uid://v3n0q3lq60l0" path="res://Resources/Effects/LassoEffect.tres" id="5_c1r72"]
 
 [sub_resource type="Resource" id="Resource_grfxq"]
+resource_local_to_scene = true
 script = ExtResource("2_sach2")
-unit_name = "Copycat"
-attack = 6
+unit_name = "Lasso"
+attack = 7
 health = 1
-effect = ExtResource("4_ix367")
-shift = 2
+effect = ExtResource("5_c1r72")
 metadata/_custom_type_script = "uid://6i4niaslfrq8"
 
 [resource]
 script = ExtResource("1_uovx0")
-unit_data = Array[ExtResource("2_sach2")]([ExtResource("4_c1r72"), ExtResource("4_grfxq"), ExtResource("5_grfxq"), SubResource("Resource_grfxq")])
+unit_data = Array[ExtResource("2_sach2")]([ExtResource("3_c1r72"), ExtResource("4_grfxq"), ExtResource("3_c1r72"), SubResource("Resource_grfxq")])
 metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

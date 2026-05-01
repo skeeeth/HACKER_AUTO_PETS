@@ -57,6 +57,14 @@ func _ready() -> void:
 		enemy_queue.append(_create_unit(d))
 	
 	var all_units = get_all_units()
+	#reverse sort units by attack before subscribing.
+	# nodes trigger on the same signal in the order 
+	# they're connected, 
+	# so the last to subscribe(highest attack) will be first in stack
+	var reverse_attack_sort = func atk_sort(one:SimUnit,two:SimUnit) -> bool:
+		return (one.attack < two.attack)
+	all_units.sort_custom(reverse_attack_sort)
+	
 	for u in all_units:
 		u.effect.subscribe()
 	

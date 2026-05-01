@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="18_ddkd5"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="19_53y5s"]
 [ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="19_mxa0m"]
+[ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="19_qji3b"]
 [ext_resource type="Script" path="res://Resources/FoodData.gd" id="21_aud3e"]
 [ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Resources/Food/Apple.tres" id="22_xxyny"]
 
@@ -164,5 +165,5 @@ display_string = "<"
 script = ExtResource("1_n5s8k")
 lives = 3
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
-encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
+encounter_sequence = Array[ExtResource("16_vxcpi")]([ExtResource("19_qji3b"), SubResource("Resource_nwtii"), SubResource("Resource_08tc8"), SubResource("Resource_53y5s")])
 food_sequence = Array[ExtResource("21_aud3e")]([ExtResource("22_xxyny"), SubResource("Resource_qji3b"), SubResource("Resource_fyhii")])

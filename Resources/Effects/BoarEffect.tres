@@ -11,7 +11,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 
 [resource]
 script = ExtResource("1_uyyu5")
-name = "Boar"
+name = "Globe"
 effect_description = "Give Self 4/2 before attack"
 sprite = ExtResource("3_u8pdf")
 sound_effect = ExtResource("2_u8pdf")
