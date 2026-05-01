@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" format=3 uid="uid://dwgexorgxl08t"]
 
 [ext_resource type="Texture2D" uid="uid://biuuva041feug" path="res://Assets/gibsonFloor.png" id="1_yej6c"]
-[ext_resource type="Texture2D" uid="uid://cx6d4ann0ykms" path="res://Assets/floorGradient_1d.tres" id="2_2pk3c"]
+[ext_resource type="Texture2D" uid="uid://cpnxl0u7u2yj2" path="res://Assets/floorGradient_1d.tres" id="2_2pk3c"]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_2pk3c"]
 constant = 0.25

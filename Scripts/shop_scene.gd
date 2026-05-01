@@ -1,6 +1,8 @@
 extends Node2D
 class_name ShopManager
 
+signal shop_closing
+
 const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 
 @export var combat_scene_file_path : String
@@ -91,6 +93,7 @@ func _create_unit(data:UnitData) -> CombatUnitControl:
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
 	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
 	new_unit.clicked.connect(info_display.set_info)
+	new_unit.shop_manager = self
 	for i in range(4,-1,-1):
 		var panel = unit_holder.get_child(i)
 		if panel.get_children().size() == 0:
@@ -157,7 +160,8 @@ func _go_to_combat_scene() -> void:
 		effect_manager.end_combat()
 		await effect_manager.ending_resolved
 		save_stats_to_data()
-		get_tree().change_scene_to_file(combat_scene_file_path)
+		shop_closing.emit()
+		#get_tree().change_scene_to_file(combat_scene_file_path)
 	elif PlayerUnitsContainer.ally_unit_list.size() == 0 and coins < 3:
 		print("No units and no coins? Here is some money.")
 		coins = unit_cost

@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://ceq7q644q06fl"]
+[gd_scene format=3 uid="uid://dh6b2jjhvnuln"]
 
-[ext_resource type="PackedScene" uid="uid://mhplo3k7raa5" path="res://Scenes/data_block.tscn" id="2_8dlt2"]
+[ext_resource type="PackedScene" path="res://Scenes/data_block.tscn" id="2_8dlt2"]
 [ext_resource type="Shader" uid="uid://dwgexorgxl08t" path="res://Assets/Shaders/gibsonFloor.tres" id="2_spof4"]
-[ext_resource type="PackedScene" uid="uid://dsiwimwooa2aw" path="res://Scenes/data_blockNonScrolling.tscn" id="3_8dlt2"]
+[ext_resource type="PackedScene" path="res://Scenes/data_blockNonScrolling.tscn" id="3_8dlt2"]
+[ext_resource type="PackedScene" uid="uid://ddcq4cja5qpu8" path="res://Scenes/3dShopSetup.tscn" id="4_d0863"]
+[ext_resource type="Script" uid="uid://b1l74t7y0qdsj" path="res://Scripts/3d/3dSceneManager.gd" id="4_y3wnj"]
+[ext_resource type="PackedScene" uid="uid://dxssk5oww43ye" path="res://Scenes/TitleScene.tscn" id="6_fyb36"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_spof4"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -24,6 +27,17 @@ render_priority = 0
 shader = ExtResource("2_spof4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_d0863"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_y3wnj"]
+size = Vector2(16, 9)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y3wnj"]
+viewport_path = NodePath("Combat Mesh/Combat Viewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3wnj"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_y3wnj")
 
 [node name="Node3D" type="Node3D" unique_id=743290918]
 
@@ -354,3 +368,21 @@ enable_shadows = true
 
 [node name="dataBlock55" parent="." unique_id=221009626 instance=ExtResource("3_8dlt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=954443470]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 15.019349, -23.855503)
+current = true
+fov = 74.0
+script = ExtResource("4_y3wnj")
+
+[node name="Shop" parent="Camera3D2" unique_id=1064402747 instance=ExtResource("4_d0863")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Combat Mesh" type="MeshInstance3D" parent="." unique_id=362739955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.385351, -29.726282)
+mesh = SubResource("QuadMesh_y3wnj")
+surface_material_override/0 = SubResource("StandardMaterial3D_y3wnj")
+
+[node name="Combat Viewport" type="SubViewport" parent="Combat Mesh" unique_id=1844342358]
+
+[node name="TitleScene" parent="Combat Mesh/Combat Viewport" unique_id=1492106318 instance=ExtResource("6_fyb36")]

@@ -43,7 +43,7 @@ var health : int:
 			unit_data.health = health
 
 func _ready() -> void:
-	shop_manager = get_tree().get_root().get_node("ShopScene")
+	#shop_manager = get_tree().get_root().get_node("ShopScene")
 	sell_unit.connect(shop_manager.sell)
 	moved_unit.connect(shop_manager.move_unit)
 

@@ -1,6 +1,6 @@
 extends Control
 
-const UNIT_RESULTS_SCENE = preload("uid://bamkuetclphq2")
+const UNIT_RESULTS_SCENE = preload("res://Scenes/CombatUnitResultsScene.tscn")
 
 @export var turn_text_node : Label
 @export var wins_text_node : Label

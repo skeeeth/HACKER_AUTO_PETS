@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_sach2"]
 [ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="4_c1r72"]
 [ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="4_grfxq"]
-[ext_resource type="Resource" uid="uid://dyo8b8uguix6m" path="res://Resources/Effects/Copycat.tres" id="4_ix367"]
+[ext_resource type="Resource" uid="uid://cmuv01lo5s0db" path="res://Resources/Effects/Copycat.tres" id="4_ix367"]
 [ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_grfxq"]
 
 [sub_resource type="Resource" id="Resource_grfxq"]
