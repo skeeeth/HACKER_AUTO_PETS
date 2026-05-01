@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dx74vtpg2covb" path="res://Scripts/3d/3dGui.gd" id="1_8f1hi"]
 [ext_resource type="Script" uid="uid://dptgo0uxh2fb6" path="res://Scripts/3d/3d_shop_setup.gd" id="1_wvp2t"]
-[ext_resource type="PackedScene" uid="uid://cl8e6tpoh42op" path="res://Scenes/ShopScene.tscn" id="2_wvp2t"]
-[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="3_mul7x"]
-[ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="4_ab4m3"]
-[ext_resource type="Resource" uid="uid://d3a7yfgc635g1" path="res://Resources/Effects/BoarEffect.tres" id="5_6ummm"]
-[ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="6_cec0d"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8dlt2"]
 resource_local_to_scene = true
@@ -25,35 +20,8 @@ albedo_texture_force_srgb = true
 margin = 0.0
 size = Vector3(0.1, 2.25, 4)
 
-[sub_resource type="Resource" id="Resource_8f1hi"]
-resource_local_to_scene = true
-script = ExtResource("3_mul7x")
-unit_name = "Tough Guy"
-attack = 3
-health = 3
-effect = ExtResource("4_ab4m3")
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[sub_resource type="Resource" id="Resource_wvp2t"]
-resource_local_to_scene = true
-script = ExtResource("3_mul7x")
-unit_name = "Globe"
-attack = 3
-health = 5
-effect = ExtResource("5_6ummm")
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[sub_resource type="Resource" id="Resource_mul7x"]
-resource_local_to_scene = true
-script = ExtResource("3_mul7x")
-unit_name = "Orbital"
-attack = 3
-effect = ExtResource("6_cec0d")
-metadata/_custom_type_script = "uid://6i4niaslfrq8"
-
-[node name="Node3D" type="Node3D" unique_id=1064402747 node_paths=PackedStringArray("shop_manager", "sub_viewport")]
+[node name="Node3D" type="Node3D" unique_id=1064402747 node_paths=PackedStringArray("sub_viewport")]
 script = ExtResource("1_wvp2t")
-shop_manager = NodePath("Input/SubViewport/ShopScene")
 sub_viewport = NodePath("Input/SubViewport")
 
 [node name="Input" type="Node3D" parent="." unique_id=767316075]
@@ -61,7 +29,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 script = ExtResource("1_8f1hi")
 
 [node name="Quad" type="MeshInstance3D" parent="Input" unique_id=2100539088]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(0, 0, 1, 0, 0.01, 0, -1, 0, 0, 0, 0, 0)
+rotation_edit_mode = 2
+visible = false
 mesh = SubResource("QuadMesh_8dlt2")
 surface_material_override/0 = SubResource("StandardMaterial3D_g03hp")
 
@@ -76,7 +46,3 @@ debug_color = Color(1, 0, 0.16666698, 0.4627451)
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
-
-[node name="ShopScene" parent="Input/SubViewport" unique_id=1666678237 instance=ExtResource("2_wvp2t")]
-position = Vector2(960, 540)
-purchasable_units = Array[ExtResource("3_mul7x")]([SubResource("Resource_8f1hi"), SubResource("Resource_wvp2t"), SubResource("Resource_mul7x")])

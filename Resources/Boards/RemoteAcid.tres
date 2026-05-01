@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://cwmnkjsa3l88t"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_88aaf"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ynr2l"]
+[ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="3_dkok5"]
+[ext_resource type="Resource" uid="uid://2lsw1b8eocas" path="res://Resources/Effects/Hurt_Acid.tres" id="4_yxjrt"]
+[ext_resource type="Resource" uid="uid://0d0438nllpuv" path="res://Resources/Units/Worm.tres" id="5_u67gx"]
+[ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="6_xexcf"]
+[ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="7_jpjno"]
+
+[sub_resource type="Resource" id="Resource_n5po3"]
+resource_local_to_scene = true
+script = ExtResource("2_ynr2l")
+unit_name = "ACID BURN"
+attack = 0
+health = 5
+effect = ExtResource("4_yxjrt")
+shift = -3
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_88aaf")
+unit_data = Array[ExtResource("2_ynr2l")]([ExtResource("3_dkok5"), SubResource("Resource_n5po3"), ExtResource("5_u67gx"), ExtResource("6_xexcf"), ExtResource("7_jpjno")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

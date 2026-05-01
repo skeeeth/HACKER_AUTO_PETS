@@ -7,6 +7,7 @@ enum BattlePhases
 signal combat_start
 signal turn_start
 signal turn_end
+signal combat_end
 
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
@@ -76,7 +77,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#$Timer/TimerText.text = str(combat_timer.time_left)
 	pass
-
 
 func get_all_units() -> Array[SimUnit]:
 	var all_units:Array[SimUnit] = player_queue.duplicate()
@@ -262,5 +262,6 @@ func end_combat():
 	combat_over = true
 	Gamestate.end_turn()
 
+	combat_end.emit()
 	next_scene_button_node.visible = true
 	print("Combat Over")

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://bxvwmkd6ftopf"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_ximfe"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_oa7k8"]
+[ext_resource type="Resource" uid="uid://cpchlpdei8wap" path="res://Resources/Effects/SwordfishEffect.tres" id="3_8wjap"]
+[ext_resource type="Resource" uid="uid://cmuv01lo5s0db" path="res://Resources/Effects/Copycat.tres" id="4_2pfg2"]
+[ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="5_8t4ke"]
+[ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="6_et0tb"]
+
+[sub_resource type="Resource" id="Resource_ximfe"]
+resource_local_to_scene = true
+script = ExtResource("2_oa7k8")
+unit_name = "Swordfish"
+attack = 5
+health = 6
+effect = ExtResource("3_8wjap")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_e1iup"]
+script = ExtResource("2_oa7k8")
+unit_name = "Copycat"
+attack = 7
+effect = ExtResource("4_2pfg2")
+shift = 1
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_ximfe")
+unit_data = Array[ExtResource("2_oa7k8")]([SubResource("Resource_ximfe"), SubResource("Resource_e1iup"), ExtResource("5_8t4ke"), ExtResource("6_et0tb")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

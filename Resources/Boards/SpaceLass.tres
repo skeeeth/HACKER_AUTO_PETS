@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://c0l0yem3c3wl6"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_vu03p"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_rlc32"]
+[ext_resource type="Resource" uid="uid://v3n0q3lq60l0" path="res://Resources/Effects/LassoEffect.tres" id="3_1i0e8"]
+[ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="4_6u5x2"]
+[ext_resource type="Resource" uid="uid://cfuqgesrsqstv" path="res://Resources/Units/Orbital.tres" id="5_7ydts"]
+
+[sub_resource type="Resource" id="Resource_mi2j0"]
+resource_local_to_scene = true
+script = ExtResource("2_rlc32")
+unit_name = "Lasso"
+attack = 6
+health = 3
+effect = ExtResource("3_1i0e8")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_08hwn"]
+resource_local_to_scene = true
+script = ExtResource("2_rlc32")
+unit_name = "Lasso"
+attack = 4
+health = 1
+effect = ExtResource("3_1i0e8")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_53y5s"]
+resource_local_to_scene = true
+script = ExtResource("2_rlc32")
+unit_name = "Orbital"
+attack = 6
+health = 5
+effect = ExtResource("4_6u5x2")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_7ea1c"]
+resource_local_to_scene = true
+script = ExtResource("2_rlc32")
+unit_name = "Orbital"
+attack = 4
+health = 3
+effect = ExtResource("4_6u5x2")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_vu03p")
+unit_data = Array[ExtResource("2_rlc32")]([SubResource("Resource_mi2j0"), SubResource("Resource_08hwn"), SubResource("Resource_53y5s"), ExtResource("5_7ydts"), SubResource("Resource_7ea1c")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

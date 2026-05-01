@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://ibek6ecqp56k"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_ftgo3"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_ipa50"]
+[ext_resource type="Script" uid="uid://d6hrknb1lvds" path="res://Resources/effectData.gd" id="3_i1ai6"]
+[ext_resource type="Texture2D" uid="uid://bpobrth4elcx8" path="res://Assets/ProdSprites/davinci128.png" id="4_1bdit"]
+[ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="5_ow300"]
+[ext_resource type="Resource" uid="uid://b80416xpo266g" path="res://Resources/Effects/ElephantEffect.tres" id="6_i274m"]
+[ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="7_lpbo3"]
+[ext_resource type="Resource" uid="uid://c15k7vb7h11my" path="res://Resources/Effects/OrbitalEffect.tres" id="8_27et5"]
+
+[sub_resource type="Resource" id="Resource_f44de"]
+script = ExtResource("5_ow300")
+metadata/_custom_type_script = "uid://by520cy10c7wa"
+
+[sub_resource type="Resource" id="Resource_e8dmi"]
+script = ExtResource("3_i1ai6")
+name = "Vitruvius"
+effect_description = "Combat Start -> Give Self 2/2"
+sprite = ExtResource("4_1bdit")
+effect_type = 1
+magnitude = 2
+targets = Array[ExtResource("5_ow300")]([SubResource("Resource_f44de")])
+metadata/_custom_type_script = "uid://d6hrknb1lvds"
+
+[sub_resource type="Resource" id="Resource_c75b5"]
+script = ExtResource("2_ipa50")
+unit_name = "Vitruvius"
+health = 1
+effect = SubResource("Resource_e8dmi")
+shift = -1
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_6f83a"]
+resource_local_to_scene = true
+script = ExtResource("2_ipa50")
+unit_name = "Elephant"
+attack = 3
+health = 6
+effect = ExtResource("6_i274m")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_1sr8e"]
+resource_local_to_scene = true
+script = ExtResource("2_ipa50")
+unit_name = "Camel"
+attack = 4
+health = 4
+effect = ExtResource("7_lpbo3")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_cucxj"]
+resource_local_to_scene = true
+script = ExtResource("2_ipa50")
+unit_name = "Orbital"
+attack = 4
+health = 3
+effect = ExtResource("8_27et5")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_ftgo3")
+unit_data = Array[ExtResource("2_ipa50")]([SubResource("Resource_c75b5"), SubResource("Resource_6f83a"), SubResource("Resource_1sr8e"), SubResource("Resource_cucxj")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

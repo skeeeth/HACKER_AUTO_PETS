@@ -5,23 +5,24 @@
 [ext_resource type="Texture2D" uid="uid://bpobrth4elcx8" path="res://Assets/ProdSprites/davinci128.png" id="2_i2y3n"]
 [ext_resource type="Script" uid="uid://by520cy10c7wa" path="res://Resources/TargetData.gd" id="3_ondnm"]
 
-[sub_resource type="Resource" id="Resource_xcyyu"]
+[sub_resource type="Resource" id="Resource_f44de"]
 script = ExtResource("3_ondnm")
 metadata/_custom_type_script = "uid://by520cy10c7wa"
 
-[sub_resource type="Resource" id="Resource_i2y3n"]
+[sub_resource type="Resource" id="Resource_e8dmi"]
 script = ExtResource("1_i2y3n")
 name = "Vitruvius"
 effect_description = "Combat Start -> Give Self 2/2"
 sprite = ExtResource("2_i2y3n")
 effect_type = 1
 magnitude = 2
-targets = Array[ExtResource("3_ondnm")]([SubResource("Resource_xcyyu")])
+targets = Array[ExtResource("3_ondnm")]([SubResource("Resource_f44de")])
 metadata/_custom_type_script = "uid://d6hrknb1lvds"
 
 [resource]
 script = ExtResource("1_ww8ef")
 unit_name = "Vitruvius"
 health = 1
-effect = SubResource("Resource_i2y3n")
+effect = SubResource("Resource_e8dmi")
+shift = 1
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

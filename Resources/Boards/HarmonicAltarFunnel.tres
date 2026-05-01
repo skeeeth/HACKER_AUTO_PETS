@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://bows3bfbs58jq"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_cuul4"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_cs1p1"]
+[ext_resource type="Resource" uid="uid://0d0438nllpuv" path="res://Resources/Units/Worm.tres" id="3_30u0l"]
+[ext_resource type="Resource" uid="uid://bn6ja3la48bd2" path="res://Resources/Units/Trojan.tres" id="4_jtfqn"]
+[ext_resource type="Resource" uid="uid://hf5uxrjba5ff" path="res://Resources/Units/Genesis Harmonic.tres" id="5_anif6"]
+[ext_resource type="Resource" uid="uid://bvo0sy1bqxuct" path="res://Resources/Effects/AltarEffect.tres" id="6_xt67p"]
+[ext_resource type="Resource" uid="uid://d00wio1brnija" path="res://Resources/Units/Boar.tres" id="7_v5vsx"]
+
+[sub_resource type="Resource" id="Resource_2rwk8"]
+resource_local_to_scene = true
+script = ExtResource("2_cs1p1")
+unit_name = "Altar"
+attack = 4
+health = 4
+effect = ExtResource("6_xt67p")
+shift = 7
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_cuul4")
+unit_data = Array[ExtResource("2_cs1p1")]([ExtResource("3_30u0l"), ExtResource("4_jtfqn"), ExtResource("5_anif6"), SubResource("Resource_2rwk8"), ExtResource("7_v5vsx")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"

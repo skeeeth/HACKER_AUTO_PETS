@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://drg0kogqwfvs3"]
+
+[ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="1_0dvtu"]
+[ext_resource type="Script" uid="uid://6i4niaslfrq8" path="res://Resources/UnitData.gd" id="2_volbe"]
+[ext_resource type="Resource" uid="uid://cnfp86e7vp4op" path="res://Resources/Units/The Sickness.tres" id="3_b2rbs"]
+[ext_resource type="Resource" uid="uid://bbj7y5pt3gybn" path="res://Resources/Units/Elephant.tres" id="4_1upt8"]
+[ext_resource type="Resource" uid="uid://np24ybr71b2k" path="res://Resources/Units/Camel.tres" id="5_mr4ol"]
+[ext_resource type="Resource" uid="uid://b80416xpo266g" path="res://Resources/Effects/ElephantEffect.tres" id="6_ww0ia"]
+[ext_resource type="Resource" uid="uid://mlo62bw7m14u" path="res://Resources/Effects/CamelEffect.tres" id="7_7ww46"]
+
+[sub_resource type="Resource" id="Resource_o1fyo"]
+resource_local_to_scene = true
+script = ExtResource("2_volbe")
+unit_name = "Love Hz"
+health = 5
+effect = ExtResource("6_ww0ia")
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[sub_resource type="Resource" id="Resource_msp74"]
+resource_local_to_scene = true
+script = ExtResource("2_volbe")
+unit_name = "Tough Guy"
+attack = 3
+health = 3
+effect = ExtResource("7_7ww46")
+shift = 2
+metadata/_custom_type_script = "uid://6i4niaslfrq8"
+
+[resource]
+script = ExtResource("1_0dvtu")
+unit_data = Array[ExtResource("2_volbe")]([ExtResource("3_b2rbs"), ExtResource("4_1upt8"), ExtResource("5_mr4ol"), SubResource("Resource_o1fyo"), SubResource("Resource_msp74")])
+metadata/_custom_type_script = "uid://bxnwqdhbo0l71"
