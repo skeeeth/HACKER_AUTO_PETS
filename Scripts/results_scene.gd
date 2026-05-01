@@ -12,7 +12,7 @@ var base_life_text : String
 var base_turn_text : String
 var base_wins_text : String
 
-var player_stack : Array[CombatUnitControl]
+var player_stack : Array[CombatUnitResults]
 
 var list_index : int = 0
 
