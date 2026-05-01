@@ -16,15 +16,22 @@ func shop_entered():
 	if first_time_load == false:
 		combat_track.play()
 		shop_track.play()
+		shop_track.volume_db = -4
+		combat_track.volume_db = -80
 		first_time_load = true
 	
-	
-	combat_track.volume_db = -80
-	shop_track.volume_db = 1
+	var crossfade = create_tween().set_parallel()
+	var t = 2.5
+	crossfade.tween_property(combat_track,"volume_db",-60,t)
+	#combat_track.volume_db = -80
+	crossfade.tween_property(shop_track,"volume_db",-4,t/2).set_ease(Tween.EASE_OUT)
+	#shop_track.volume_db = 0
 
 func combat_entered():
-	combat_track.volume_db = 1
-	shop_track.volume_db = -80
+	var crossfade = create_tween().set_parallel()
+	var t = 2.5
+	crossfade.tween_property(combat_track,"volume_db",-4,t/2).set_ease(Tween.EASE_OUT)
+	crossfade.tween_property(shop_track,"volume_db",-60,t)
 
 func results_screen_entered():
 	combat_track.stop()

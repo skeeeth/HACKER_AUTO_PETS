@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AudioData" format=3 uid="uid://4e0wunterd2t"]
+
+[ext_resource type="AudioStream" uid="uid://b60kbyxq7r6cj" path="res://Assets/Sound Effects/GiveBoop.mp3" id="1_im7aw"]
+[ext_resource type="Script" uid="uid://cn8bi2w3j77cv" path="res://Resources/EffectAudioData.gd" id="1_iublc"]
+[ext_resource type="AudioStream" uid="uid://dyh6xs6vfbcta" path="res://Assets/Sound Effects/DinkDink.mp3" id="1_uqeap"]
+
+[resource]
+script = ExtResource("1_iublc")
+give = ExtResource("1_im7aw")
+fizzle = ExtResource("1_uqeap")
+metadata/_custom_type_script = "uid://cn8bi2w3j77cv"

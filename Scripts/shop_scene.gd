@@ -175,6 +175,7 @@ func _reroll() -> void:
 		for f in %FoodContainer.get_children():
 			f.queue_free()
 		create_food(food_pool.pick_random())
+		SoundManager.play_sound_from_path("res://Assets/Sound Effects/RollShop.mp3")
 
 func _set_buttons() -> void:
 

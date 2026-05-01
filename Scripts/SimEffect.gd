@@ -14,7 +14,7 @@ var modifier : int = 0 #modify-er? hardly even know her!
 var manager : CombatSimManager
 var holder : SimUnit
 var sound_effect : AudioStream
-
+const audio_data = preload("res://Resources/EffectAudio.tres")
 var target_units:Array[SimUnit]
 #var elbow_one:Vector2 = Vector2.ZERO
 #var elbow_two:Vector2 = Vector2.ZERO
@@ -115,6 +115,7 @@ func resolve():
 				#get_magnitude()
 	
 	if fizzled:
+		SoundManager.play_sound(audio_data.fizzle)
 		animation.set_parallel(false)
 		var start = holder.position.x
 		var wiggle_size:float = 20
@@ -243,6 +244,7 @@ func try_target_index(target_index:int) ->  void:
 			#target_queue = ally_queue
 
 func resolve_give(target):
+	SoundManager.play_sound(audio_data.give)
 	target.attack += get_magnitude()
 	target.health += get_magnitude() + data.mag_mod
 	

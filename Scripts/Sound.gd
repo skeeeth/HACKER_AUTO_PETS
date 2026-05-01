@@ -1,18 +1,18 @@
 extends Node
 
 
-func play_sound(sound : AudioStream):
+func play_sound(sound : AudioStream, vol:float = -5):
 	var player = AudioStreamPlayer.new()
-	player.volume_db = -5
+	player.volume_db = vol
 	add_child(player)
 	player.stream = sound
 	player.play()
 	player.finished.connect(_on_stream_finished.bind(player))
 
 
-func play_sound_from_path(sound_path : String):
+func play_sound_from_path(sound_path : String, vol:float = -5):
 	var player = AudioStreamPlayer.new()
-	player.volume_db = -5
+	player.volume_db = vol
 	add_child(player)
 	player.stream = load(sound_path)
 	player.play()

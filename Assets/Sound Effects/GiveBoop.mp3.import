@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b60kbyxq7r6cj"
+path="res://.godot/imported/GiveBoop.mp3-6f771c8119ca43d4bef6cb94b7174457.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/GiveBoop.mp3"
+dest_files=["res://.godot/imported/GiveBoop.mp3-6f771c8119ca43d4bef6cb94b7174457.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
