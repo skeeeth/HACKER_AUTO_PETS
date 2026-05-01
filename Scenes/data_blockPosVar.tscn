@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bcxi8rxujuber"]
+
+[ext_resource type="PackedScene" uid="uid://by3efy8awori3" path="res://Assets/dataBlock.fbx" id="1_swcih"]
+[ext_resource type="Shader" uid="uid://bfay2hqt3qqem" path="res://Assets/Shaders/dataBlockPosVar.tres" id="2_swcih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iduxq"]
+render_priority = 0
+shader = ExtResource("2_swcih")
+
+[node name="dataBlock" unique_id=1164551131 instance=ExtResource("1_swcih")]
+
+[node name="dataBlock" parent="." index="0" unique_id=886194469]
+material_override = SubResource("ShaderMaterial_iduxq")
