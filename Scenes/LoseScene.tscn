@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://8cbvfluncsuh" path="res://Scripts/results_scene.gd" id="1_nelb7"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="1_o6134"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="2_gj2ut"]
+[ext_resource type="Texture2D" uid="uid://b0ngxm0687tes" path="res://Themes/Windows98/textures/window.png" id="4_1p81w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o6134"]
 font_size = 136
@@ -28,6 +30,31 @@ wins_text_node = NodePath("WinsText")
 life_text_node = NodePath("LifeText")
 unit_holder = NodePath("UnitHolder")
 
+[node name="BackPanel" type="PanelContainer" parent="." unique_id=181530734]
+modulate = Color(0.85, 0.85, 0.85, 1)
+z_index = -3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -955.0
+offset_bottom = -545.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_gj2ut")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackPanel" unique_id=1287392598]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BackPanel/VBoxContainer" unique_id=782306207]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("4_1p81w")
+region_rect = Rect2(4, 4, 472, 40)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=39799639]
 
 [node name="TitleText" type="Label" parent="." unique_id=848735393]
@@ -36,6 +63,7 @@ offset_left = -612.0
 offset_top = -477.0
 offset_right = 624.0
 offset_bottom = -305.0
+theme = ExtResource("2_gj2ut")
 text = "You Lose"
 label_settings = SubResource("LabelSettings_o6134")
 horizontal_alignment = 1
@@ -47,6 +75,7 @@ offset_left = -663.0
 offset_top = 351.0
 offset_right = -436.0
 offset_bottom = 490.0
+theme = ExtResource("2_gj2ut")
 text = ""
 transition_scene_file_path = "res://Scenes/TitleScene.tscn"
 
@@ -65,6 +94,7 @@ offset_left = 436.0
 offset_top = 351.0
 offset_right = 663.0
 offset_bottom = 490.0
+theme = ExtResource("2_gj2ut")
 text = ""
 transition_scene_file_path = "res://Scenes/TitleScene.tscn"
 
@@ -80,9 +110,10 @@ vertical_alignment = 1
 [node name="TurnText" type="Label" parent="." unique_id=1867490073]
 layout_mode = 0
 offset_left = -368.0
-offset_top = -251.0
+offset_top = -285.0
 offset_right = -133.0
-offset_bottom = -189.0
+offset_bottom = -223.0
+theme = ExtResource("2_gj2ut")
 text = "Turns:  "
 label_settings = SubResource("LabelSettings_nelb7")
 vertical_alignment = 1
@@ -90,9 +121,10 @@ vertical_alignment = 1
 [node name="WinsText" type="Label" parent="." unique_id=535566099]
 layout_mode = 0
 offset_left = -74.0
-offset_top = -251.0
+offset_top = -285.0
 offset_right = 161.0
-offset_bottom = -189.0
+offset_bottom = -223.0
+theme = ExtResource("2_gj2ut")
 text = "Wins:  "
 label_settings = SubResource("LabelSettings_nelb7")
 vertical_alignment = 1
@@ -100,9 +132,10 @@ vertical_alignment = 1
 [node name="LifeText" type="Label" parent="." unique_id=1882337592]
 layout_mode = 0
 offset_left = 199.0
-offset_top = -251.0
+offset_top = -285.0
 offset_right = 434.0
-offset_bottom = -189.0
+offset_bottom = -223.0
+theme = ExtResource("2_gj2ut")
 text = "Lives:  "
 label_settings = SubResource("LabelSettings_gj2ut")
 vertical_alignment = 1

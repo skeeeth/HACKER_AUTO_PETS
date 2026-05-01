@@ -36,6 +36,9 @@ font_size = 31
 [sub_resource type="LabelSettings" id="LabelSettings_3qq02"]
 font_size = 26
 
+[sub_resource type="LabelSettings" id="LabelSettings_fepw0"]
+font_size = 31
+
 [sub_resource type="LabelSettings" id="LabelSettings_03ylq"]
 font_color = Color(0, 0, 0, 1)
 
@@ -48,7 +51,7 @@ purchase_buttons = [NodePath("Buttons/PurchaseUnitButton1"), NodePath("Buttons/P
 coin_text_node = NodePath("Texts/CoinText")
 life_text_node = NodePath("Texts/LifeText")
 turn_text_node = NodePath("Texts/TurnText")
-wins_text_node = NodePath("Texts/Wins")
+wins_text_node = NodePath("Texts/WinsText")
 unit_holder = NodePath("PanelContainer/VBoxContainer/UnitHolder")
 effect_manager = NodePath("ShopManager")
 info_display = NodePath("Shop Panel/HBoxContainer/Info Display")
@@ -371,12 +374,14 @@ label_settings = SubResource("LabelSettings_3qq02")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Wins" type="Label" parent="Texts" unique_id=96149084]
-offset_left = -101.0
-offset_top = -480.0
-offset_right = -61.0
-offset_bottom = -457.0
-text = "Wins"
+[node name="WinsText" type="Label" parent="Texts" unique_id=96149084]
+offset_left = -128.0
+offset_top = -474.0
+offset_right = 101.0
+offset_bottom = -422.0
+theme = ExtResource("7_1itlx")
+text = "Wins: "
+label_settings = SubResource("LabelSettings_fepw0")
 
 [node name="Food Panel" type="PanelContainer" parent="." unique_id=1913499572]
 offset_left = -857.0

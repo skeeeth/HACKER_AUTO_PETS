@@ -56,5 +56,6 @@ func dress(data : UnitData, index : int = 0):
 func _mouse_entered():
 	var info : InfoDisplay = InfoDisplay.create(unit_data)
 	add_child(info)
-	info.position.y = -100
+	info.position.x = 0
+	info.position.y = -175
 	mouse_exited.connect(info.queue_free)
