@@ -24,5 +24,4 @@ script = ExtResource("1_ww8ef")
 unit_name = "Vitruvius"
 health = 1
 effect = SubResource("Resource_e8dmi")
-shift = 1
 metadata/_custom_type_script = "uid://6i4niaslfrq8"

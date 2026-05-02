@@ -1,53 +1,72 @@
 [gd_scene format=3 uid="uid://dr8wkcgon6xan"]
 
 [ext_resource type="Script" uid="uid://dy1hq3kj5cw82" path="res://Scripts/targeting_indicator.gd" id="1_dpvq5"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="1_l482o"]
+[ext_resource type="LabelSettings" uid="uid://c2j8qkmrwlqrm" path="res://Resources/Syles/InfoLabelSettings.tres" id="3_5qmg4"]
+[ext_resource type="Texture2D" uid="uid://b10c6dklpnxkf" path="res://Themes/Windows98/textures/vslider_increment.png" id="3_lmrni"]
+[ext_resource type="Texture2D" uid="uid://dvhv1mq0trf8i" path="res://Assets/ProdSprites/hackersmiley64.png" id="4_wu5rm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dpvq5"]
 font_size = 64
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8vbvw"]
-load_path = "res://.godot/imported/Dithererd Triangle.png-144500e56b7e8202c01a34e4701dacec.ctex"
-
-[node name="Node2D" type="VBoxContainer" unique_id=184819710 node_paths=PackedStringArray("center_label", "attack_label", "health_label", "stat_container")]
-z_index = 6
+[node name="PanelContainer" type="PanelContainer" unique_id=2133521162 node_paths=PackedStringArray("center_label", "attack_label", "health_label", "stat_container", "source_icon")]
+offset_top = 16.0
 offset_right = 38.0
-offset_bottom = 61.0
+offset_bottom = 28.0
+mouse_filter = 2
+theme = ExtResource("1_l482o")
 script = ExtResource("1_dpvq5")
-center_label = NodePath("Center")
-attack_label = NodePath("HBoxContainer/Left")
-health_label = NodePath("HBoxContainer/Right")
-stat_container = NodePath("HBoxContainer")
+center_label = NodePath("Node2D/Center")
+attack_label = NodePath("Node2D/HBoxContainer/Left")
+health_label = NodePath("Node2D/HBoxContainer/Right")
+stat_container = NodePath("Node2D/HBoxContainer")
+source_icon = NodePath("Node2D/Source Icon")
 
-[node name="Icon" type="Label" parent="." unique_id=627492573]
+[node name="Node2D" type="VBoxContainer" parent="." unique_id=184819710]
+z_index = 6
+layout_mode = 2
+theme = ExtResource("1_l482o")
+
+[node name="Icon" type="Label" parent="Node2D" unique_id=627492573]
 visible = false
 layout_mode = 2
 label_settings = SubResource("LabelSettings_dpvq5")
 horizontal_alignment = 1
 
-[node name="Center" type="Label" parent="." unique_id=1576183102]
+[node name="Center" type="Label" parent="Node2D" unique_id=1576183102]
 visible = false
 layout_mode = 2
 text = "9"
+label_settings = ExtResource("3_5qmg4")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1823555399]
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D" unique_id=1823555399]
 visible = false
 layout_mode = 2
 
-[node name="Left" type="Label" parent="HBoxContainer" unique_id=2046911152]
+[node name="Left" type="Label" parent="Node2D/HBoxContainer" unique_id=2046911152]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
+label_settings = ExtResource("3_5qmg4")
+horizontal_alignment = 1
 
-[node name="Right" type="Label" parent="HBoxContainer" unique_id=1882536349]
+[node name="Right" type="Label" parent="Node2D/HBoxContainer" unique_id=1882536349]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
+label_settings = ExtResource("3_5qmg4")
+horizontal_alignment = 1
 
-[node name="Sprite2D" type="TextureRect" parent="." unique_id=668422581]
+[node name="Source Icon" type="TextureRect" parent="Node2D" unique_id=1455577118]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_wu5rm")
+expand_mode = 4
+
+[node name="Sprite2D" type="TextureRect" parent="Node2D" unique_id=668422581]
 texture_filter = 1
 layout_mode = 2
-texture = SubResource("CompressedTexture2D_8vbvw")
+texture = ExtResource("3_lmrni")
 expand_mode = 5
 flip_h = true
-flip_v = true

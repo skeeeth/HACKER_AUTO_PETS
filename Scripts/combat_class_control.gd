@@ -19,6 +19,8 @@ var moved_position : bool
 var effect : EffectData
 var unit_data : UnitData
 
+var dropable:bool = true
+
 var shift : int = 0:
 	set(v):
 		shift = v
@@ -83,7 +85,10 @@ func _on_move_back_pressed() -> void:
 		object_index += 1
 		moved_unit.emit(self, -1)
 
-#func _mouse_entered():
+func _mouse_entered():
+	for i in effect_node.set_targets(false):
+		mouse_exited.connect(i.queue_free)
+	#Indicator.create(unit_data,)
 	#var info : InfoDisplay = InfoDisplay.create(unit_data)
 	#add_child(info)
 	#info.position.y = -100
@@ -91,7 +96,7 @@ func _on_move_back_pressed() -> void:
 
 
 func _can_drop_data(_position, data):
-	return typeof(data) == TYPE_DICTIONARY and data.has("source")
+	return typeof(data) == TYPE_DICTIONARY and data.has("source") and dropable
 
 #func save_stats_to_data():
 	#unit_data.attack = attack
@@ -99,6 +104,7 @@ func _can_drop_data(_position, data):
 	#unit_data.shift = shift
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
+	if !dropable: return
 	var preview_sprite = TextureRect.new()
 	preview_sprite.texture = sprite.texture
 	preview_sprite.size = sprite.size

@@ -20,6 +20,8 @@ var holder:CombatUnitControl:
 		holder_changed.emit(holder)
 
 var targets : Array[CombatUnitControl]
+var is_enemy:bool = false
+var index:int ##ENEMY DISPLAY ONLYYYYY IMPORTANTT DONT USE THIS
 
 func subscribe(manager:ShopEffectManager):
 	shop_manager = manager
@@ -46,20 +48,37 @@ func trigger():
 	shop_manager.effect_stack.append(self)
 	triggered.emit()
 
-func set_targets():
+func set_targets(drop:bool = true) -> Array[Indicator]:
 	var unit_stack = shop_manager.shop_main.get_unit_stack()
 	var my_index = unit_stack.find(holder)
+	if is_enemy:
+		my_index = index
+	var indicators : Array[Indicator]
 	for t in data.targets:
 		
-		var x_spacing = 150 #shop_manager.shop_main.unit_holder.theme.get_constant("separation")
+		var x_spacing = 164 #shop_manager.shop_main.unit_holder.theme.get_constant("separation")
 		#x_spacing = holder.size.x
-		var absolute_index = Effect.get_index_from_target(t,true,my_index,holder.shift)
+		var absolute_index = Effect.get_index_from_target(t,!is_enemy,my_index,holder.shift)
+		
+		var hbox
+		if is_enemy: 
+			#absolute_index += 5
+			hbox = holder.shop_manager.enemy_unit_holder
+		else :
+			pass
+		hbox = holder.shop_manager.unit_holder
 		var indicator = Indicator.create(data, absolute_index,
-				x_spacing, holder.sprite.size.x, x_spacing)
+				x_spacing, x_spacing/2.0,
+				hbox.global_position.x
+				 + hbox.size.x,
+				hbox.global_position.y - 200)
+		
+		indicators.append(indicator)
 		
 		shop_manager.shop_main.add_child.call_deferred(indicator)
-		indicator.drop()
-		indicator.tree_exiting.connect(resolved.emit)
+		if drop:
+			indicator.drop()
+			indicator.tree_exiting.connect(resolved.emit)
 		
 		var i = 5 - absolute_index
 		if i < 0 or i >= 5:
@@ -68,7 +87,10 @@ func set_targets():
 		if i >= unit_stack.size():
 			continue
 		
-		targets.append(unit_stack[i])
+		if drop:
+			targets.append(unit_stack[i])
+	
+	return indicators
 
 func resolve():
 	#var indicator = Indicator.create(self,)

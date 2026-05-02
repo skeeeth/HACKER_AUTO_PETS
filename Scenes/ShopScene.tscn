@@ -12,6 +12,11 @@
 [ext_resource type="Script" uid="uid://wivf5kctu05d" path="res://Scripts/ShopManager.gd" id="9_03ylq"]
 [ext_resource type="StyleBox" uid="uid://bu7hoi35niabd" path="res://Resources/Syles/ConcaveStyleBox.tres" id="9_fepw0"]
 [ext_resource type="PackedScene" uid="uid://caqo5o73bgt5u" path="res://Scenes/InfoDisplay.tscn" id="11_03ylq"]
+[ext_resource type="LabelSettings" uid="uid://c2j8qkmrwlqrm" path="res://Resources/Syles/InfoLabelSettings.tres" id="11_fepw0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6mlxe"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fepw0"]
 texture = ExtResource("8_gs7he")
@@ -21,6 +26,7 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_k8c1k"]
+font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7s06"]
 font_size = 12
@@ -39,10 +45,7 @@ font_size = 26
 [sub_resource type="LabelSettings" id="LabelSettings_fepw0"]
 font_size = 31
 
-[sub_resource type="LabelSettings" id="LabelSettings_03ylq"]
-font_color = Color(0, 0, 0, 1)
-
-[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "wins_text_node", "unit_holder", "effect_manager", "info_display")]
+[node name="ShopScene" type="Node2D" unique_id=1666678237 node_paths=PackedStringArray("purchase_buttons", "coin_text_node", "life_text_node", "turn_text_node", "wins_text_node", "unit_holder", "enemy_unit_holder", "effect_manager", "info_display")]
 texture_filter = 1
 script = ExtResource("1_x7s06")
 combat_scene_file_path = "res://Scenes/CombatSim.tscn"
@@ -52,7 +55,8 @@ coin_text_node = NodePath("Texts/CoinText")
 life_text_node = NodePath("Texts/LifeText")
 turn_text_node = NodePath("Texts/TurnText")
 wins_text_node = NodePath("Texts/WinsText")
-unit_holder = NodePath("PanelContainer/VBoxContainer/UnitHolder")
+unit_holder = NodePath("PlayerPanel/VBoxContainer/UnitHolder")
+enemy_unit_holder = NodePath("EnemyPanel/VBoxContainer/UnitHolder")
 effect_manager = NodePath("ShopManager")
 info_display = NodePath("Shop Panel/HBoxContainer/Info Display")
 
@@ -87,10 +91,10 @@ shop_main = NodePath("..")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=679468185]
 
 [node name="Shop Panel" type="PanelContainer" parent="." unique_id=1983522865]
-offset_left = -850.0
-offset_top = -364.0
-offset_right = 689.0
-offset_bottom = -56.0
+offset_left = -852.0
+offset_top = -407.0
+offset_right = 687.0
+offset_bottom = -99.0
 theme = ExtResource("7_1itlx")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Shop Panel" unique_id=657103613]
@@ -102,6 +106,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=1836806042]
 layout_mode = 2
 text = "SOME INFO COPY"
+label_settings = SubResource("LabelSettings_6mlxe")
 autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=929142391]
@@ -126,112 +131,119 @@ item_count = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1469432332]
-offset_left = -861.0
-offset_top = 21.0
-offset_right = -23.0
-offset_bottom = 363.0
+[node name="PlayerPanel" type="PanelContainer" parent="." unique_id=1469432332]
+offset_left = -909.0
+offset_top = -42.17
+offset_right = -71.0
+offset_bottom = 412.40997
 mouse_filter = 2
 theme = ExtResource("7_1itlx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1966633413]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel" unique_id=1966633413]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer/VBoxContainer" unique_id=2083479329]
+[node name="NinePatchRect" type="NinePatchRect" parent="PlayerPanel/VBoxContainer" unique_id=2083479329]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 texture = ExtResource("8_k8c1k")
-region_rect = Rect2(4, 4, 472.594, 40)
+region_rect = Rect2(4, 4, 472.594, 18.407204)
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/NinePatchRect" unique_id=603455017]
+[node name="Label" type="Label" parent="PlayerPanel/VBoxContainer/NinePatchRect" unique_id=603455017]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 12.0
 text = " Virus  List"
 label_settings = SubResource("LabelSettings_k8c1k")
 
-[node name="Index Labels" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=109320837]
+[node name="Index Labels" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=109320837]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1676177736]
+[node name="Label" type="Label" parent="PlayerPanel/VBoxContainer/Index Labels" unique_id=1676177736]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1951504952]
+[node name="Label2" type="Label" parent="PlayerPanel/VBoxContainer/Index Labels" unique_id=1951504952]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "2"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=680612249]
+[node name="Label3" type="Label" parent="PlayerPanel/VBoxContainer/Index Labels" unique_id=680612249]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label4" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1420307976]
+[node name="Label4" type="Label" parent="PlayerPanel/VBoxContainer/Index Labels" unique_id=1420307976]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "4"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label5" type="Label" parent="PanelContainer/VBoxContainer/Index Labels" unique_id=1647746331]
+[node name="Label5" type="Label" parent="PlayerPanel/VBoxContainer/Index Labels" unique_id=1647746331]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "5"
+label_settings = ExtResource("11_fepw0")
 
-[node name="UnitHolder" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=835860638]
-custom_minimum_size = Vector2(0, 250)
+[node name="UnitHolder" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=835860638]
+custom_minimum_size = Vector2(0, 306)
 layout_mode = 2
 mouse_filter = 2
 alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=272101986]
+[node name="PanelContainer" type="PanelContainer" parent="PlayerPanel/VBoxContainer/UnitHolder" unique_id=272101986]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=902602629]
+[node name="PanelContainer2" type="PanelContainer" parent="PlayerPanel/VBoxContainer/UnitHolder" unique_id=902602629]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=1578135981]
+[node name="PanelContainer3" type="PanelContainer" parent="PlayerPanel/VBoxContainer/UnitHolder" unique_id=1578135981]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=1844668206]
+[node name="PanelContainer4" type="PanelContainer" parent="PlayerPanel/VBoxContainer/UnitHolder" unique_id=1844668206]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer/VBoxContainer/UnitHolder" unique_id=41892739]
+[node name="PanelContainer5" type="PanelContainer" parent="PlayerPanel/VBoxContainer/UnitHolder" unique_id=41892739]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="Label2" type="Label" parent="PanelContainer" unique_id=300115845]
+[node name="Label2" type="Label" parent="PlayerPanel" unique_id=300115845]
 layout_mode = 2
 size_flags_vertical = 8
 text = "+ Shift -->"
+label_settings = ExtResource("11_fepw0")
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="PanelContainer" unique_id=1450847028]
+[node name="Label3" type="Label" parent="PlayerPanel" unique_id=1450847028]
 layout_mode = 2
 size_flags_vertical = 8
 text = "- Shift <-"
+label_settings = ExtResource("11_fepw0")
 
 [node name="Buttons" type="Node2D" parent="." unique_id=1507363086]
 
@@ -307,10 +319,10 @@ vertical_alignment = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 159.0
-offset_top = 251.0
-offset_right = 858.0
-offset_bottom = 354.0
+offset_left = 178.0
+offset_top = 424.0
+offset_right = 877.0
+offset_bottom = 527.0
 grow_vertical = 2
 size_flags_horizontal = 0
 theme = ExtResource("7_1itlx")
@@ -384,10 +396,10 @@ text = "Wins: "
 label_settings = SubResource("LabelSettings_fepw0")
 
 [node name="Food Panel" type="PanelContainer" parent="." unique_id=1913499572]
-offset_left = -857.0
-offset_top = 375.0
-offset_right = -32.0
-offset_bottom = 434.0
+offset_left = -884.0
+offset_top = 427.0
+offset_right = -59.0
+offset_bottom = 486.0
 theme = ExtResource("7_1itlx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Food Panel" unique_id=2126660655]
@@ -401,126 +413,135 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Mutations:"
-label_settings = SubResource("LabelSettings_03ylq")
+label_settings = ExtResource("11_fepw0")
 
 [node name="VSeparator" type="VSeparator" parent="Food Panel/VBoxContainer/HBoxContainer" unique_id=1022744482]
 layout_mode = 2
 
 [node name="Label2" type="Label" parent="Food Panel/VBoxContainer/HBoxContainer" unique_id=1789612274]
 layout_mode = 2
-text = "Drag onto a virus to alter it. Costs data"
+text = "Drag onto an ally virus to alter it. Costs data"
+label_settings = ExtResource("11_fepw0")
 
 [node name="FoodContainer" type="HBoxContainer" parent="Food Panel/VBoxContainer" unique_id=16583515]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1859090577]
-visible = false
-offset_left = 53.0
-offset_top = 25.0
-offset_right = 891.0
-offset_bottom = 367.0
+[node name="EnemyPanel" type="PanelContainer" parent="." unique_id=791916071]
+offset_left = 76.0
+offset_top = -42.17
+offset_right = 914.0
+offset_bottom = 412.40997
 mouse_filter = 2
 theme = ExtResource("7_1itlx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=306297098]
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyPanel" unique_id=1086504404]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer2/VBoxContainer" unique_id=1265740980]
+[node name="NinePatchRect" type="NinePatchRect" parent="EnemyPanel/VBoxContainer" unique_id=1856148652]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("8_k8c1k")
-region_rect = Rect2(4, 4, 472.594, 40)
+region_rect = Rect2(4, 4, 472.594, 18.407204)
 
-[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/NinePatchRect" unique_id=1955302150]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 12.0
-text = " Virus  List"
+[node name="Label" type="Label" parent="EnemyPanel/VBoxContainer/NinePatchRect" unique_id=1037557071]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 27.0
+text = "Enemy Virus Stack
+"
 label_settings = SubResource("LabelSettings_k8c1k")
 
-[node name="Index Labels" type="HBoxContainer" parent="PanelContainer2/VBoxContainer" unique_id=1986717054]
+[node name="Index Labels" type="HBoxContainer" parent="EnemyPanel/VBoxContainer" unique_id=1702893637]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=4919871]
+[node name="Label" type="Label" parent="EnemyPanel/VBoxContainer/Index Labels" unique_id=1247438993]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "1"
+text = "6"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=512829820]
+[node name="Label2" type="Label" parent="EnemyPanel/VBoxContainer/Index Labels" unique_id=16709258]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "2"
+text = "7"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label3" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=997454621]
+[node name="Label3" type="Label" parent="EnemyPanel/VBoxContainer/Index Labels" unique_id=789572318]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "3"
+text = "8"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label4" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=558111884]
+[node name="Label4" type="Label" parent="EnemyPanel/VBoxContainer/Index Labels" unique_id=553334945]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "4"
+text = "9"
+label_settings = ExtResource("11_fepw0")
 
-[node name="Label5" type="Label" parent="PanelContainer2/VBoxContainer/Index Labels" unique_id=363051837]
+[node name="Label5" type="Label" parent="EnemyPanel/VBoxContainer/Index Labels" unique_id=1521245899]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "5"
+text = "10"
+label_settings = ExtResource("11_fepw0")
 
-[node name="UnitHolder" type="HBoxContainer" parent="PanelContainer2/VBoxContainer" unique_id=1109314170]
-custom_minimum_size = Vector2(0, 250)
+[node name="UnitHolder" type="HBoxContainer" parent="EnemyPanel/VBoxContainer" unique_id=1256209495]
+custom_minimum_size = Vector2(0, 306)
 layout_mode = 2
 mouse_filter = 2
 alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1622413628]
+[node name="PanelContainer" type="PanelContainer" parent="EnemyPanel/VBoxContainer/UnitHolder" unique_id=1937138503]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1483860071]
+[node name="PanelContainer2" type="PanelContainer" parent="EnemyPanel/VBoxContainer/UnitHolder" unique_id=1784961190]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=510187638]
+[node name="PanelContainer3" type="PanelContainer" parent="EnemyPanel/VBoxContainer/UnitHolder" unique_id=1314758410]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=38384753]
+[node name="PanelContainer4" type="PanelContainer" parent="EnemyPanel/VBoxContainer/UnitHolder" unique_id=1582809896]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="PanelContainer5" type="PanelContainer" parent="PanelContainer2/VBoxContainer/UnitHolder" unique_id=1722213626]
+[node name="PanelContainer5" type="PanelContainer" parent="EnemyPanel/VBoxContainer/UnitHolder" unique_id=1070137590]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_fepw0")
 
-[node name="Label2" type="Label" parent="PanelContainer2" unique_id=285402038]
+[node name="Label2" type="Label" parent="EnemyPanel" unique_id=1636076487]
 layout_mode = 2
 size_flags_vertical = 8
-text = "+ Shift -->"
+text = "- Shift -->"
+label_settings = ExtResource("11_fepw0")
 horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="PanelContainer2" unique_id=125615390]
+[node name="Label3" type="Label" parent="EnemyPanel" unique_id=182032133]
 layout_mode = 2
 size_flags_vertical = 8
-text = "<-- Shift"
+text = "+ Shift <--"
+label_settings = ExtResource("11_fepw0")
 
 [connection signal="pressed" from="Shop Panel/HBoxContainer/VBoxContainer/RerollButton" to="." method="_reroll"]
 [connection signal="pressed" from="Buttons/PurchaseUnitButton1" to="Buttons/PurchaseUnitButton1" method="_on_button_pressed"]

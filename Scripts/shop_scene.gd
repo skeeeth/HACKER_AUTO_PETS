@@ -17,6 +17,7 @@ const UNIT_CONTROL_SCENE = preload("uid://cuol4iet7e1w2")
 @export var wins_text_node : Label
 
 @export var unit_holder : HBoxContainer
+@export var enemy_unit_holder : HBoxContainer
 @export var effect_manager:ShopEffectManager
 @export var info_display:InfoDisplay
 var food_pool:Array[FoodData]
@@ -49,6 +50,16 @@ func _ready() -> void:
 
 	if PlayerUnitsContainer.ally_unit_list.size() != 0:
 		_add_all_to_stack()
+		
+	var enemy_index = 0
+	for ud in Gamestate.encounter_sequence[Gamestate.turn].unit_data:
+		var new_unit = _create_unit(ud,enemy_unit_holder,false)
+		for c in new_unit.effect_node.triggered.get_connections():
+			new_unit.effect_node.triggered.disconnect(c["callable"])
+		new_unit.effect_node.is_enemy = true
+		new_unit.effect_node.index = enemy_index
+		enemy_index += 1
+		new_unit.dropable = false
 	
 	purchasable_units.clear()
 	purchasable_units = Gamestate.purchaseable_units
@@ -63,18 +74,20 @@ func _ready() -> void:
 	effect_manager.shop_entered.emit()
 	effect_manager.resolve_effects()
 	
+	
+	
 	MusicManager.shop_entered()
 
 ## This function adds the unit data to the shop player stack
 func _add_to_stack(data : UnitData) -> void:
-	var unit : CombatUnitControl = _create_unit(data)
+	var unit : CombatUnitControl = _create_unit(data,unit_holder)
 	player_stack.append(unit)
 
 ## This function calls the _add_to_stack function 
 ## for each unit in the PlayerUnitsContainer class
 func _add_all_to_stack() -> void:
 	for data in PlayerUnitsContainer.ally_unit_list:
-		_create_unit(data)
+		_create_unit(data,unit_holder)
 		#var new_unit : CombatUnitControl
 		#new_unit = UNIT_CONTROL_SCENE.instantiate()
 		#new_unit.dress(data, list_index)
@@ -88,20 +101,25 @@ func _add_all_to_stack() -> void:
 ## This function creates a new CombatUnit scene 
 ## and spawns it into the level. Then, it sets the data perameter
 ## into the new CombatUnit scene and adds it to the Unit Holder Node
-func _create_unit(data:UnitData) -> CombatUnitControl:
+func _create_unit(data:UnitData, holder:HBoxContainer, backwards:bool = true) -> CombatUnitControl:
 	var new_unit : CombatUnitControl
 	new_unit = UNIT_CONTROL_SCENE.instantiate()
 	new_unit.dress(data, PlayerUnitsContainer.ally_unit_list.size() - 1)
 	new_unit.clicked.connect(info_display.set_info)
 	new_unit.shop_manager = self
-	for i in range(4,-1,-1):
-		var panel = unit_holder.get_child(i)
+	var r
+	if backwards:
+		r = range(4,-1,-1)
+	else:
+		r = range(4)
+	for i in r:
+		var panel = holder.get_child(i)
 		if panel.get_children().size() == 0:
 			panel.add_child(new_unit)
 			#unit_holder.move_child(panel, 0)
 			break
 	#unit_holder.add_child(new_unit)
-
+	
 	new_unit.effect_node.subscribe(effect_manager)
 	return new_unit
 

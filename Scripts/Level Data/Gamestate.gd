@@ -21,6 +21,7 @@ func _ready() -> void:
 	increase_tier()
 	base_lives = lives
 	food_pool = food_sequence
+	max_wins = encounter_sequence.size()
 
 func increase_tier():
 	if tier < tiers.size()-1:

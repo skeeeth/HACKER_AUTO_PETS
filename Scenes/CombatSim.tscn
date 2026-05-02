@@ -10,7 +10,7 @@ font_size = 88
 [node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node", "combat_timer")]
 script = ExtResource("1_pc1ni")
 encounter = ExtResource("2_yfu46")
-step_size = 150
+step_size = 196
 next_scene_button_node = NodePath("NextSceneButton")
 combat_timer = NodePath("Timer")
 lose_scene_path = "res://Scenes/LoseScene.tscn"

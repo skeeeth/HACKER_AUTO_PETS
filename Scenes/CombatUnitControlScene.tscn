@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="3_vsrog"]
 [ext_resource type="Texture2D" uid="uid://ct5cy6ynfrsrr" path="res://Themes/Windows98/textures/tree_panel.png" id="4_osle1"]
 [ext_resource type="Texture2D" uid="uid://diyoq7ru7sewf" path="res://Assets/ProdSprites/win95arrow.png" id="6_7vjvf"]
+[ext_resource type="LabelSettings" uid="uid://c2j8qkmrwlqrm" path="res://Resources/Syles/InfoLabelSettings.tres" id="7_1ycbl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e2tyl"]
 font_size = 8
@@ -88,6 +89,7 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 1
 text = "Name"
+label_settings = ExtResource("7_1ycbl")
 
 [node name="CenterContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=171629741]
 layout_mode = 2
@@ -114,6 +116,7 @@ texture = ExtResource("6_7vjvf")
 layout_mode = 2
 mouse_filter = 1
 text = "+0"
+label_settings = ExtResource("7_1ycbl")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1935330045]
@@ -124,6 +127,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "X"
+label_settings = ExtResource("7_1ycbl")
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1407096196]
@@ -131,6 +135,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "X"
+label_settings = ExtResource("7_1ycbl")
 horizontal_alignment = 1
 
 [node name="SellButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=126880458]

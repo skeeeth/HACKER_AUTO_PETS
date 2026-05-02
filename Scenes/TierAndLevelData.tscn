@@ -63,5 +63,5 @@ display_string = "<"
 script = ExtResource("1_n5s8k")
 lives = 3
 tiers = Array[ExtResource("2_mew4d")]([SubResource("Resource_fqv3h"), SubResource("Resource_aud3e"), SubResource("Resource_xxyny")])
-encounter_sequence = Array[ExtResource("16_vxcpi")]([SubResource("Resource_nwtii"), ExtResource("19_cucxj"), ExtResource("20_cucxj"), ExtResource("21_qji3b"), ExtResource("22_fyhii"), ExtResource("23_7ea1c"), ExtResource("29_mi2j0")])
+encounter_sequence = Array[ExtResource("16_vxcpi")]([ExtResource("22_fyhii"), SubResource("Resource_nwtii"), ExtResource("19_cucxj"), ExtResource("20_cucxj"), ExtResource("21_qji3b"), ExtResource("23_7ea1c"), ExtResource("29_mi2j0")])
 food_sequence = Array[ExtResource("21_aud3e")]([ExtResource("22_xxyny"), SubResource("Resource_qji3b"), SubResource("Resource_fyhii")])

@@ -8,6 +8,10 @@
 [ext_resource type="StyleBox" uid="uid://b10lfhso5bn01" path="res://Resources/Syles/standard_background.tres" id="5_snnnq"]
 [ext_resource type="Texture2D" uid="uid://diyoq7ru7sewf" path="res://Assets/ProdSprites/win95arrow.png" id="6_fcdb8"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_doend"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snnnq"]
 content_margin_left = 6.0
 content_margin_top = 6.0
@@ -35,8 +39,8 @@ script = ExtResource("3_bmh0u")
 metadata/_custom_type_script = "uid://d1f7tay3kxv3x"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=574133448]
-offset_right = 155.0
-offset_bottom = 203.0
+offset_right = 196.0
+offset_bottom = 301.0
 size_flags_vertical = 4
 mouse_filter = 1
 theme = ExtResource("3_nv3v6")
@@ -48,6 +52,7 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 1
 text = "Name"
+label_settings = SubResource("LabelSettings_doend")
 
 [node name="BevelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=678113769]
 layout_mode = 2
@@ -78,6 +83,7 @@ texture = ExtResource("6_fcdb8")
 layout_mode = 2
 mouse_filter = 1
 text = "+0"
+label_settings = SubResource("LabelSettings_doend")
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1867075172]
@@ -88,6 +94,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "X"
+label_settings = SubResource("LabelSettings_doend")
 horizontal_alignment = 1
 
 [node name="Health" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1098286526]
@@ -95,6 +102,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "X"
+label_settings = SubResource("LabelSettings_doend")
 horizontal_alignment = 1
 
 [connection signal="shifted" from="Effect" to="." method="on_effect_shifted"]
