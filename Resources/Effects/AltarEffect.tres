@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_2bbqv")
 name = "Altar Effect"
-effect_description = "Give Third Position 3/3"
+effect_description = "@ the beginning of a combat encounter, this virus breaks down the firewall of the center channel virus until it’s augmented 2/2."
 sprite = ExtResource("3_hdjjo")
 sound_effect = ExtResource("2_hdjjo")
 trigger_state = 2

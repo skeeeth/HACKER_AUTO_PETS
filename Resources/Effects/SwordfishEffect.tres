@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_560lp")
 name = "Swordfish"
-effect_description = "Combat Start: Deal damage equal to my attack to self and opposite"
+effect_description = "@ the beginning of a combat encounter, this virus deals damage equal to the attack towards itself and the opposing virus :0 . "
 sprite = ExtResource("3_se0t7")
 sound_effect = ExtResource("2_42fdt")
 magnitude_type = 1

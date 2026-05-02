@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_p8ng3")
 name = "Copycat"
-effect_description = "Give Self my Shift.  But who do I think I am?"
+effect_description = "@ the beginning of a combat encounter, this virus gives itself its shift in targeting. That's all it does. It’s pretty simple. U get it :] ."
 sprite = ExtResource("3_lff3y")
 sound_effect = ExtResource("2_4no21")
 effect_type = 5

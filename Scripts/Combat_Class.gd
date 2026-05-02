@@ -75,6 +75,7 @@ func take_damage(amount:int, from_attack:bool = false):
 	## also dont call hurt on 0 damage effects, 
 	## but do call hurt on any attack, to prevent softlock
 	if (start - end) > 0 or from_attack:
+		SoundManager.play_sound_from_path("res://Assets/Sound Effects/HURTSOUND.mp3")
 		hurt.emit()
 
 ## This function emits the died signal
@@ -82,6 +83,7 @@ func die():
 	dead = true
 	died.emit(self)
 	set_background_style(DEAD_BACKGROUND)
+	SoundManager.play_sound_from_path("res://Assets/Sound Effects/DIESOUND.mp3")
 
 
 ##Death animation

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://y0kbragukse7"]
 
-[ext_resource type="Script" uid="uid://cny00idycg1hd" path="res://Scripts/boot_up_sequence.gd" id="1_d7ppd"]
+[ext_resource type="Script" path="res://Scripts/boot_up_sequence.gd" id="1_d7ppd"]
 [ext_resource type="Texture2D" uid="uid://dxvucdee0kqiu" path="res://Assets/finalSprites/EMC_Inverted.png" id="1_sy6wn"]
 [ext_resource type="Texture2D" uid="uid://bhdmmo6yjf6xu" path="res://Assets/finalSprites/EMC_Inverted_corrupted.png" id="2_k3u1c"]
 [ext_resource type="Texture2D" uid="uid://cc3rwmtntogj3" path="res://Assets/finalSprites/shinesprite1.png" id="3_d7ppd"]

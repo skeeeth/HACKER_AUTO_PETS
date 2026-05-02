@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_gnjk5")
 name = "Orbital"
-effect_description = "Shop Start: Give Frontmost Position 1/1, then shift self -1"
+effect_description = "When the shop phase ends, this virus targets channel 5 with 1/1, then shifts its targeting 1 behind its currently projected channel."
 sprite = ExtResource("3_xno7k")
 sound_effect = ExtResource("2_xno7k")
 trigger_state = 8

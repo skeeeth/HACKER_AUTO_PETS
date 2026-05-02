@@ -94,6 +94,7 @@ func resolve():
 				
 			EffectData.EffectTypes.SHIFT:
 				target.effect.shift += get_magnitude()
+				SoundManager.play_sound_from_path("res://Assets/Sound Effects/Change in Target.mp3")
 				
 			EffectData.EffectTypes.SUMMON:
 				resolve_summon()

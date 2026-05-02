@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_45npy")
 name = "Tough Guy"
-effect_description = "Buff unit behind"
+effect_description = "When damaged, this virus flexes until its veins target the channel behind itself with an augment of 1/2."
 sprite = ExtResource("3_sqm03")
 sound_effect = ExtResource("2_aucn7")
 trigger_state = 3

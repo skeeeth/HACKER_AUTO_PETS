@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_lu8rw")
 name = "Acid Unit"
-effect_description = "Apply Acid to opposing unit when hurt"
+effect_description = "\"ACID BURN SEZ LEAVE B 4 U R EXPUNGED.\" When damaged, this virus applies 1 ACID to the virus in the channel ahead -_-+ ."
 sprite = ExtResource("3_elb7i")
 sound_effect = ExtResource("2_k8mtf")
 trigger_state = 3

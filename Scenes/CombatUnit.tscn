@@ -8,8 +8,8 @@
 [ext_resource type="StyleBox" uid="uid://b10lfhso5bn01" path="res://Resources/Syles/standard_background.tres" id="5_snnnq"]
 [ext_resource type="Texture2D" uid="uid://diyoq7ru7sewf" path="res://Assets/ProdSprites/win95arrow.png" id="6_fcdb8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_doend"]
-font_size = 48
+[sub_resource type="LabelSettings" id="LabelSettings_snnnq"]
+font_size = 32
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_snnnq"]
@@ -22,6 +22,10 @@ texture_margin_left = 2.0
 texture_margin_top = 2.0
 region_rect = Rect2(0, 0, 16, 16)
 draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_doend"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=253418010 node_paths=PackedStringArray("damage_label", "health_label", "shift_label", "name_label", "effect", "sprite")]
 texture_filter = 1
@@ -52,7 +56,8 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 1
 text = "Name"
-label_settings = SubResource("LabelSettings_doend")
+label_settings = SubResource("LabelSettings_snnnq")
+clip_text = true
 
 [node name="BevelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=678113769]
 layout_mode = 2

@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [sub_resource type="Resource" id="Resource_e8dmi"]
 script = ExtResource("1_i2y3n")
 name = "Vitruvius"
-effect_description = "Combat Start -> Give Self 2/2"
+effect_description = "@ the beginning of a combat encounter, this naked spreadeagle virus targets itself with an enhancement of 2/2 :D ."
 sprite = ExtResource("2_i2y3n")
 effect_type = 1
 magnitude = 2

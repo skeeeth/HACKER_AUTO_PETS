@@ -138,6 +138,7 @@ func accept_food(food_data:FoodData):
 	match food_data.type:
 		FoodData.food_types.SHIFT:
 			shift += food_data.magnitude
+			SoundManager.play_sound_from_path("res://Assets/Sound Effects/Change in Target.mp3")
 		FoodData.food_types.GIVE:
 			attack += food_data.magnitude
 			health += food_data.magnitude #+ food mod

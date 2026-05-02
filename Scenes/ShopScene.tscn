@@ -105,7 +105,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Shop Panel/HBoxContainer/VBoxContainer" unique_id=1836806042]
 layout_mode = 2
-text = "SOME INFO COPY"
+text = "Available Virus"
 label_settings = SubResource("LabelSettings_6mlxe")
 autowrap_mode = 3
 
@@ -376,10 +376,10 @@ label_settings = SubResource("LabelSettings_medpt")
 vertical_alignment = 1
 
 [node name="InfoText" type="Label" parent="Texts" unique_id=737011921]
-offset_left = 532.0
-offset_top = -522.0
-offset_right = 930.0
-offset_bottom = -369.0
+offset_left = 723.0
+offset_top = -482.0
+offset_right = 927.0
+offset_bottom = -293.0
 theme = ExtResource("7_1itlx")
 text = "Each unit costs 3 coins. You can only have 5 units on your team. You need a least 1 unit to go into combat."
 label_settings = SubResource("LabelSettings_3qq02")

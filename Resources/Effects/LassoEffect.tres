@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_173hh")
 name = "Lasso"
-effect_description = "Shift target by -2"
+effect_description = " @ the beginning of a combat encounter, this virus lassos 2 channels ahead and shifts its target 2 channels EVEN MORE ahead."
 sprite = ExtResource("3_rvjiy")
 sound_effect = ExtResource("2_rvjiy")
 effect_type = 5

@@ -2,13 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dfv4x5ov05lhh" path="res://Scripts/combat_sim.gd" id="1_pc1ni"]
 [ext_resource type="Resource" uid="uid://bupqmhnxwyjrh" path="res://Resources/Boards/TestBoard.tres" id="2_yfu46"]
+[ext_resource type="Theme" uid="uid://dvf4ta26l2lat" path="res://Themes/Windows98/theme.tres" id="4_c2hfo"]
 [ext_resource type="PackedScene" uid="uid://clvf8r4jwgtex" path="res://Scenes/NextSceneButton.tscn" id="5_c2hfo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfu46"]
 font_size = 88
 
-[node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("next_scene_button_node", "combat_timer")]
+[sub_resource type="LabelSettings" id="LabelSettings_rtfpj"]
+font_size = 28
+font_color = Color(0, 1, 0, 1)
+
+[node name="CombatSim" type="Node2D" unique_id=807734234 node_paths=PackedStringArray("turn_label", "next_scene_button_node", "combat_timer")]
 script = ExtResource("1_pc1ni")
+turn_label = NodePath("Label")
 encounter = ExtResource("2_yfu46")
 step_size = 196
 next_scene_button_node = NodePath("NextSceneButton")
@@ -19,6 +25,7 @@ win_scene_path = "res://Scenes/WinScene.tscn"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2141505769]
 
 [node name="NextSceneButton" parent="." unique_id=1641231628 instance=ExtResource("5_c2hfo")]
+visible = false
 offset_left = 755.0
 offset_top = 387.0
 offset_right = 902.0
@@ -40,6 +47,23 @@ text = "00"
 label_settings = SubResource("LabelSettings_yfu46")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=601458039]
+offset_left = -840.0
+offset_top = -501.0
+offset_right = -685.0
+offset_bottom = -469.0
+theme = ExtResource("4_c2hfo")
+text = "Turn Number:"
+label_settings = SubResource("LabelSettings_rtfpj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1149869000]
+z_index = -9
+offset_left = -1371.0
+offset_top = -760.0
+offset_right = 1217.0
+offset_bottom = 704.0
+color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="NextSceneButton" to="NextSceneButton" method="_change_scene"]
 [connection signal="timeout" from="Timer" to="." method="_on_combat_timer_timeout"]

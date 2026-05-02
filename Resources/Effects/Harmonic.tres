@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_i8wfa")
 name = "Harmonic"
-effect_description = "Trigger Turn start Effects an addittional time"
+effect_description = "Turn start effects also happen @ the end of the turn. Also happens at the end of the turn for each genesis harmonic."
 sprite = ExtResource("3_imax7")
 sound_effect = ExtResource("2_imax7")
 trigger_state = 6

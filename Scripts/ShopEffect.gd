@@ -25,6 +25,7 @@ var index:int ##ENEMY DISPLAY ONLYYYYY IMPORTANTT DONT USE THIS
 
 func subscribe(manager:ShopEffectManager):
 	shop_manager = manager
+	if is_enemy:return
 	match data.trigger_state:
 		EffectData.TriggerStates.SHOP_START:
 			shop_manager.shop_entered.connect(trigger)
@@ -110,6 +111,7 @@ func resolve():
 				target.health += data.magnitude + data.mag_mod
 			EffectData.EffectTypes.SHIFT:
 				target.shift += data.magnitude #modifer???
+				SoundManager.play_sound_from_path("res://Assets/Sound Effects/Change in Target.mp3")
 			EffectData.EffectTypes.STOCK:
 				resolve_stock()
 				

@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://by520cy10c7wa"
 [resource]
 script = ExtResource("1_uyyu5")
 name = "Globe"
-effect_description = "Give Self 4/2 before attack"
+effect_description = "“I HOPE YOU DON’T SCREW LIKE YOU TYPE.” Also, when attacking, this virus augments itself 2/2 ;) ."
 sprite = ExtResource("3_u8pdf")
 sound_effect = ExtResource("2_u8pdf")
 trigger_state = 4

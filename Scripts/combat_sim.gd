@@ -12,10 +12,15 @@ signal combat_end
 var current_battle_phase : BattlePhases
 var current_phase_number : int = -1
 const UNIT_SCENE = preload("uid://brlrr5c85a1dd")
+var turn = 0:
+	set(v):
+		turn = v
+		turn_label.text = "Turn: %s" % turn
+	
 
 ## 5 is the number in SAP could change
 @export var board_size : int = 5
-
+@export var turn_label: Label
 #@export var ally_unit_data : Array[UnitData]
 
 @export var encounter : Encounter
@@ -149,9 +154,11 @@ func connect_number_to_phase():
 func phase_action():
 	if current_battle_phase == BattlePhases.BATTLE_START:
 		combat_start.emit()
+
 	elif current_battle_phase == BattlePhases.TURN_START:
 		print("Turn has begun")
 		turn_start.emit()
+		turn += 1
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
 		player_queue.front().attack_queued.emit()
@@ -201,7 +208,7 @@ func hit():
 				starting_position + max_translation,0.03).set_delay(0.1)
 		#attack_tween.parallel().tween_property(unit,"rotation",max_rotation,0.05)
 		
-		attack_tween.tween_callback(SoundManager.play_sound_from_path.bind("res://Assets/Sound Effects/Fireball.mp3"))
+		#attack_tween.tween_callback(SoundManager.play_sound_from_path.bind("res://Assets/Sound Effects/Fireball.mp3"))
 		
 		
 		#recovery

@@ -111,7 +111,7 @@ func _create_unit(data:UnitData, holder:HBoxContainer, backwards:bool = true) ->
 	if backwards:
 		r = range(4,-1,-1)
 	else:
-		r = range(4)
+		r = range(5)
 	for i in r:
 		var panel = holder.get_child(i)
 		if panel.get_children().size() == 0:
@@ -158,6 +158,7 @@ func purchase_unit(unit:UnitData) -> void:
 			PlayerUnitsContainer.add_unit_to_list(unit)
 			_add_to_stack(unit)
 			reduce_coin(unit_cost)
+			SoundManager.play_sound_from_path("res://Assets/Sound Effects/Buy.mp3")
 	else:
 		print("Size full")
 

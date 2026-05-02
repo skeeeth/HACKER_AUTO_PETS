@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v2nbamtc6vpa"
+path="res://.godot/imported/Change in Target.mp3-614e6c4ba08ca84574ae7e73e06d7f5a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Change in Target.mp3"
+dest_files=["res://.godot/imported/Change in Target.mp3-614e6c4ba08ca84574ae7e73e06d7f5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
