@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://y0kbragukse7"]
 
+[ext_resource type="Script" uid="uid://cny00idycg1hd" path="res://Scripts/boot_up_sequence.gd" id="1_d7ppd"]
 [ext_resource type="Texture2D" uid="uid://dxvucdee0kqiu" path="res://Assets/finalSprites/EMC_Inverted.png" id="1_sy6wn"]
 [ext_resource type="Texture2D" uid="uid://bhdmmo6yjf6xu" path="res://Assets/finalSprites/EMC_Inverted_corrupted.png" id="2_k3u1c"]
 [ext_resource type="Texture2D" uid="uid://cc3rwmtntogj3" path="res://Assets/finalSprites/shinesprite1.png" id="3_d7ppd"]
@@ -60,6 +61,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("1_sy6wn"), ExtResource("2_k3u1c")]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_to_title"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xrv2r"]
@@ -160,6 +175,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d7ppd")
+title_scene_path = "res://Scenes/TitleScene.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2042271494]
 layout_mode = 1
