@@ -65,5 +65,14 @@ offset_right = 1217.0
 offset_bottom = 704.0
 color = Color(0, 0, 0, 1)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2082463097]
+offset_left = -571.0
+offset_top = -317.0
+offset_right = 16.0
+offset_bottom = -142.0
+theme = ExtResource("4_c2hfo")
+bbcode_enabled = true
+text = "[color=green] [font_size=36] SAMPLE "
+
 [connection signal="pressed" from="NextSceneButton" to="NextSceneButton" method="_change_scene"]
 [connection signal="timeout" from="Timer" to="." method="_on_combat_timer_timeout"]
