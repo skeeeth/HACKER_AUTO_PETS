@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" path="res://Scenes/data_blockNonScrolling.tscn" id="3_8dlt2"]
 [ext_resource type="PackedScene" uid="uid://ddcq4cja5qpu8" path="res://Scenes/3dShopSetup.tscn" id="4_d0863"]
 [ext_resource type="Script" uid="uid://b1l74t7y0qdsj" path="res://Scripts/3d/3dSceneManager.gd" id="4_y3wnj"]
-[ext_resource type="PackedScene" path="res://Scenes/data_blockPosVar.tscn" id="6_v7nfq"]
-[ext_resource type="PackedScene" path="res://Scenes/data_blockStutterScroll.tscn" id="7_oii78"]
+[ext_resource type="PackedScene" uid="uid://bcxi8rxujuber" path="res://Scenes/data_blockPosVar.tscn" id="6_v7nfq"]
+[ext_resource type="PackedScene" uid="uid://0cfy66ot1u37" path="res://Scenes/data_blockStutterScroll.tscn" id="7_oii78"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_spof4"]
 sky_top_color = Color(0, 0, 0, 1)

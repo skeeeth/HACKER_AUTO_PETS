@@ -70,7 +70,7 @@ func resolve():
 	#animation.set_parallel()
 	
 	var fizzled = true ##true until proven otherwise
-	
+	CombatLog.send_text("Resolve " + data.name + ", ", false)
 	set_targets()
 	for target in target_units:
 		#var target = _get_target_unit(t)
@@ -135,7 +135,6 @@ func resolve():
 		#manager.cleanup()
 
 	print("Resolved " + data.name)
-	CombatLog.send_text("Resolved " + data.name)
 	resolved.emit()
 	#holder.position.y += 40 #reset
 	#visible = false

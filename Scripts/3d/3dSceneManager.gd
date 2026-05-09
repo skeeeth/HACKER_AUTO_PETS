@@ -30,6 +30,8 @@ func start_combat():
 	recent_combat = new_combat
 
 func end_combat():
+	if Gamestate.turn >= Gamestate.encounter_sequence.size():
+		get_tree().change_scene_to_file("res://Scenes/WinScene.tscn")
 	var reset = create_tween()
 	reset.tween_property(combat_mesh,"scale",Vector3.ZERO,0.5)
 	reset.tween_property(combat_mesh,"visible",false,0)

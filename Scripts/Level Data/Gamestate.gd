@@ -47,6 +47,7 @@ func reset_game():
 	lives = base_lives
 	purchaseable_units.clear()
 	tier = -1
+	increase_tier()
 
 func get_turn_encounter() -> Encounter:
 	var read_turn = clamp(turn,0,encounter_sequence.size()-1)

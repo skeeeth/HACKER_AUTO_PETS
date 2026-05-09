@@ -25,7 +25,6 @@ var index:int ##ENEMY DISPLAY ONLYYYYY IMPORTANTT DONT USE THIS
 
 func subscribe(manager:ShopEffectManager):
 	shop_manager = manager
-	if is_enemy:return
 	match data.trigger_state:
 		EffectData.TriggerStates.SHOP_START:
 			shop_manager.shop_entered.connect(trigger)
@@ -35,6 +34,9 @@ func subscribe(manager:ShopEffectManager):
 
 	if data.subresource:
 		if data.sub_type == EffectData.SUBEFFECT_TYPES.EXTRA_EFFECT:
+			
+			#if is_enemy: return
+			
 			var new_effect = ShopEffect.new()
 			new_effect.holder = holder
 			new_effect.data = data.subresource
@@ -46,6 +48,9 @@ func subscribe(manager:ShopEffectManager):
 			add_child(new_effect) #move with parent
 
 func trigger():
+	if is_enemy: 
+		#resolved.emit()
+		return
 	shop_manager.effect_stack.append(self)
 	triggered.emit()
 

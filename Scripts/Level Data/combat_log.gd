@@ -2,10 +2,11 @@ extends Node
 
 var textbox:RichTextLabel
 
-func send_text(text:String):
+func send_text(text:String, with_newline:bool = true):
 	if textbox:
 		textbox.append_text(text)
-		textbox.newline()
+		if with_newline:
+			textbox.newline()
 
 
 func set_textbox(tbox:RichTextLabel):

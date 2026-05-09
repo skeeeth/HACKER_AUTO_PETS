@@ -160,9 +160,9 @@ func phase_action():
 
 	elif current_battle_phase == BattlePhases.TURN_START:
 		print("Turn has begun")
+		turn += 1
 		CombatLog.send_text("Start turn %s" % turn)
 		turn_start.emit()
-		turn += 1
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
 		CombatLog.send_text("Attack phase")
@@ -172,6 +172,7 @@ func phase_action():
 		turn_end.emit()
 		print("Turn has ended")
 		CombatLog.send_text("End of Turn %s" % turn)
+		CombatLog.send_text("\n")
 
 ## This function calls the hit function
 func advance_step():
@@ -258,11 +259,11 @@ func cleanup():
 		player_won = true
 		Gamestate.log_win()
 		
-		if Gamestate.wins == Gamestate.max_wins:
-			get_tree().change_scene_to_file(win_scene_path)
-			MusicManager.results_screen_entered()
-		else:
-			end_combat()
+		#if Gamestate.wins == Gamestate.max_wins:
+			#get_tree().change_scene_to_file(win_scene_path)
+			#MusicManager.results_screen_entered()
+		#else:
+		end_combat()
 			
 	elif player_queue.size() == 0 and enemy_queue.size() == 0:
 		end_combat()
@@ -276,7 +277,7 @@ func end_combat():
 	Gamestate.end_turn()
 
 	combat_end.emit()
-	next_scene_button_node.visible = true
+	#next_scene_button_node.visible = true
 	var winner_name:String
 	if player_won:
 		winner_name = "USER"
