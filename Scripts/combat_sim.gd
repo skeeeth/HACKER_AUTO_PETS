@@ -50,9 +50,12 @@ var enemy_queue : Array[SimUnit]
 var effect_stack:Array[Effect]
 var dying_units:Array[SimUnit]
 
+@onready var rich_text_label: RichTextLabel = $RichTextLabel
+
+
 func _ready() -> void:
 	MusicManager.combat_entered()
-	
+	CombatLog.set_textbox(rich_text_label)
 	next_scene_button_node.visible = false
 	encounter = Gamestate.get_turn_encounter()
 	enemy_unit_data = encounter.unit_data
@@ -157,15 +160,18 @@ func phase_action():
 
 	elif current_battle_phase == BattlePhases.TURN_START:
 		print("Turn has begun")
+		CombatLog.send_text("Start turn %s" % turn)
 		turn_start.emit()
 		turn += 1
 	elif current_battle_phase == BattlePhases.ATTACK:
 		print("Time to attack")
+		CombatLog.send_text("Attack phase")
 		player_queue.front().attack_queued.emit()
 		enemy_queue.front().attack_queued.emit()
 	elif current_battle_phase == BattlePhases.TURN_END:
 		turn_end.emit()
 		print("Turn has ended")
+		CombatLog.send_text("End of Turn %s" % turn)
 
 ## This function calls the hit function
 func advance_step():
@@ -271,4 +277,12 @@ func end_combat():
 
 	combat_end.emit()
 	next_scene_button_node.visible = true
+	var winner_name:String
+	if player_won:
+		winner_name = "USER"
+	else:
+		winner_name = "SYSTEM"
+	CombatLog.send_text("\n")
+	CombatLog.send_text("Combat Over")
+	CombatLog.send_text(winner_name + "Victory")
 	print("Combat Over")

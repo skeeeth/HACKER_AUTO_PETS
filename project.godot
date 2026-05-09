@@ -21,6 +21,7 @@ PlayerUnitsContainer="*uid://cg035k5ginn54"
 Gamestate="*uid://dvermrmix11go"
 MusicManager="*uid://bmil0bci7vjh0"
 SoundManager="*uid://x2rxpidogaq7"
+CombatLog="*uid://wqj602lr1mqi"
 
 [display]
 

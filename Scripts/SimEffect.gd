@@ -57,6 +57,7 @@ func trigger():
 	manager.trigger_effect(self)
 	#set_targets()
 	print(data.name + " Triggered")
+	CombatLog.send_text(str(data.name + " Triggered"))
 	#TEMP, replace with more sophisticated art later
 	#holder.position.y -= 40 #bump unit up to show its active
 
@@ -111,6 +112,8 @@ func resolve():
 	if fizzled:
 		SoundManager.play_sound(audio_data.fizzle)
 		animation.set_parallel(false)
+		print("Fizzled")
+		animation.tween_callback(CombatLog.send_text.bind("Target not found.  Effect Fizzled"))
 		var start = holder.position.x
 		var wiggle_size:float = 20
 		var wiggle_direction:int = -1
@@ -132,6 +135,7 @@ func resolve():
 		#manager.cleanup()
 
 	print("Resolved " + data.name)
+	CombatLog.send_text("Resolved " + data.name)
 	resolved.emit()
 	#holder.position.y += 40 #reset
 	#visible = false
@@ -180,6 +184,7 @@ static func get_index_from_target(t:Target,is_player_side:bool,my_index:int,with
 				target_index = 6 + my_index
 	
 	print(target_index)
+	CombatLog.send_text("Targeting index: %s" % target_index)
 	return target_index
 
 ##sets target_units_array
