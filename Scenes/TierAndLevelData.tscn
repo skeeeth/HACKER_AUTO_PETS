@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://bxnwqdhbo0l71" path="res://Scripts/Level Data/Encounter.gd" id="16_vxcpi"]
 [ext_resource type="Resource" uid="uid://ibek6ecqp56k" path="res://Resources/Boards/BigTruvious.tres" id="19_cucxj"]
 [ext_resource type="Resource" uid="uid://c0l0yem3c3wl6" path="res://Resources/Boards/SpaceLass.tres" id="20_cucxj"]
-[ext_resource type="Script" path="res://Resources/FoodData.gd" id="21_aud3e"]
+[ext_resource type="Script" uid="uid://c11s6yam75hw8" path="res://Resources/FoodData.gd" id="21_aud3e"]
 [ext_resource type="Resource" uid="uid://drg0kogqwfvs3" path="res://Resources/Boards/SickLove.tres" id="21_qji3b"]
 [ext_resource type="Resource" uid="uid://cwmnkjsa3l88t" path="res://Resources/Boards/RemoteAcid.tres" id="22_fyhii"]
 [ext_resource type="Resource" uid="uid://dqio3annxn5h8" path="res://Resources/Food/Apple.tres" id="22_xxyny"]
@@ -39,7 +39,7 @@ metadata/_custom_type_script = "uid://dpyn25ocjuy1w"
 
 [sub_resource type="Resource" id="Resource_xxyny"]
 script = ExtResource("2_mew4d")
-units = Array[ExtResource("3_gvkr2")]([ExtResource("12_hy120"), ExtResource("13_08tc8"), ExtResource("14_ddkd5"), ExtResource("15_mxa0m")])
+units = Array[ExtResource("3_gvkr2")]([ExtResource("12_hy120"), ExtResource("13_08tc8"), ExtResource("14_ddkd5"), ExtResource("15_mxa0m"), ExtResource("14_ddkd5")])
 metadata/_custom_type_script = "uid://dpyn25ocjuy1w"
 
 [sub_resource type="Resource" id="Resource_nwtii"]

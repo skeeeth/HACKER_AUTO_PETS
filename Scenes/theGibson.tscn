@@ -105,7 +105,7 @@ albedo_texture = SubResource("ViewportTexture_y3wnj")
 environment = SubResource("Environment_new3m")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1880863434]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.99, -8.655)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1748180896]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)

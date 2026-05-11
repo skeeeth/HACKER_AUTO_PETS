@@ -68,7 +68,7 @@ color = Color(0, 0, 0, 1)
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2082463097]
 offset_left = -819.0
 offset_top = -455.0
-offset_right = -232.0
+offset_right = 935.0
 offset_bottom = -76.0
 theme = ExtResource("4_c2hfo")
 bbcode_enabled = true

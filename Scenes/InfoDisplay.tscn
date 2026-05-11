@@ -60,7 +60,7 @@ size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="Info Display/Info" unique_id=335833459]
 layout_mode = 2
-text = "name"
+text = "Virus Name"
 label_settings = SubResource("LabelSettings_jciix")
 horizontal_alignment = 1
 
@@ -68,4 +68,4 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
-text = "[font_size=24]Some Sample Text"
+text = "[font_size=24]Select a virus for info a description here"

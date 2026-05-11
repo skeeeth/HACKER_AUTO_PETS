@@ -285,5 +285,5 @@ func end_combat():
 		winner_name = "SYSTEM"
 	CombatLog.send_text("\n")
 	CombatLog.send_text("Combat Over")
-	CombatLog.send_text(winner_name + "Victory")
+	CombatLog.send_text(winner_name + " Victory")
 	print("Combat Over")
